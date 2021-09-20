@@ -530,16 +530,6 @@
         "collapse": false
     },
     {
-        "id": "b2055464.668b48",
-        "type": "ui_group",
-        "name": "デフォルト",
-        "tab": "144a4fe6.b3e0a",
-        "order": 1,
-        "disp": true,
-        "width": 15,
-        "collapse": false
-    },
-    {
         "id": "e2309ec6.af331",
         "type": "ui_spacer",
         "name": "spacer",
@@ -661,36 +651,6 @@
         "collapse": true
     },
     {
-        "id": "131304c1.14fa2b",
-        "type": "ui_group",
-        "name": "チャート",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "15",
-        "collapse": true
-    },
-    {
-        "id": "4c6ff3e8.6ec1ac",
-        "type": "ui_group",
-        "name": "地図",
-        "tab": "",
-        "order": 3,
-        "disp": true,
-        "width": 9,
-        "collapse": true
-    },
-    {
-        "id": "1e861d64.540cc3",
-        "type": "ui_group",
-        "name": "移動車情報",
-        "tab": "",
-        "order": 1,
-        "disp": false,
-        "width": 7,
-        "collapse": false
-    },
-    {
         "id": "ac7569b4.5ada88",
         "type": "mqtt-broker",
         "name": "moquitto",
@@ -735,16 +695,6 @@
         "disp": true,
         "width": 8,
         "collapse": true
-    },
-    {
-        "id": "8d28ce58.17ad78",
-        "type": "ui_group",
-        "name": "デフォルト",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": 18,
-        "collapse": false
     },
     {
         "id": "7de7e0c3.f4fbf",
@@ -850,16 +800,6 @@
         "order": 1,
         "disp": false,
         "width": 7,
-        "collapse": false
-    },
-    {
-        "id": "ddb47e9b.6055f",
-        "type": "ui_group",
-        "name": "デフォルト",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": 18,
         "collapse": false
     },
     {
@@ -2706,7 +2646,12 @@
         "topic": "owntracks/nodered/aquos/cmd",
         "qos": "",
         "retain": "",
-        "broker": "ac7569b4.5ada88",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
         "x": 910,
         "y": 940,
         "wires": []
@@ -2783,7 +2728,9 @@
         "topic": "owntracks/nodered/aquos/dump",
         "qos": "2",
         "datatype": "auto",
-        "broker": "ac7569b4.5ada88",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
         "x": 210,
         "y": 1140,
         "wires": [
@@ -3948,7 +3895,9 @@
         "topic": "imu",
         "qos": "0",
         "datatype": "auto",
-        "broker": "ac7569b4.5ada88",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
         "x": 140,
         "y": 1080,
         "wires": [
@@ -8200,10 +8149,10 @@
         "type": "function",
         "z": "7e6f2d4d.3bcd74",
         "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\n\nif(flow.get(\"$parent.reset\") != i+1){\n//if(flow.get(\"odd\") >100){\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n}\n\ntrip[0]=j;\nflow.set(\"$parent.genku\",msg.payload.number);\nflow.set(\"$parent.reset\",msg.payload.reset);\nkukyori=msg.payload.kukyori;\nflow.set(\"$parent.kukyori\",kukyori);\n\nmsg.payload={\n    //dis:flow.get(\"odd\"),\n    //dis:msg.payload.meter,\n    name:msg.payload.name,\n    number:msg.payload.number,\n    kukyori:msg.payload.kukyori,\n    zenku:global.get(\"zenku\"),\n    trip:trip,\n    time:time,\n    lap:lap,\n    itrip:trip[i],\n    itime:TIME(msg.payload.time),\n    ilap:lap[i],\n    ku:i,\n    error:error,\n    lat:lat,\n    lon:lon,\n    dirdir:msg.payload.dirdir,\n    reset:msg.payload.reset,\n    //odd:msg.payload.meter+y,\n    odd:odd,\n    over:y,\n}\n\nflow.set(\"$parent.trip\",trip);\nflow.set(\"$parent.error\",error);\nflow.set(\"$parent.time\",time);\nreturn msg;\n",
+        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n//if(flow.get(\"odd\") >100){\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n}\n\ntrip[0]=j;\nflow.set(\"$parent.genku\",msg.payload.number);\nflow.set(\"$parent.reset\",msg.payload.reset);\nkukyori=msg.payload.kukyori;\nflow.set(\"$parent.kukyori\",kukyori);\n\nmsg.payload={\n    //dis:flow.get(\"odd\"),\n    //dis:msg.payload.meter,\n    name:msg.payload.name,\n    number:msg.payload.number,\n    kukyori:msg.payload.kukyori,\n    zenku:global.get(\"zenku\"),\n    trip:trip,\n    time:time,\n    lap:lap,\n    itrip:trip[i],\n    itime:TIME(msg.payload.time),\n    ilap:lap[i],\n    ku:i,\n    error:error,\n    lat:lat,\n    lon:lon,\n    dirdir:msg.payload.dirdir,\n    reset:msg.payload.reset,\n    //odd:msg.payload.meter+y,\n    odd:odd,\n    over:over,\n}\n\nflow.set(\"$parent.trip\",trip);\nflow.set(\"$parent.error\",error);\nflow.set(\"$parent.time\",time);\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\ntime=Array();\ntst=Array();\nlap=Array();\nlat=Array();\nlon=Array();\nj=0;\nkukyori=0;",
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\nover=Array();\ntime=Array();\ntst=Array();\nlap=Array();\nlat=Array();\nlon=Array();\nj=0;\nkukyori=0;",
         "finalize": "",
         "libs": [],
         "x": 400,
@@ -8367,7 +8316,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "0　{{payload.error.0}}　{{payload.over.0}}<br>\n1　{{payload.error.1}}  {{payload.error.1}}<br>\n2　{{payload.error.2}}  {{payload.error.2}}<br>\n3　{{payload.error.3}}　{{payload.over.3}}<br>\n4　{{payload.error.4}}　{{payload.over.4}}<br>\n5　{{payload.error.5}}　{{payload.over.5}}<br>\n6　{{payload.error.6}}　{{payload.over.6}}<br>\n7　{{payload.error.7}}　{{payload.over.7}}<br>\n8　{{payload.error.8}}　{{payload.over.8}}<br>\n9　{{payload.error.9}}　{{payload.over.9}}<br>\n10　{{payload.error.10}}　{{payload.over.10}}<br>\n11　{{payload.error.11}}　{{payload.over.11}}<br>\n12　{{payload.error.12}}　{{payload.over.12}}",
+        "template": "0　{{payload.error.0}}　{{payload.over.0}}<br>\n1　{{payload.error.1}}  {{payload.over.1}}<br>\n2　{{payload.error.2}}  {{payload.over.2}}<br>\n3　{{payload.error.3}}　{{payload.over.3}}<br>\n4　{{payload.error.4}}　{{payload.over.4}}<br>\n5　{{payload.error.5}}　{{payload.over.5}}<br>\n6　{{payload.error.6}}　{{payload.over.6}}<br>\n7　{{payload.error.7}}　{{payload.over.7}}<br>\n8　{{payload.error.8}}　{{payload.over.8}}<br>\n9　{{payload.error.9}}　{{payload.over.9}}<br>\n10　{{payload.error.10}}　{{payload.over.10}}<br>\n11　{{payload.error.11}}　{{payload.over.11}}<br>\n12　{{payload.error.12}}　{{payload.over.12}}",
         "output": "str",
         "x": 660,
         "y": 260,
@@ -8458,7 +8407,7 @@
         "type": "debug",
         "z": "f20b3fe7.75306",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -9433,6 +9382,76 @@
         "wires": [
             [
                 "4a91634.3fc279c"
+            ]
+        ]
+    },
+    {
+        "id": "4c0fe9df.152948",
+        "type": "inject",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 770,
+        "y": 340,
+        "wires": [
+            [
+                "c1d0719a.ec6ff"
+            ]
+        ]
+    },
+    {
+        "id": "368de350.c0943c",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c1d0719a.ec6ff",
+        "type": "moment",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "",
+        "x": 1010,
+        "y": 340,
+        "wires": [
+            [
+                "368de350.c0943c"
             ]
         ]
     }
