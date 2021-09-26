@@ -159,7 +159,7 @@
             },
             {
                 "x": 800,
-                "y": 260,
+                "y": 240,
                 "wires": [
                     {
                         "id": "ce28cb3f.2f3028",
@@ -169,7 +169,7 @@
             },
             {
                 "x": 640,
-                "y": 320,
+                "y": 300,
                 "wires": [
                     {
                         "id": "b582e164.1a557",
@@ -278,9 +278,7 @@
             "4650f4c4.97a1ac"
         ],
         "x": 1014,
-        "y": 1399,
-        "w": 672,
-        "h": 302
+        "y": 1399
     },
     {
         "id": "cd49fe9a.d0506",
@@ -990,6 +988,105 @@
         "height": 1
     },
     {
+        "id": "ad40567ad3606164",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4622b0a4c2364198",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0afe42ee2631c004",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "436e8dea51a966e6",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "dc3c780d3ccd1c3d",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 16,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "a8dada8d9b7996eb",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 17,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "25d6a6e28d7bd9f7",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 18,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "cebbdd396a175498",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "4707e75.554a618",
+        "order": 20,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "bbcb393aa8f28e11",
+        "type": "serial-port",
+        "serialport": "",
+        "serialbaud": "57600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
         "id": "3d6df3db.cc4fdc",
         "type": "cast-to-client",
         "z": "df06f9b1.fe75f8",
@@ -1058,14 +1155,14 @@
         "id": "b9374d55.c57ae",
         "type": "exec",
         "z": "df06f9b1.fe75f8",
-        "command": "sudo python /home/pi/python-host/switchbot.py F2:01:52:50:80:7D  Press",
+        "command": "sudo python /home/pi/python-host/switchbot.py F2:01:52:50:80:7D  Bot Press",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 590,
+        "x": 600,
         "y": 360,
         "wires": [
             [],
@@ -2693,8 +2790,8 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 1180,
-        "y": 180,
+        "x": 1060,
+        "y": 940,
         "wires": [
             [
                 "5f3c8167.759ca"
@@ -2714,8 +2811,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1360,
-        "y": 180,
+        "x": 1240,
+        "y": 940,
         "wires": []
     },
     {
@@ -2865,8 +2962,8 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 230,
-        "y": 1260,
+        "x": 190,
+        "y": 1280,
         "wires": [
             [
                 "af93e9f0.3d7588"
@@ -2881,8 +2978,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 470,
-        "y": 1260,
+        "x": 430,
+        "y": 1280,
         "wires": [
             [
                 "e05b3ae1.672e88"
@@ -2901,8 +2998,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 1260,
+        "x": 620,
+        "y": 1280,
         "wires": []
     },
     {
@@ -4013,8 +4110,8 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 160,
-        "y": 1200,
+        "x": 110,
+        "y": 1220,
         "wires": [
             [
                 "2ed72ba9.7cc7e4"
@@ -4058,8 +4155,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 370,
-        "y": 1200,
+        "x": 320,
+        "y": 1220,
         "wires": [
             []
         ]
@@ -4196,11 +4293,11 @@
         "z": "f20b3fe7.75306",
         "name": "",
         "filename": "/home/pi/samba/public/log1.csv",
-        "appendNewline": true,
-        "createDir": false,
+        "appendNewline": false,
+        "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 2310,
+        "x": 2750,
         "y": 740,
         "wires": [
             []
@@ -4221,7 +4318,7 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 2030,
+        "x": 2470,
         "y": 740,
         "wires": [
             [
@@ -4669,12 +4766,12 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "neq",
+                "t": "lte",
                 "v": "1000",
                 "vt": "num"
             },
             {
-                "t": "eq",
+                "t": "gt",
                 "v": "1000",
                 "vt": "num"
             }
@@ -5450,10 +5547,12 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
+        "allowrate": false,
         "x": 2020,
         "y": 520,
         "wires": [
             [
+                "720387f4b28be942",
                 "201c8788.dc67c8"
             ]
         ]
@@ -5469,12 +5568,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2240,
+        "x": 2360,
         "y": 520,
         "wires": [
             [
-                "6037165c.3de478",
-                "4560ed4d.5b7034"
+                "4560ed4d.5b7034",
+                "6037165c.3de478"
             ]
         ]
     },
@@ -5488,11 +5587,12 @@
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
         "finalize": "",
-        "x": 2500,
+        "x": 2860,
         "y": 520,
         "wires": [
             [
-                "9c5a894.d26cd78"
+                "9c5a894.d26cd78",
+                "8e405d1478e6c10e"
             ]
         ]
     },
@@ -5502,7 +5602,7 @@
         "z": "f20b3fe7.75306",
         "name": "",
         "serial": "665ac286.d04e5c",
-        "x": 2690,
+        "x": 3070,
         "y": 520,
         "wires": []
     },
@@ -5808,7 +5908,7 @@
         "type": "debug",
         "z": "df06f9b1.fe75f8",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -6216,23 +6316,6 @@
         ]
     },
     {
-        "id": "d8bd23a1.c0f91",
-        "type": "debug",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 260,
-        "wires": []
-    },
-    {
         "id": "3017875f.bc5758",
         "type": "function",
         "z": "8caaa155.e5486",
@@ -6622,7 +6705,7 @@
         "id": "4af1162e.d67838",
         "type": "change",
         "z": "8caaa155.e5486",
-        "name": "",
+        "name": "global.dis",
         "rules": [
             {
                 "t": "set",
@@ -6637,7 +6720,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2260,
+        "x": 2240,
         "y": 560,
         "wires": [
             []
@@ -6706,7 +6789,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -6932,52 +7015,6 @@
         "wires": []
     },
     {
-        "id": "113adc2f.07d964",
-        "type": "serial out",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "serial": "665ac286.d04e5c",
-        "x": 2870,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "ed0d4133.31948",
-        "type": "function",
-        "z": "8caaa155.e5486",
-        "name": "シリアル作成",
-        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
-        "finalize": "",
-        "x": 2660,
-        "y": 560,
-        "wires": [
-            [
-                "113adc2f.07d964"
-            ]
-        ]
-    },
-    {
-        "id": "a5aadeb3.94d03",
-        "type": "function",
-        "z": "8caaa155.e5486",
-        "name": "GETシリアルデータ",
-        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:global.get(\"zenku\"),\n    genku:flow.get(\"genkus\"),\n    kukyori:flow.get(\"kukyoris\"),\n    //kyori:global.get(\"odd3\"),\n    kyori:msg.payload.dis,\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 2600,
-        "y": 620,
-        "wires": [
-            [
-                "ed0d4133.31948"
-            ]
-        ]
-    },
-    {
         "id": "b8a1f3e0.53ee4",
         "type": "delay",
         "z": "8caaa155.e5486",
@@ -6996,7 +7033,7 @@
         "y": 620,
         "wires": [
             [
-                "a5aadeb3.94d03"
+                "e4bc941e73d5b742"
             ]
         ]
     },
@@ -7004,7 +7041,7 @@
         "id": "4a91634.3fc279c",
         "type": "change",
         "z": "8caaa155.e5486",
-        "name": "",
+        "name": "ディレイ付加",
         "rules": [
             {
                 "t": "set",
@@ -7254,7 +7291,6 @@
             [
                 "2abf06e4.628d2a",
                 "ed7da24b.b18b8",
-                "d8bd23a1.c0f91",
                 "9030b05b.05224"
             ]
         ]
@@ -7291,8 +7327,7 @@
         "y": 260,
         "wires": [
             [
-                "e9c0dd43.4262b",
-                "318972a5.7387be"
+                "e9c0dd43.4262b"
             ]
         ]
     },
@@ -7317,10 +7352,10 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "前GPS付加",
-        "func": "if(msg.payload.time != tstd){\n   \n    msg.payload.latx=latx;\n    msg.payload.lony=lony;\n    msg.payload.tstd=tstd;\n    msg.payload.altd=altd;\n    \n    latx=msg.payload.lat;\n    lony=msg.payload.lon;\n    tstd=msg.payload.time;\n    altd=msg.payload.alt;\n    return msg;\n}",
+        "func": "if(msg.payload.time != tstd){\n   \n    msg.payload.latx=latx;\n    msg.payload.lony=lony;\n    msg.payload.tstd=tstd;\n    msg.payload.altd=altd;\n    \n    latx=msg.payload.lat;\n    lony=msg.payload.lon;\n    tstd=msg.payload.time;\n    altd=msg.payload.alt;\n    return msg;\n}\nelse{\n    flow.set(\"duplication\",i);\n    i++\n}",
         "outputs": 1,
         "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;",
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;\ni=0;",
         "finalize": "",
         "libs": [],
         "x": 310,
@@ -7352,7 +7387,8 @@
         "y": 320,
         "wires": [
             [
-                "10e7fa11.154546"
+                "10e7fa11.154546",
+                "003138c80e9e6183"
             ]
         ]
     },
@@ -7398,22 +7434,6 @@
                 "be871751.21751"
             ]
         ]
-    },
-    {
-        "id": "318972a5.7387be",
-        "type": "debug",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 310,
-        "y": 200,
-        "wires": []
     },
     {
         "id": "5be61e6f.1fa6b",
@@ -7546,7 +7566,7 @@
         "z": "8caaa155.e5486",
         "name": "",
         "filename": "/home/pi/samba/public/log3.csv",
-        "appendNewline": true,
+        "appendNewline": false,
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
@@ -7584,12 +7604,13 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "delay測定",
-        "func": "date = new Date();\ndelay=date-msg.payload.tst*1000;\nglobal.set(\"delay3\",delay);\nmsg.payload=global.get(\"delay1\")-delay;\n//msg.payload=Date.now(date);\nreturn msg;",
+        "func": "date = new Date();\n\nmsg.payload=date;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 580,
+        "libs": [],
+        "x": 600,
         "y": 60,
         "wires": [
             [
@@ -7602,7 +7623,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -8013,7 +8034,7 @@
         "type": "function",
         "z": "361ce87e.80f648",
         "name": "@角度",
-        "func": "function distance(lat1, lng1, lat2, lng2) {\n  lat1 *= Math.PI / 180;\n  lng1 *= Math.PI / 180;\n  lat2 *= Math.PI / 180;\n  lng2 *= Math.PI / 180;\n  dis = 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));\nreturn (Math.round(dis * 1000)) / 1000\n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n//function kmh(x) {\n//return (Math.round(x*3.6*100))/100;\n//}\ndirc=direction(msg.payload.lat, msg.payload.lon,msg.payload.latx,msg.payload.lony),\n\nmsg.payload.dir=dirc;\n\nreturn msg;",
+        "func": "function distance(lat1, lng1, lat2, lng2) {//距離算出\n  lat1 *= Math.PI / 180;\n  lng1 *= Math.PI / 180;\n  lat2 *= Math.PI / 180;\n  lng2 *= Math.PI / 180;\n  dis = 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));\nreturn (Math.round(dis * 1000)) / 1000\n}\n\nfunction direction(y1, x1, y2, x2) {//ポイントから見た移動体方角\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {//移動体進行方向から見たポイントの方角\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n//function kmh(x) {\n//return (Math.round(x*3.6*100))/100;\n//}\ndirc=direction(msg.payload.lat, msg.payload.lon,msg.payload.latx,msg.payload.lony),\n\nmsg.payload.dir=dirc;//リセットポイントからの角度\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8032,7 +8053,7 @@
         "type": "function",
         "z": "361ce87e.80f648",
         "name": "角度差",
-        "func": "function dir180(dir1,dir2) {\n    dir12=dir1-dir2;\n    if(dir12>180){\n    dir12=dir12-360;\n    }\nif(dir12<-180){\n        dir12=dir12+360;\n    }\n    return dir12;\n}\n//dirdir=msg.payload.dir-msg.payload.bearing;\n//if(dirdir>180){\n//    dirdir=dirdir-360;\n//    }\n//if(dirdir<-180){\n//        dirdir=dirdir+360;\n//    }\nmsg.payload.dirdir=dir180(msg.payload.dir,msg.payload.bearing);\nmsg.payload.approach=dir180(msg.payload.approach,msg.payload.bearing)\n\nreturn msg;",
+        "func": "function dir180(dir1,dir2) {\n    dir12=dir1-dir2;\n    if(dir12>180){\n    dir12=dir12-360;\n    }\nif(dir12<-180){\n        dir12=dir12+360;\n    }\n    return dir12;\n}\n//dirdir=msg.payload.dir-msg.payload.bearing;\n//if(dirdir>180){\n//    dirdir=dirdir-360;\n//    }\n//if(dirdir<-180){\n//        dirdir=dirdir+360;\n//    }\nmsg.payload.dirdir=dir180(msg.payload.dir,msg.payload.bearing);\nmsg.payload.approach=dir180(msg.payload.approach,msg.payload.bearing)\n\nreturn msg;\n//dirdir：移動体進行方向から見たポイントの角度\n//approach：設定進入角と移動体進行方角との角度差\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8105,7 +8126,7 @@
         "type": "function",
         "z": "7e6f2d4d.3bcd74",
         "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n//if(flow.get(\"odd\") >100){\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n}\n\ntrip[0]=j;\nflow.set(\"$parent.genku\",msg.payload.number);\nflow.set(\"$parent.reset\",msg.payload.reset);\nkukyori=msg.payload.kukyori;\nflow.set(\"$parent.kukyori\",kukyori);\n\nmsg.payload={\n    //dis:flow.get(\"odd\"),\n    //dis:msg.payload.meter,\n    name:msg.payload.name,\n    number:msg.payload.number,\n    kukyori:msg.payload.kukyori,\n    zenku:global.get(\"zenku\"),\n    trip:trip,\n    time:time,\n    lap:lap,\n    itrip:trip[i],\n    itime:TIME(msg.payload.time),\n    ilap:lap[i],\n    ku:i,\n    error:error,\n    //lat:lat,\n    //lon:lon,\n    dirdir:msg.payload.dirdir,\n    reset:msg.payload.reset,\n    //odd:msg.payload.meter+y,\n    odd:odd,\n    over:over,\n}\n\nflow.set(\"$parent.trip\",trip);\nflow.set(\"$parent.error\",error);\nflow.set(\"$parent.time\",time);\nreturn msg;\n",
+        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nkukyori=msg.payload.kukyori;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n//if(flow.get(\"odd\") >100){\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:kukyori,//ダッシュボード表示用\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    \n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\ntrip[0]=j;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\nover=Array();\ntime=Array();\ntst=Array();\nlap=Array();\n//lat=Array();\n//lon=Array();\nj=0;\nkukyori=0;",
@@ -8116,7 +8137,6 @@
         "wires": [
             [
                 "b0eb4e94.9591",
-                "e1bd0147.bb87b",
                 "ce28cb3f.2f3028",
                 "850c17e.8f259e8",
                 "f298cc9e.a2cc"
@@ -8157,6 +8177,11 @@
             {
                 "t": "delete",
                 "p": "payload.error",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.over",
                 "pt": "msg"
             }
         ],
@@ -8206,45 +8231,6 @@
         ]
     },
     {
-        "id": "e1bd0147.bb87b",
-        "type": "change",
-        "z": "7e6f2d4d.3bcd74",
-        "name": "グローバル化",
-        "rules": [
-            {
-                "t": "set",
-                "p": "kukyori1",
-                "pt": "global",
-                "to": "payload.kukyori",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "genku1",
-                "pt": "global",
-                "to": "payload.number",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "odd1",
-                "pt": "global",
-                "to": "odd",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ce28cb3f.2f3028",
         "type": "template",
         "z": "7e6f2d4d.3bcd74",
@@ -8256,7 +8242,7 @@
         "template": "0　{{payload.error.0}}　{{payload.over.0}}<br>\n1　{{payload.error.1}}  {{payload.over.1}}<br>\n2　{{payload.error.2}}  {{payload.over.2}}<br>\n3　{{payload.error.3}}　{{payload.over.3}}<br>\n4　{{payload.error.4}}　{{payload.over.4}}<br>\n5　{{payload.error.5}}　{{payload.over.5}}<br>\n6　{{payload.error.6}}　{{payload.over.6}}<br>\n7　{{payload.error.7}}　{{payload.over.7}}<br>\n8　{{payload.error.8}}　{{payload.over.8}}<br>\n9　{{payload.error.9}}　{{payload.over.9}}<br>\n10　{{payload.error.10}}　{{payload.over.10}}<br>\n11　{{payload.error.11}}　{{payload.over.11}}<br>\n12　{{payload.error.12}}　{{payload.over.12}}",
         "output": "str",
         "x": 660,
-        "y": 260,
+        "y": 240,
         "wires": [
             []
         ]
@@ -8271,7 +8257,8 @@
         "y": 760,
         "wires": [
             [
-                "d0ba0fa5.7e635"
+                "d0ba0fa5.7e635",
+                "e4c2b242e46788c7"
             ],
             [
                 "c4b1dd3e.f3235"
@@ -8404,8 +8391,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 690,
-        "y": 620,
+        "x": 670,
+        "y": 640,
         "wires": [
             []
         ]
@@ -8415,17 +8402,18 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "速度方向",
-        "func": "\n\nfunction distance(lat1, lng1, lat2, lng2 ) {\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         return (Math.round(dis * 100)) / 100;\n    \n     \n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\nfunction slope(alt1,alt2){\n    if((alt1-alt2) != 0){\n        climb=(alt1-alt2)*100/dis;\n    }\n    else{\n        climb=0;\n    }\n    return climb;\n}\n\nduration=msg.payload.time-msg.payload.tstd;\ndist=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\n//speed=Math.round((dist/duration)*100)/100;\nspeed=(dist/duration)*1000;//秒速(m/s)\nkmh=Math.round((speed*3.6*10)/10);//時速(km/h)\n\nmsg.payload.speed=speed;\nmsg.payload.bearing=direction(msg.payload.latx, msg.payload.lony,msg.payload.lat,msg.payload.lon);\n//msg.payload.kmh=kmh;    \n//msg.payload.dis=dist;\n    \nreturn msg;\n\n//}",
+        "func": "\n\nfunction distance(lat1, lng1, lat2, lng2 ) {\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         return (Math.round(dis * 100)) / 100;\n    \n     \n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\nfunction slope(alt1,alt2){\n    if((alt1-alt2) != 0){\n        climb=(alt1-alt2)*100/dis;\n    }\n    else{\n        climb=0;\n    }\n    return climb;\n}\n\nduration=msg.payload.time-msg.payload.tstd;\ndist=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\n//speed=Math.round((dist/duration)*100)/100;\nspeed=(dist/duration)*1000;//秒速(m/s)\n//kmh=Math.round((speed*3.6*10)/10);//時速(km/h)\n\nmsg.payload.speed=speed;\nmsg.payload.bearing=direction(msg.payload.latx, msg.payload.lony,msg.payload.lat,msg.payload.lon);\n//msg.payload.kmh=kmh;    \n//msg.payload.dis=dist;\n    \nreturn msg;\n\n//}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ndis=0.00",
         "finalize": "",
         "libs": [],
-        "x": 300,
+        "x": 320,
         "y": 380,
         "wires": [
             [
-                "ad3c93f9.7e7bd"
+                "ad3c93f9.7e7bd",
+                "d641656440677ba4"
             ]
         ]
     },
@@ -8515,6 +8503,7 @@
         "type": "subflow:7e6f2d4d.3bcd74",
         "z": "8caaa155.e5486",
         "name": "",
+        "env": [],
         "x": 1860,
         "y": 720,
         "wires": [
@@ -8537,7 +8526,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -8690,7 +8679,7 @@
         "id": "9c27eefa.fa52e",
         "type": "change",
         "z": "8caaa155.e5486",
-        "name": "",
+        "name": "dis=0",
         "rules": [
             {
                 "t": "set",
@@ -8705,7 +8694,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1720,
+        "x": 1670,
         "y": 500,
         "wires": [
             [
@@ -8869,6 +8858,9 @@
         "name": "",
         "links": [
             "2abf06e4.628d2a",
+            "4b006a97.b509ac",
+            "5c56a248.7ed384",
+            "6ec15a43.80b15c",
             "b74f199d.ee4458",
             "eb24db7b.d88d28"
         ],
@@ -8928,7 +8920,7 @@
         "id": "8c597f4f.e582",
         "type": "change",
         "z": "9d68a1c7.f4976",
-        "name": "",
+        "name": "base",
         "rules": [
             {
                 "t": "set",
@@ -8943,7 +8935,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
+        "x": 410,
         "y": 660,
         "wires": [
             [
@@ -8955,7 +8947,7 @@
         "id": "20f3026.d6648fe",
         "type": "change",
         "z": "9d68a1c7.f4976",
-        "name": "",
+        "name": "reset",
         "rules": [
             {
                 "t": "set",
@@ -8970,7 +8962,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
+        "x": 410,
         "y": 700,
         "wires": [
             [
@@ -9019,7 +9011,7 @@
         "wires": [
             [
                 "ddc0d363.ef489",
-                "f080309b.ed16a"
+                "465dafed.161bf"
             ]
         ]
     },
@@ -9091,8 +9083,8 @@
         "payload": "",
         "topic": "topic",
         "topicType": "msg",
-        "x": 140,
-        "y": 340,
+        "x": 120,
+        "y": 1160,
         "wires": [
             [
                 "cf122705.694d08"
@@ -9118,27 +9110,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 340,
-        "y": 340,
+        "x": 320,
+        "y": 1160,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "f080309b.ed16a",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 440,
-        "y": 460,
-        "wires": []
     },
     {
         "id": "a0157873.6c0a58",
@@ -9183,7 +9159,7 @@
         "id": "1114b4ec.cafbdb",
         "type": "change",
         "z": "8caaa155.e5486",
-        "name": "",
+        "name": "payload→dis",
         "rules": [
             {
                 "t": "move",
@@ -9198,7 +9174,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1470,
+        "x": 1450,
         "y": 300,
         "wires": [
             [
@@ -9222,76 +9198,6 @@
         "wires": [
             [
                 "4a91634.3fc279c"
-            ]
-        ]
-    },
-    {
-        "id": "4c0fe9df.152948",
-        "type": "inject",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 770,
-        "y": 340,
-        "wires": [
-            [
-                "c1d0719a.ec6ff"
-            ]
-        ]
-    },
-    {
-        "id": "368de350.c0943c",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1210,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "c1d0719a.ec6ff",
-        "type": "moment",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "topic": "",
-        "input": "",
-        "inputType": "msg",
-        "inTz": "",
-        "adjAmount": 0,
-        "adjType": "days",
-        "adjDir": "add",
-        "format": "",
-        "locale": "",
-        "output": "",
-        "outputType": "msg",
-        "outTz": "",
-        "x": 1010,
-        "y": 340,
-        "wires": [
-            [
-                "368de350.c0943c"
             ]
         ]
     },
@@ -9484,7 +9390,7 @@
         "z": "9d68a1c7.f4976",
         "name": "",
         "group": "4707e75.554a618",
-        "order": 5,
+        "order": 6,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -9625,13 +9531,14 @@
         "z": "f20b3fe7.75306",
         "name": "",
         "depth": "1000",
-        "layer": "combined",
+        "layer": "single",
         "smooth": false,
         "x": 670,
         "y": 580,
         "wires": [
             [
-                "6ec15a43.80b15c"
+                "6ec15a43.80b15c",
+                "fcd67061.71d3b"
             ]
         ]
     },
@@ -9641,7 +9548,7 @@
         "z": "8caaa155.e5486",
         "name": "",
         "depth": "1000",
-        "layer": "combined",
+        "layer": "single",
         "smooth": false,
         "x": 910,
         "y": 340,
@@ -14092,7 +13999,7 @@
         "type": "switch",
         "z": "8caaa155.e5486",
         "name": "duration=0対策",
-        "property": "payload.tst",
+        "property": "payload.time",
         "propertyType": "msg",
         "rules": [
             {
@@ -14706,7 +14613,7 @@
         "id": "e61de3f2.2fd438",
         "type": "change",
         "z": "79519d85.08b504",
-        "name": "",
+        "name": "dis＝0　座標固定",
         "rules": [
             {
                 "t": "set",
@@ -14735,7 +14642,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1040,
+        "x": 1050,
         "y": 120,
         "wires": [
             []
@@ -14789,13 +14696,13 @@
         "id": "80dfdff6.be2928",
         "type": "change",
         "z": "79519d85.08b504",
-        "name": "",
+        "name": "秒速→時速",
         "rules": [
             {
                 "t": "set",
                 "p": "payload.kmh",
                 "pt": "msg",
-                "to": "$round(payload.speed*3.6*10)/10",
+                "to": "$round((payload.speed*3.6*10)/10)",
                 "tot": "jsonata"
             }
         ],
@@ -14804,7 +14711,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
+        "x": 170,
         "y": 140,
         "wires": [
             [
@@ -15033,6 +14940,7 @@
         "type": "subflow:79519d85.08b504",
         "z": "8caaa155.e5486",
         "name": "",
+        "env": [],
         "x": 890,
         "y": 420,
         "wires": [
@@ -15474,8 +15382,8 @@
         "z": "dc1c6fdb.d2e7",
         "name": "",
         "filename": "/home/pi/samba/public/log2.csv",
-        "appendNewline": true,
-        "createDir": false,
+        "appendNewline": false,
+        "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
         "x": 2290,
@@ -15665,7 +15573,7 @@
         "z": "dc1c6fdb.d2e7",
         "name": "シリアル遅延",
         "pauseType": "delayv",
-        "timeout": "3000",
+        "timeout": "0",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -15674,29 +15582,13 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2000,
+        "allowrate": false,
+        "x": 2040,
         "y": 320,
         "wires": [
             [
-                "26581fb7.927788"
+                "0d0703bc2a4faee6"
             ]
-        ]
-    },
-    {
-        "id": "26581fb7.927788",
-        "type": "function",
-        "z": "dc1c6fdb.d2e7",
-        "name": "GETシリアルデータ",
-        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2220,
-        "y": 320,
-        "wires": [
-            []
         ]
     },
     {
@@ -15709,7 +15601,7 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "1",
+                "v": "2",
                 "vt": "num"
             }
         ],
@@ -15720,7 +15612,8 @@
         "y": 320,
         "wires": [
             [
-                "56654f69.5708b8"
+                "56654f69.5708b8",
+                "8a834e9f92dac638"
             ]
         ]
     },
@@ -15894,8 +15787,12 @@
             [
                 "bea7911d.c4c8f8"
             ],
-            [],
-            []
+            [
+                "b6a8e5ca7fc09401"
+            ],
+            [
+                "513237fd321f2e40"
+            ]
         ]
     },
     {
@@ -15948,7 +15845,7 @@
         "z": "dc1c6fdb.d2e7",
         "group": "4707e75.554a618",
         "name": "2移動距離情報",
-        "order": 3,
+        "order": 4,
         "width": 0,
         "height": 0,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"></div></font>",
@@ -16332,7 +16229,9 @@
         "type": "link out",
         "z": "8caaa155.e5486",
         "name": "",
-        "links": [],
+        "links": [
+            "dfa3b187.7efc"
+        ],
         "x": 1035,
         "y": 340,
         "wires": []
@@ -16359,7 +16258,9 @@
         "type": "link out",
         "z": "dc1c6fdb.d2e7",
         "name": "",
-        "links": [],
+        "links": [
+            "dfa3b187.7efc"
+        ],
         "x": 815,
         "y": 360,
         "wires": []
@@ -16467,7 +16368,7 @@
         "z": "8caaa155.e5486",
         "group": "4707e75.554a618",
         "name": "3移動距離情報",
-        "order": 3,
+        "order": 5,
         "width": 0,
         "height": 0,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"></div></font>",
@@ -16502,31 +16403,12 @@
         "type": "link out",
         "z": "f20b3fe7.75306",
         "name": "",
-        "links": [],
+        "links": [
+            "dfa3b187.7efc"
+        ],
         "x": 765,
         "y": 580,
         "wires": []
-    },
-    {
-        "id": "1631748b.2bca03",
-        "type": "switch",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "property": "payload.line",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "empty"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 110,
-        "y": 460,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "70f485e0.59a3f4",
@@ -16557,6 +16439,533 @@
         "wires": [
             [
                 "70f485e0.59a3f4"
+            ]
+        ]
+    },
+    {
+        "id": "92625acb2da84bf0",
+        "type": "exec",
+        "z": "dc1c6fdb.d2e7",
+        "command": "gpsctl -c 0.25 /dev/ttyS0",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "gpsd 4hz",
+        "x": 680,
+        "y": 660,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1631e35fbb749302",
+        "type": "comment",
+        "z": "dc1c6fdb.d2e7",
+        "name": "sudo nano /etc/rc.local",
+        "info": "echo -e \"\\$PMTK300,250,0,0,0,0*35\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK251,38400*27\\r\\n\" > /dev/ttyS0\nstty -F /dev/ttyS0 38400",
+        "x": 620,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "201ad18dd4a6342b",
+        "type": "comment",
+        "z": "dc1c6fdb.d2e7",
+        "name": "gps4hz_38400.sh",
+        "info": "#!/bin/sh\necho -e \"\\$PMTK220,250*29\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK300,250,0,0,0,0*35\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK251,38400*27\\r\\n\" > /dev/ttyS0\nstty -F /dev/ttyS0 38400",
+        "x": 610,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "6693adf883295a10",
+        "type": "comment",
+        "z": "dc1c6fdb.d2e7",
+        "name": "gps4hz_57600.sh",
+        "info": "#!/bin/sh\necho -e \"\\$PMTK220,250*29\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK300,250,0,0,0,0*35\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK251,57600*2C\\r\\n\" > /dev/ttyS0\nstty -F /dev/ttyS0 57600",
+        "x": 610,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "fcd67061.71d3b",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "465dafed.161bf",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "709696d.7d64468",
+        "type": "exec",
+        "z": "dc1c6fdb.d2e7",
+        "command": "gpsd  udp://*:29998",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 370,
+        "y": 600,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f1eadf38.2f65a",
+        "type": "inject",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "709696d.7d64468"
+            ]
+        ]
+    },
+    {
+        "id": "5a901667.fc5728",
+        "type": "exec",
+        "z": "dc1c6fdb.d2e7",
+        "command": "sudo service gpsd restart",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 390,
+        "y": 820,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f7fcb48d.2be638",
+        "type": "inject",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 820,
+        "wires": [
+            [
+                "5a901667.fc5728"
+            ]
+        ]
+    },
+    {
+        "id": "b6a8e5ca7fc09401",
+        "type": "ui_template",
+        "z": "dc1c6fdb.d2e7",
+        "group": "a3a1b34f.acf18",
+        "name": "誤差",
+        "order": 17,
+        "width": 3,
+        "height": 6,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 2010,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "513237fd321f2e40",
+        "type": "debug",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2030,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "929bff57822e6047",
+        "type": "debug",
+        "z": "975620f5.ba38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 670,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2fba85e561d0bba8",
+        "type": "catch",
+        "z": "975620f5.ba38",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 460,
+        "y": 360,
+        "wires": [
+            [
+                "929bff57822e6047"
+            ]
+        ]
+    },
+    {
+        "id": "8e405d1478e6c10e",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2830,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "720387f4b28be942",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2230,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "4ae405678fd223c8",
+        "type": "delay",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "2",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 2630,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4bc941e73d5b742",
+        "type": "function",
+        "z": "8caaa155.e5486",
+        "name": "GETシリアルデータ",
+        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2580,
+        "y": 620,
+        "wires": [
+            [
+                "3a54ed1ee0ef8107"
+            ]
+        ]
+    },
+    {
+        "id": "3a54ed1ee0ef8107",
+        "type": "function",
+        "z": "8caaa155.e5486",
+        "name": "シリアル作成",
+        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
+        "finalize": "",
+        "x": 2800,
+        "y": 620,
+        "wires": [
+            [
+                "b368cd7b069d78d1"
+            ]
+        ]
+    },
+    {
+        "id": "b368cd7b069d78d1",
+        "type": "serial out",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "serial": "665ac286.d04e5c",
+        "x": 3010,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "0d0703bc2a4faee6",
+        "type": "function",
+        "z": "dc1c6fdb.d2e7",
+        "name": "GETシリアルデータ",
+        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2280,
+        "y": 320,
+        "wires": [
+            [
+                "3e3ba5f9e7303e72"
+            ]
+        ]
+    },
+    {
+        "id": "3e3ba5f9e7303e72",
+        "type": "function",
+        "z": "dc1c6fdb.d2e7",
+        "name": "シリアル作成",
+        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
+        "finalize": "",
+        "x": 2520,
+        "y": 320,
+        "wires": [
+            [
+                "5a45a3d32cb6f78a"
+            ]
+        ]
+    },
+    {
+        "id": "8a834e9f92dac638",
+        "type": "debug",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1820,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5a45a3d32cb6f78a",
+        "type": "serial out",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "serial": "665ac286.d04e5c",
+        "x": 2710,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e4c2b242e46788c7",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2360,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "e4f12c442fe6f9b8",
+        "type": "change",
+        "z": "f20b3fe7.75306",
+        "name": "グローバル化",
+        "rules": [
+            {
+                "t": "set",
+                "p": "kukyori1",
+                "pt": "global",
+                "to": "payload.kukyori",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "genku1",
+                "pt": "global",
+                "to": "payload.number",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "odd1",
+                "pt": "global",
+                "to": "odd",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2060,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "003138c80e9e6183",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d641656440677ba4",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a47c0748735fc712",
+        "type": "inject",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 420,
+        "y": 60,
+        "wires": [
+            [
+                "75ac908c.5d04"
             ]
         ]
     }
