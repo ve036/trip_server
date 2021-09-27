@@ -56,13 +56,6 @@
         "info": ""
     },
     {
-        "id": "b496659e.dfdd28",
-        "type": "tab",
-        "label": "GPS-GPSD",
-        "disabled": true,
-        "info": ""
-    },
-    {
         "id": "a4e498ec.1c79d8",
         "type": "tab",
         "label": "mqtt",
@@ -278,7 +271,9 @@
             "4650f4c4.97a1ac"
         ],
         "x": 1014,
-        "y": 1399
+        "y": 1399,
+        "w": 672,
+        "h": 302
     },
     {
         "id": "cd49fe9a.d0506",
@@ -1214,8 +1209,8 @@
         "ip": "192.168.24.10",
         "port": "8009",
         "volume": "",
-        "x": 1030,
-        "y": 360,
+        "x": 1050,
+        "y": 340,
         "wires": [
             []
         ]
@@ -1238,22 +1233,6 @@
                 "b9374d55.c57ae"
             ]
         ]
-    },
-    {
-        "id": "500893be.1e4b4c",
-        "type": "debug",
-        "z": "df06f9b1.fe75f8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 330,
-        "y": 480,
-        "wires": []
     },
     {
         "id": "a5ff8180.90b18",
@@ -4694,8 +4673,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1180,
-        "y": 200,
+        "x": 1480,
+        "y": 240,
         "wires": [
             []
         ]
@@ -4749,8 +4728,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1010,
-        "y": 200,
+        "x": 1230,
+        "y": 240,
         "wires": [
             [
                 "27529622.5c066a"
@@ -4762,7 +4741,7 @@
         "type": "switch",
         "z": "90be64ef.6b4fc8",
         "name": "",
-        "property": "payload.number",
+        "property": "payload.reset",
         "propertyType": "msg",
         "rules": [
             {
@@ -4787,7 +4766,7 @@
                 "ab7ec23b.07941"
             ],
             [
-                "b246a674.ba1868"
+                "adf271bd.68646"
             ]
         ]
     },
@@ -5547,7 +5526,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "allowrate": false,
         "x": 2020,
         "y": 520,
         "wires": [
@@ -5815,8 +5793,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 880,
-        "y": 480,
+        "x": 1040,
+        "y": 440,
         "wires": [
             [
                 "baaafa7f.ac74b8"
@@ -5849,8 +5827,7 @@
         "y": 100,
         "wires": [
             [
-                "7822cfd5.3086c",
-                "895a62bc.9ba3a"
+                "7822cfd5.3086c"
             ]
         ]
     },
@@ -5902,22 +5879,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "895a62bc.9ba3a",
-        "type": "debug",
-        "z": "df06f9b1.fe75f8",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 350,
-        "y": 220,
-        "wires": []
     },
     {
         "id": "69c170a0.79b08",
@@ -5984,7 +5945,7 @@
         "y": 480,
         "wires": [
             [
-                "b9374d55.c57ae"
+                "c9056970.ad6a58"
             ]
         ]
     },
@@ -6008,8 +5969,8 @@
         "id": "baaafa7f.ac74b8",
         "type": "alexa-home-resp",
         "z": "df06f9b1.fe75f8",
-        "x": 1140,
-        "y": 480,
+        "x": 1260,
+        "y": 440,
         "wires": []
     },
     {
@@ -6181,8 +6142,8 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 880,
-        "y": 240,
+        "x": 840,
+        "y": 300,
         "wires": []
     },
     {
@@ -7811,8 +7772,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1410,
-        "y": 200,
+        "x": 1390,
+        "y": 80,
         "wires": []
     },
     {
@@ -8126,7 +8087,7 @@
         "type": "function",
         "z": "7e6f2d4d.3bcd74",
         "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nkukyori=msg.payload.kukyori;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n//if(flow.get(\"odd\") >100){\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:kukyori,//ダッシュボード表示用\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    \n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\ntrip[0]=j;\n\n",
+        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:kukyori,//ダッシュボード表示用\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\ntrip[0]=j;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\nover=Array();\ntime=Array();\ntst=Array();\nlap=Array();\n//lat=Array();\n//lon=Array();\nj=0;\nkukyori=0;",
@@ -9573,1308 +9534,6 @@
         "x": 1050,
         "y": 460,
         "wires": []
-    },
-    {
-        "id": "abce82eb.46d2c",
-        "type": "gpsd",
-        "z": "b496659e.dfdd28",
-        "name": "gpsd",
-        "hostname": "localhost",
-        "port": "2947",
-        "tpv": true,
-        "sky": false,
-        "info": false,
-        "device": false,
-        "gst": false,
-        "att": false,
-        "x": 70,
-        "y": 320,
-        "wires": [
-            [
-                "c14b6e8f.352ca",
-                "181fecb9.a57a73",
-                "3d0d32fc.a29eee"
-            ]
-        ]
-    },
-    {
-        "id": "2dfe937c.623dfc",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "PLOT GPS",
-        "func": "msg.payload={\n    lat: msg.payload.lat,\n    lon: msg.payload.lon,\n    //name: msg.payload.device,\n    name: msg.payload.name,\n    //ms: msg.payload.speed,\n    kmh: Math.round((msg.payload.speed*3.6*100))/100,\n    speed: msg.payload.speed,\n    bearing: msg.payload.bearing,\n    alt: msg.payload.alt,\n    //climb: msg.payload.climb,\n    //popped: true,\n    clickable: true,\n    //icon: \"globe\",\n    icon: \"arrow\",\n    //icon: \"male\",\n    iconColor:\"blue\",\n    layer:\"none\"\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 290,
-        "y": 440,
-        "wires": [
-            [
-                "b31f3c11.138c",
-                "bf24d703.406358",
-                "dd7e589b.fb8f78",
-                "ecb0ff4a.4e12b",
-                "d70107a4.507d98"
-            ]
-        ]
-    },
-    {
-        "id": "c14b6e8f.352ca",
-        "type": "change",
-        "z": "b496659e.dfdd28",
-        "name": "2移動",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.name",
-                "pt": "msg",
-                "to": "2移動",
-                "tot": "str"
-            },
-            {
-                "t": "move",
-                "p": "payload.track",
-                "pt": "msg",
-                "to": "payload.bearing",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 90,
-        "y": 440,
-        "wires": [
-            [
-                "2dfe937c.623dfc",
-                "9a39d4e8.c9f3d8",
-                "1422a3f2.1a2e2c"
-            ]
-        ]
-    },
-    {
-        "id": "1422a3f2.1a2e2c",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 270,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "fc189452.e64e98",
-        "type": "ui_template",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "name": "GPS高度",
-        "order": 3,
-        "width": 6,
-        "height": 1,
-        "format": "<font size=\"6\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 660,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a984ea83.d3cd18",
-        "type": "ui_chart",
-        "z": "b496659e.dfdd28",
-        "name": "高度チャート",
-        "group": "2917c8ba.91ad78",
-        "order": 1,
-        "width": 15,
-        "height": 4,
-        "label": "移動車高度",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "1",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "x": 660,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "12f8de8f.b61c91",
-        "type": "ui_template",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "name": "勾配",
-        "order": 6,
-        "width": 6,
-        "height": 1,
-        "format": "<font size=\"6\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 510,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b31f3c11.138c",
-        "type": "change",
-        "z": "b496659e.dfdd28",
-        "name": "speed",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.kmh",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 490,
-        "y": 520,
-        "wires": [
-            [
-                "ae09c764.6c2fb8"
-            ]
-        ]
-    },
-    {
-        "id": "ec3bda9b.cc95d8",
-        "type": "ui_chart",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "group": "2917c8ba.91ad78",
-        "order": 2,
-        "width": 15,
-        "height": 4,
-        "label": "移動車速度k/m",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "x": 940,
-        "y": 580,
-        "wires": [
-            [
-                "c17a8d0c.b8cb4"
-            ]
-        ]
-    },
-    {
-        "id": "9bbe0789.99df48",
-        "type": "template",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "時速 : {{payload}} km",
-        "output": "str",
-        "x": 920,
-        "y": 520,
-        "wires": [
-            [
-                "9eacbdd2.b4098"
-            ]
-        ]
-    },
-    {
-        "id": "9eacbdd2.b4098",
-        "type": "ui_template",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "name": "Speed",
-        "order": 5,
-        "width": 6,
-        "height": 1,
-        "format": "<font size=\"6\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 1050,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d70107a4.507d98",
-        "type": "change",
-        "z": "b496659e.dfdd28",
-        "name": "Latx,lony",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload.lat",
-                "pt": "msg",
-                "to": "payload.latx",
-                "tot": "msg"
-            },
-            {
-                "t": "move",
-                "p": "payload.lon",
-                "pt": "msg",
-                "to": "payload.lony",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 500,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ecb0ff4a.4e12b",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "move map",
-        "func": "msg.payload ={\n    command:{\n        lat: msg.payload.lat,\n        lon: msg.payload.lon,\n        //layer:\"Esri\",\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 550,
-        "y": 340,
-        "wires": [
-            [
-                "bf24d703.406358"
-            ]
-        ]
-    },
-    {
-        "id": "8fb56693.985978",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 750,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "dc60c666.8e4c88",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 330,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "984e7fc5.dee89",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "func": "if(context.flow.move==true){\ncontext.global.move2=context.global.move2+msg.payload.speed;\nmsg.payload={\n    move2:(Math.floor(context.global.move2*100)) / 100,\n    //speed:msg.payload.speed,\n    //lat:msg.payload.lat,\n    //latx:msg.payload.latx,\n};\n//msg.payload=kyori;\nreturn msg;\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//move=0;\ncontext.global.move2=0.00;",
-        "finalize": "",
-        "x": 120,
-        "y": 500,
-        "wires": [
-            [
-                "dc60c666.8e4c88",
-                "a8b4bdd9.8b97d",
-                "e08389e8.f3ff68"
-            ]
-        ]
-    },
-    {
-        "id": "a8b4bdd9.8b97d",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 21,
-        "width": 7,
-        "height": 1,
-        "name": "",
-        "label": "移動距離",
-        "format": "{{msg.payload.move2}}m",
-        "layout": "row-spread",
-        "x": 320,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "4a6262f5.e70f0c",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "+1",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "",
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 110,
-        "y": 1000,
-        "wires": [
-            [
-                "4980bc4f.987fc4"
-            ]
-        ]
-    },
-    {
-        "id": "2493e98d.65fbc6",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "4980bc4f.987fc4",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "context.global.sumへ加算",
-        "func": "context.global.move2 = context.global.move2 + msg.payload;\ncontext.global.move5 = context.global.move5 + msg.payload;\nmsg.payload.move2 = context.global.move2;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 330,
-        "y": 980,
-        "wires": [
-            [
-                "2493e98d.65fbc6"
-            ]
-        ]
-    },
-    {
-        "id": "fdf1e521.c71b08",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "初期化",
-        "func": "context.global.move2 = 0;\ncontext.global.move5 = 0;\nmsg.payload.speed = 0;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 350,
-        "y": 920,
-        "wires": [
-            [
-                "df8854d.6f342a8",
-                "d2c8230b.392d4"
-            ]
-        ]
-    },
-    {
-        "id": "5637a3c5.3709ac",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "props": [
-            {
-                "p": "payload",
-                "v": "",
-                "vt": "date"
-            },
-            {
-                "p": "topic",
-                "v": "",
-                "vt": "string"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 920,
-        "wires": [
-            [
-                "fdf1e521.c71b08"
-            ]
-        ]
-    },
-    {
-        "id": "df8854d.6f342a8",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "41813635.5af978",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 1040,
-        "wires": []
-    },
-    {
-        "id": "8ff0cd87.82c0d",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "-1",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "",
-        "topic": "",
-        "payload": "-1",
-        "payloadType": "num",
-        "x": 110,
-        "y": 1080,
-        "wires": [
-            [
-                "9787bb11.1f6008"
-            ]
-        ]
-    },
-    {
-        "id": "902c0abd.2b0018",
-        "type": "ui_button",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "group": "2917c8ba.91ad78",
-        "order": 15,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "リセット",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "x": 120,
-        "y": 880,
-        "wires": [
-            [
-                "fdf1e521.c71b08"
-            ]
-        ]
-    },
-    {
-        "id": "9787bb11.1f6008",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "context.global.sumへ加算",
-        "func": "context.global.move2 = context.global.move2 + msg.payload;\nmsg.payload.move2 = context.global.move2;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 330,
-        "y": 1040,
-        "wires": [
-            [
-                "41813635.5af978"
-            ]
-        ]
-    },
-    {
-        "id": "e4a0f7c6.31ea38",
-        "type": "ui_button",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "group": "2917c8ba.91ad78",
-        "order": 16,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "+1",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "1",
-        "payloadType": "num",
-        "topic": "",
-        "x": 110,
-        "y": 960,
-        "wires": [
-            [
-                "4980bc4f.987fc4"
-            ]
-        ]
-    },
-    {
-        "id": "aab42f4.0dc3cd",
-        "type": "ui_button",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "group": "2917c8ba.91ad78",
-        "order": 13,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "-1",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "-1",
-        "payloadType": "num",
-        "topic": "",
-        "x": 110,
-        "y": 1040,
-        "wires": [
-            [
-                "9787bb11.1f6008"
-            ]
-        ]
-    },
-    {
-        "id": "9a39d4e8.c9f3d8",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 24,
-        "width": 9,
-        "height": 1,
-        "name": "",
-        "label": "GPS発行時間",
-        "format": "{{msg.payload.time}}",
-        "layout": "row-left",
-        "x": 260,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "dd7e589b.fb8f78",
-        "type": "worldmap-tracks",
-        "z": "b496659e.dfdd28",
-        "name": "gpsd tracking",
-        "depth": "5000",
-        "layer": "separate",
-        "x": 560,
-        "y": 400,
-        "wires": [
-            [
-                "bf24d703.406358"
-            ]
-        ]
-    },
-    {
-        "id": "c17a8d0c.b8cb4",
-        "type": "ui_chart",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "group": "3bf847f0.042f18",
-        "order": 2,
-        "width": 15,
-        "height": 5,
-        "label": "chart",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "30",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "60",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "x": 1130,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ae09c764.6c2fb8",
-        "type": "smooth",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "property": "payload",
-        "action": "mean",
-        "count": "5",
-        "round": "",
-        "mult": "single",
-        "reduce": false,
-        "x": 500,
-        "y": 580,
-        "wires": [
-            [
-                "bae005ab.6c1098"
-            ]
-        ]
-    },
-    {
-        "id": "bae005ab.6c1098",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "小数点100切捨て",
-        "func": "msg.payload=Math.round((msg.payload*100))/100\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 710,
-        "y": 580,
-        "wires": [
-            [
-                "ec3bda9b.cc95d8",
-                "9bbe0789.99df48"
-            ]
-        ]
-    },
-    {
-        "id": "e08389e8.f3ff68",
-        "type": "mqtt out",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "topic": "trip2",
-        "qos": "",
-        "retain": "false",
-        "broker": "ac7569b4.5ada88",
-        "x": 310,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "b7ce7bdb.a3e6a8",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "@時差距離re角度",
-        "func": "function distance(lat1, lng1, lat2, lng2 ) {\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         return (Math.round(dis * 100)) / 100;\n    \n     \n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n//function kmh(x) {\n//return (Math.round(x*3.6*100))/100;\n//}\n\n//if(msg.payload.tst==msg.payload.tstd){\n//    msg.payload={\n//        error:msg.payload.tst,\n//    };\n//return msg;    \n//}\n//else{\n\nspeed=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\nif(speed>=0){\nmsg.payload={\n    speed: speed,\n    //bearing: direction(msg.payload.latx, msg.payload.lony,msg.payload.lat,msg.payload.lon),\n    //lat: msg.payload.lat,\n    //lon: msg.payload.lon,\n    //latx:msg.payload.latx,\n    //tst: msg.payload.tst,\n    //tstd: msg.payload.tstd,\n    //alt: msg.payload.alt,\n    //device: msg.payload.device,\n    name: \"bike\",\n    //kmh: Math.round((distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony,msg.payload.tst,msg.payload.tstd)*3.6*100))/100,\n    //icon: \"arrow\",\n    //iconColor:\"green\",\n    //clickable: true,\n    //lineColor: \"Blue\",\n    //layer:\"none\"\n    \n    \n    };\nreturn msg;\n}\n//}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ndis=0.00",
-        "finalize": "",
-        "x": 1370,
-        "y": 620,
-        "wires": [
-            [
-                "91d0a39e.05a13"
-            ]
-        ]
-    },
-    {
-        "id": "d2c8230b.392d4",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "積算距離",
-        "func": "if(context.flow.move==true){\n    context.global.move5=context.global.move5+msg.payload.speed;\n    msg.payload=(Math.floor(context.global.move5*100)) / 100;\n    return msg;\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//move=0;\ncontext.global.move5=0.00;",
-        "finalize": "",
-        "x": 540,
-        "y": 840,
-        "wires": [
-            [
-                "8dd317d2.1d2848"
-            ]
-        ]
-    },
-    {
-        "id": "8dd317d2.1d2848",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 19,
-        "width": 7,
-        "height": 1,
-        "name": "",
-        "label": "tracking",
-        "format": "{{msg.payload}}m",
-        "layout": "row-spread",
-        "x": 760,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "91d0a39e.05a13",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1590,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "8c5b3121.24bb6",
-        "type": "switch",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "nnull"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 1370,
-        "y": 680,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8dda5f21.15ac9",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "func": "var date = new Date();\ndate.setTime(msg.payload*1000);\nmsg.payload = date.toString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1340,
-        "y": 740,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e13055c1.8145e8",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "pause",
-        "func": "context.flow.move = !context.flow.move;\nmsg.payload = context.flow.move;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ncontext.flow.move==true",
-        "finalize": "",
-        "x": 1260,
-        "y": 920,
-        "wires": [
-            [
-                "3dfcd2e7.5fde7e"
-            ]
-        ]
-    },
-    {
-        "id": "d835a569.e6fdd8",
-        "type": "mqtt in",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "topic": "trip2/pause",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "ac7569b4.5ada88",
-        "x": 1020,
-        "y": 920,
-        "wires": [
-            [
-                "e13055c1.8145e8"
-            ]
-        ]
-    },
-    {
-        "id": "9687bd5f.6e1ac",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 1030,
-        "y": 960,
-        "wires": [
-            [
-                "e13055c1.8145e8"
-            ]
-        ]
-    },
-    {
-        "id": "3dfcd2e7.5fde7e",
-        "type": "switch",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1384,
-        "y": 921,
-        "wires": [
-            [
-                "3b5fe13e.359eee"
-            ],
-            [
-                "afa2f41a.1d12d8"
-            ]
-        ]
-    },
-    {
-        "id": "981b1e67.282db",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 18,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 1704,
-        "y": 921,
-        "wires": []
-    },
-    {
-        "id": "3b5fe13e.359eee",
-        "type": "template",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "計測中",
-        "output": "str",
-        "x": 1554,
-        "y": 901,
-        "wires": [
-            [
-                "981b1e67.282db"
-            ]
-        ]
-    },
-    {
-        "id": "afa2f41a.1d12d8",
-        "type": "template",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "計測停止",
-        "output": "str",
-        "x": 1554,
-        "y": 941,
-        "wires": [
-            [
-                "981b1e67.282db"
-            ]
-        ]
-    },
-    {
-        "id": "91f9f80a.7754f8",
-        "type": "ui_button",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "group": "2917c8ba.91ad78",
-        "order": 14,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "PAUSE",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "x": 1020,
-        "y": 880,
-        "wires": [
-            [
-                "e13055c1.8145e8"
-            ]
-        ]
-    },
-    {
-        "id": "bf24d703.406358",
-        "type": "ui_worldmap",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 4,
-        "width": 9,
-        "height": 7,
-        "name": "",
-        "lat": "38.35",
-        "lon": "141",
-        "zoom": "16",
-        "layer": "OSM",
-        "cluster": "",
-        "maxage": "",
-        "usermenu": "hide",
-        "layers": "hide",
-        "panit": "false",
-        "panlock": "false",
-        "zoomlock": "false",
-        "hiderightclick": "true",
-        "coords": "deg",
-        "showgrid": "true",
-        "path": "/worldmap2",
-        "x": 1450,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "ffc613a2.3691c",
-        "type": "msg-size",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "frequency": "min",
-        "interval": 1,
-        "statusContent": "avg",
-        "estimation": false,
-        "ignore": false,
-        "pauseAtStartup": false,
-        "humanReadableStatus": true,
-        "x": 300,
-        "y": 60,
-        "wires": [
-            [],
-            []
-        ]
-    },
-    {
-        "id": "3d0d32fc.a29eee",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 270,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "6aa61751.7008a8",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "func": "date = new Date();\ndelay=date-msg.payload;\nmsg.payload=delay;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 200,
-        "wires": [
-            [
-                "2ee714f3.694e0c"
-            ]
-        ]
-    },
-    {
-        "id": "2ee714f3.694e0c",
-        "type": "debug",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 550,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "181fecb9.a57a73",
-        "type": "moment",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "topic": "",
-        "input": "payload.time",
-        "inputType": "msg",
-        "inTz": "Asia/Tokyo",
-        "adjAmount": "0",
-        "adjType": "hours",
-        "adjDir": "add",
-        "format": "date",
-        "locale": "ja-JP",
-        "output": "payload",
-        "outputType": "msg",
-        "outTz": "Asia/Tokyo",
-        "x": 160,
-        "y": 200,
-        "wires": [
-            [
-                "6aa61751.7008a8"
-            ]
-        ]
-    },
-    {
-        "id": "bc918515.163ab8",
-        "type": "exec",
-        "z": "b496659e.dfdd28",
-        "command": "gpsd -N udp://*:29998",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 340,
-        "y": 800,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "17995167.173bef",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 800,
-        "wires": [
-            [
-                "bc918515.163ab8"
-            ]
-        ]
-    },
-    {
-        "id": "6ced1b90.5e47d4",
-        "type": "exec",
-        "z": "b496659e.dfdd28",
-        "command": "sudo service gpsd stop",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "true",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 820,
-        "y": 780,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "142ef6df.a0d429",
-        "type": "inject",
-        "z": "b496659e.dfdd28",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 570,
-        "y": 780,
-        "wires": [
-            [
-                "6ced1b90.5e47d4"
-            ]
-        ]
     },
     {
         "id": "1cab13e2.14cf6c",
@@ -12975,270 +11634,6 @@
                 "51d30990.a25f68"
             ]
         ]
-    },
-    {
-        "id": "a326ced8.62afa",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "@距離re角度",
-        "func": "function distance(lat1, lng1, lat2, lng2) {\n  lat1 *= Math.PI / 180;\n  lng1 *= Math.PI / 180;\n  lat2 *= Math.PI / 180;\n  lng2 *= Math.PI / 180;\n  dis = 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));\nreturn (Math.round(dis * 1000)) / 1000\n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n//function kmh(x) {\n//return (Math.round(x*3.6*100))/100;\n//}\n\nmsg.payload={\n    kyori: distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony),\n    dir: direction(msg.payload.lat, msg.payload.lon,msg.payload.latx,msg.payload.lony),\n    //lat: msg.payload.lat,\n    //lon: msg.payload.lon,\n    device: msg.payload.device,\n    name: msg.payload.name,\n    //speed: kmh(msg.payload.speed),\n    re_dir: redirection(msg.payload.latx, msg.payload.lony,msg.payload.lat,msg.payload.lon,msg.payload.bearing),\n    //speed: msg.payload.speed*3.6,\n    //bearing: msg.payload.track,\n    //popped: true,\n    //clickable: true,\n    //icon: \"globe\",\n    //icon: \"arrow\",\n    //icon: \"male\",\n    //iconColor:\"red\",\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1530,
-        "y": 120,
-        "wires": [
-            [
-                "3cfd12c9.c9a14e",
-                "49da22d3.a75cec",
-                "87f30907.e1fa88"
-            ]
-        ]
-    },
-    {
-        "id": "3106fa0e.a64ab6",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "@距離re角度",
-        "func": "function distance(lat1, lng1, lat2, lng2) {\n  lat1 *= Math.PI / 180;\n  lng1 *= Math.PI / 180;\n  lat2 *= Math.PI / 180;\n  lng2 *= Math.PI / 180;\n  dis = 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));\nreturn (Math.round(dis * 1000)) / 1000\n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n//function kmh(x) {\n//return (Math.round(x*3.6*100))/100;\n//}\n\nmsg.payload={\n    kyori: distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony),\n    dir: direction(msg.payload.lat, msg.payload.lon,msg.payload.latx,msg.payload.lony),\n    //lat: msg.payload.lat,\n    //lon: msg.payload.lon,\n    device: msg.payload.device,\n    name: msg.payload.name,\n    //speed: kmh(msg.payload.speed),\n    re_dir: redirection(msg.payload.latx, msg.payload.lony,msg.payload.lat,msg.payload.lon,msg.payload.bearing),\n    //speed: msg.payload.speed*3.6,\n    //bearing: msg.payload.track,\n    //popped: true,\n    //clickable: true,\n    //icon: \"globe\",\n    //icon: \"arrow\",\n    //icon: \"male\",\n    //iconColor:\"red\",\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1530,
-        "y": 240,
-        "wires": [
-            [
-                "a9bda071.cb91a",
-                "adfa5db2.0cb4",
-                "2539348.57ddacc"
-            ]
-        ]
-    },
-    {
-        "id": "11a45307.f6b93d",
-        "type": "function",
-        "z": "b496659e.dfdd28",
-        "name": "@距離re角度",
-        "func": "function distance(lat1, lng1, lat2, lng2) {\n  lat1 *= Math.PI / 180;\n  lng1 *= Math.PI / 180;\n  lat2 *= Math.PI / 180;\n  lng2 *= Math.PI / 180;\n  dis = 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));\nreturn (Math.round(dis * 1000)) / 1000\n}\n\nfunction direction(y1, x1, y2, x2) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n    //x1 = Math.toRadians(x1);\n   // x2 = Math.toRadians(x2);\n   // y1 = Math.toRadians(y1);\n   // y2 = Math.toRadians(y2);\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n    //deg = Math.toDegrees(Math.atan2(a,b-c));\n    //angle = (deg + 360) % 360;\n    //return  (Math.abs(angle) + (1 / 7200));\n//return  90-Math.atan2( Math.sin(x2-x1), Math.cos(y1)*Math.tan(y2)-Math.sin(y1)*Math.cos(x2-x1));\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n//return  Math.atan2(a,b-c)*180/Math.PI;\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n//function kmh(x) {\n//return (Math.round(x*3.6*100))/100;\n//}\n\nmsg.payload={\n    kyori: distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony),\n    dir: direction(msg.payload.lat, msg.payload.lon,msg.payload.latx,msg.payload.lony),\n    //lat: msg.payload.lat,\n    //lon: msg.payload.lon,\n    device: msg.payload.device,\n    name: msg.payload.name,\n    //speed: kmh(msg.payload.speed),\n    re_dir: redirection(msg.payload.latx, msg.payload.lony,msg.payload.lat,msg.payload.lon,msg.payload.bearing),\n    //speed: msg.payload.speed*3.6,\n    //bearing: msg.payload.track,\n    //popped: true,\n    //clickable: true,\n    //icon: \"globe\",\n    //icon: \"arrow\",\n    //icon: \"male\",\n    //iconColor:\"red\",\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1530,
-        "y": 380,
-        "wires": [
-            [
-                "260dd211.60caee",
-                "c3080bce.e9a958",
-                "e69b3c4f.9aed7"
-            ]
-        ]
-    },
-    {
-        "id": "49da22d3.a75cec",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 9,
-        "width": 3,
-        "height": 1,
-        "name": "1距離",
-        "label": "{{msg.payload.name}}距離",
-        "format": "{{msg.payload.kyori}}　km",
-        "layout": "row-center",
-        "x": 1770,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "3cfd12c9.c9a14e",
-        "type": "ui_gauge",
-        "z": "b496659e.dfdd28",
-        "name": "1方角",
-        "group": "e54ffaf1.b6e238",
-        "order": 1,
-        "width": 4,
-        "height": 4,
-        "gtype": "compass",
-        "title": "{{msg.payload.name}}",
-        "label": "℃",
-        "format": "{{msg.payload.dir}}",
-        "min": "0",
-        "max": "360",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1770,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "adfa5db2.0cb4",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 10,
-        "width": 3,
-        "height": 1,
-        "name": "2距離",
-        "label": "{{msg.payload.name}}距離",
-        "format": "{{msg.payload.kyori}}　km",
-        "layout": "row-center",
-        "x": 1770,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "a9bda071.cb91a",
-        "type": "ui_gauge",
-        "z": "b496659e.dfdd28",
-        "name": "2方角",
-        "group": "e54ffaf1.b6e238",
-        "order": 1,
-        "width": 4,
-        "height": 4,
-        "gtype": "compass",
-        "title": "{{msg.payload.name}}方角",
-        "label": "℃",
-        "format": "{{msg.payload.dir}}",
-        "min": "0",
-        "max": "360",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1770,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "87f30907.e1fa88",
-        "type": "ui_gauge",
-        "z": "b496659e.dfdd28",
-        "name": "1方向",
-        "group": "2917c8ba.91ad78",
-        "order": 7,
-        "width": 3,
-        "height": 3,
-        "gtype": "compass",
-        "title": "{{msg.payload.name}}",
-        "label": "℃",
-        "format": "{{msg.payload.re_dir}}",
-        "min": "0",
-        "max": "360",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1770,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "260dd211.60caee",
-        "type": "ui_text",
-        "z": "b496659e.dfdd28",
-        "group": "2917c8ba.91ad78",
-        "order": 22,
-        "width": 3,
-        "height": 1,
-        "name": "3距離",
-        "label": "{{msg.payload.name}}距離",
-        "format": "{{msg.payload.kyori}}　km",
-        "layout": "row-center",
-        "x": 1770,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "2539348.57ddacc",
-        "type": "ui_gauge",
-        "z": "b496659e.dfdd28",
-        "name": "2方向",
-        "group": "2917c8ba.91ad78",
-        "order": 8,
-        "width": 3,
-        "height": 3,
-        "gtype": "compass",
-        "title": "{{msg.payload.name}}",
-        "label": "℃",
-        "format": "{{msg.payload.re_dir}}",
-        "min": "0",
-        "max": "360",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1770,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "c3080bce.e9a958",
-        "type": "ui_gauge",
-        "z": "b496659e.dfdd28",
-        "name": "3方向",
-        "group": "2917c8ba.91ad78",
-        "order": 11,
-        "width": 3,
-        "height": 3,
-        "gtype": "compass",
-        "title": "{{msg.payload.name}}",
-        "label": "℃",
-        "format": "{{msg.payload.re_dir}}",
-        "min": "0",
-        "max": "360",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1770,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "e69b3c4f.9aed7",
-        "type": "ui_gauge",
-        "z": "b496659e.dfdd28",
-        "name": "3方角",
-        "group": "e54ffaf1.b6e238",
-        "order": 1,
-        "width": 4,
-        "height": 4,
-        "gtype": "compass",
-        "title": "{{msg.payload.name}}方角",
-        "label": "℃",
-        "format": "{{msg.payload.dir}}",
-        "min": "0",
-        "max": "360",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1770,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "4355b399.7015cc",
@@ -15582,7 +13977,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "allowrate": false,
         "x": 2040,
         "y": 320,
         "wires": [
@@ -16735,7 +15129,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": true,
-        "allowrate": false,
         "x": 2630,
         "y": 400,
         "wires": [
@@ -16966,6 +15359,68 @@
         "wires": [
             [
                 "75ac908c.5d04"
+            ]
+        ]
+    },
+    {
+        "id": "adf271bd.68646",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "データ削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.meter",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.kukyori",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.coefficient",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.approach",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            [
+                "b246a674.ba1868"
+            ]
+        ]
+    },
+    {
+        "id": "c9056970.ad6a58",
+        "type": "exec",
+        "z": "df06f9b1.fe75f8",
+        "command": "sudo python /home/pi/python-host/switchbot.py F2:01:52:50:80:7D  Press",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 580,
+        "y": 440,
+        "wires": [
+            [],
+            [],
+            [
+                "bb538542.025c68",
+                "49a74f74.dba1e"
             ]
         ]
     }
