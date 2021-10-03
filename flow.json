@@ -81,14 +81,14 @@
                 "y": 80,
                 "wires": [
                     {
-                        "id": "c2d88f2e.41a4f"
+                        "id": "4dbde3cb.4b8bcc"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 400,
+                "x": 660,
                 "y": 20,
                 "wires": [
                     {
@@ -98,7 +98,7 @@
                 ]
             },
             {
-                "x": 900,
+                "x": 1160,
                 "y": 200,
                 "wires": [
                     {
@@ -270,9 +270,40 @@
             "35a2a04b.5bd63",
             "4650f4c4.97a1ac"
         ],
-        "x": 1014,
-        "y": 1399,
+        "x": 934,
+        "y": 1479,
         "w": 672,
+        "h": 302
+    },
+    {
+        "id": "2a0ac812.53f518",
+        "type": "group",
+        "z": "dc1c6fdb.d2e7",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "d89224cb.8a0cb8",
+            "200409a6.1933f6",
+            "e2874834.3faae8",
+            "be8df6f8.5f1e28",
+            "1ec09886.755027",
+            "ab2a6417.238a28",
+            "5e10ebd8.968a44",
+            "7d9e2d11.cc1284",
+            "4b3a40d2.1df55",
+            "abdb113b.52f46",
+            "34571342.e0752c"
+        ],
+        "x": 1054,
+        "y": 859,
+        "w": 782,
         "h": 302
     },
     {
@@ -362,12 +393,12 @@
             "allowTempTheme": "true",
             "dateFormat": "YYYY/MM/DD",
             "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
+                "sx": 46,
+                "sy": 46,
+                "gx": 4,
+                "gy": 4,
+                "cx": 4,
+                "cy": 8,
                 "px": 0,
                 "py": 0
             }
@@ -687,7 +718,7 @@
         "tab": "43f4f39.b4faf8c",
         "order": 4,
         "disp": true,
-        "width": 8,
+        "width": 7,
         "collapse": true
     },
     {
@@ -771,7 +802,7 @@
         "tab": "43f4f39.b4faf8c",
         "order": 3,
         "disp": true,
-        "width": 8,
+        "width": 7,
         "collapse": true
     },
     {
@@ -781,7 +812,7 @@
         "tab": "43f4f39.b4faf8c",
         "order": 1,
         "disp": true,
-        "width": 8,
+        "width": 7,
         "collapse": true
     },
     {
@@ -959,28 +990,8 @@
         "tab": "43f4f39.b4faf8c",
         "order": 2,
         "disp": true,
-        "width": 8,
+        "width": 7,
         "collapse": true
-    },
-    {
-        "id": "5a1174e5.b5994c",
-        "type": "ui_spacer",
-        "z": "f20b3fe7.75306",
-        "name": "spacer",
-        "group": "a3a1b34f.acf18",
-        "order": 15,
-        "width": 3,
-        "height": 1
-    },
-    {
-        "id": "f69139a.e13e2c8",
-        "type": "ui_spacer",
-        "z": "f20b3fe7.75306",
-        "name": "spacer",
-        "group": "4a48ee78.c45ed",
-        "order": 4,
-        "width": 3,
-        "height": 1
     },
     {
         "id": "ad40567ad3606164",
@@ -1082,6 +1093,16 @@
         "responsetimeout": "10000"
     },
     {
+        "id": "b95bfc3.3606d",
+        "type": "ui_spacer",
+        "z": "dc1c6fdb.d2e7",
+        "name": "spacer",
+        "group": "4a48ee78.c45ed",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
         "id": "3d6df3db.cc4fdc",
         "type": "cast-to-client",
         "z": "df06f9b1.fe75f8",
@@ -1090,7 +1111,7 @@
         "contentType": "",
         "message": "あゆみん、もうすぐバスが来るよ、幼稚園に行くにゃん",
         "language": "Ja",
-        "ip": "192.168.24.10",
+        "ip": "192.168.24.62",
         "port": "8009",
         "volume": "70",
         "x": 450,
@@ -1137,7 +1158,7 @@
         "contentType": "",
         "message": "きんきゅうじたい、みかさ、あゆみん、アリストグレートで出動してください",
         "language": "ja",
-        "ip": "192.168.24.10",
+        "ip": "192.168.24.62",
         "port": "8009",
         "volume": "70",
         "x": 710,
@@ -1206,7 +1227,7 @@
         "contentType": "",
         "message": "お湯、ためます",
         "language": "ja",
-        "ip": "192.168.24.10",
+        "ip": "192.168.24.62",
         "port": "8009",
         "volume": "",
         "x": 1050,
@@ -1682,8 +1703,8 @@
         "d": true,
         "group": "4a48ee78.c45ed",
         "order": 5,
-        "width": 0,
-        "height": 0,
+        "width": 7,
+        "height": 1,
         "name": "",
         "label": "稼働時間",
         "format": "{{msg.payload}}",
@@ -1930,7 +1951,7 @@
         "z": "709630c3.37daf",
         "group": "4a48ee78.c45ed",
         "order": 7,
-        "width": 8,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "",
@@ -2099,8 +2120,8 @@
         "payloadType": "num",
         "topic": "",
         "topicType": "str",
-        "x": 960,
-        "y": 620,
+        "x": 800,
+        "y": 680,
         "wires": [
             [
                 "6af66162.2cec"
@@ -2131,11 +2152,12 @@
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "true/false",
-        "func": "context.flow.move = !context.flow.move;\nmsg.payload = context.flow.move;\nreturn msg;",
+        "func": "//context.flow.move = !context.flow.move;\n//msg.payload = context.flow.move;\n\npause=flow.get(\"pause\");\npause=!pause;\n//flow.set(\"move\",move);\nmsg.payload=pause;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//context.flow.move==true;\n//flow.set(\"pause\",false);",
         "finalize": "",
+        "libs": [],
         "x": 280,
         "y": 1260,
         "wires": [
@@ -2155,12 +2177,11 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 100,
-        "y": 1320,
+        "x": 260,
+        "y": 1340,
         "wires": [
             [
-                "d1ec4eb2.66e0f",
-                "8f7f03fe.1577a"
+                "7a95fa74.9bada4"
             ]
         ]
     },
@@ -2173,10 +2194,14 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "true"
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
             },
             {
-                "t": "false"
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
             }
         ],
         "checkall": "true",
@@ -2307,8 +2332,8 @@
         "label": "最低速度",
         "tooltip": "",
         "group": "b90ab216.c29668",
-        "order": 9,
-        "width": 6,
+        "order": 10,
+        "width": 5,
         "height": 1,
         "passthru": true,
         "outs": "all",
@@ -2329,7 +2354,7 @@
         "type": "ui_text",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "order": 8,
+        "order": 9,
         "width": 2,
         "height": 1,
         "name": "",
@@ -2348,8 +2373,8 @@
         "label": "速度制限",
         "tooltip": "",
         "group": "b90ab216.c29668",
-        "order": 11,
-        "width": 6,
+        "order": 12,
+        "width": 5,
         "height": 1,
         "passthru": true,
         "outs": "all",
@@ -2370,7 +2395,7 @@
         "type": "ui_text",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "order": 10,
+        "order": 11,
         "width": 2,
         "height": 1,
         "name": "",
@@ -2520,7 +2545,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "100",
+        "payload": "60",
         "payloadType": "num",
         "x": 210,
         "y": 1420,
@@ -2751,8 +2776,8 @@
         "type": "ui_text",
         "z": "9d68a1c7.f4976",
         "group": "b90ab216.c29668",
-        "order": 15,
-        "width": 8,
+        "order": 14,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "サーバー時間",
@@ -2803,7 +2828,7 @@
         "tooltip": "",
         "group": "b90ab216.c29668",
         "order": 3,
-        "width": 4,
+        "width": 3,
         "height": 1,
         "passthru": true,
         "mode": "number",
@@ -2837,96 +2862,13 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "0",
+        "payload": "2",
         "payloadType": "num",
         "x": 210,
         "y": 1480,
         "wires": [
             [
                 "db6304f.419adf8"
-            ]
-        ]
-    },
-    {
-        "id": "d2f53883.4aeef8",
-        "type": "mqtt out",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "topic": "owntracks/nodered/aquos/cmd",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "4646bf9b.55c01",
-        "x": 930,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "895e93a1.20dd8",
-        "type": "function",
-        "z": "9d68a1c7.f4976",
-        "name": "owntracksコマンド作成",
-        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        moveModeLocatorInterval:1,\n        locatorPriority:3, \n        ignoreInaccurateLocations:40,\n        extendedData:false,\n        pubRetain:false,\n        pubQos :0,\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 1100,
-        "wires": [
-            [
-                "670e1ed4.e77ed"
-            ]
-        ]
-    },
-    {
-        "id": "8477cdc0.341f",
-        "type": "inject",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 1100,
-        "wires": [
-            [
-                "895e93a1.20dd8"
-            ]
-        ]
-    },
-    {
-        "id": "670e1ed4.e77ed",
-        "type": "json",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 650,
-        "y": 1060,
-        "wires": [
-            [
-                "d2f53883.4aeef8",
-                "bcda37aa.9c23e8"
             ]
         ]
     },
@@ -2982,67 +2924,6 @@
         "wires": []
     },
     {
-        "id": "ff842760.9a2338",
-        "type": "ui_dropdown",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "label": "locatorPriority",
-        "tooltip": "",
-        "place": "BALANCED",
-        "group": "693bf46.1e1860c",
-        "order": 18,
-        "width": 5,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "LOW POWER",
-                "value": 1,
-                "type": "num"
-            },
-            {
-                "label": "BALANCED",
-                "value": 2,
-                "type": "num"
-            },
-            {
-                "label": "HIGH POWER",
-                "value": 3,
-                "type": "num"
-            }
-        ],
-        "payload": "",
-        "topic": "",
-        "topicType": "str",
-        "x": 140,
-        "y": 1040,
-        "wires": [
-            [
-                "de69d583.8f25c8"
-            ]
-        ]
-    },
-    {
-        "id": "de69d583.8f25c8",
-        "type": "function",
-        "z": "9d68a1c7.f4976",
-        "name": "owntracksコマンド作成",
-        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        locatorPriority:msg.payload, \n        //ignoreInaccurateLocations:40,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 1040,
-        "wires": [
-            [
-                "670e1ed4.e77ed"
-            ]
-        ]
-    },
-    {
         "id": "b3f0456.9a8ddb8",
         "type": "mqtt in",
         "z": "f20b3fe7.75306",
@@ -3059,8 +2940,7 @@
             [
                 "7123cfee.e61d7",
                 "9abb53f8.d2b2f",
-                "754ce382.19c90c",
-                "af04c593.7c0a6"
+                "754ce382.19c90c"
             ]
         ]
     },
@@ -3080,8 +2960,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1130,
-        "y": 1520,
+        "x": 1050,
+        "y": 1600,
         "wires": [
             [
                 "54d68554.0c2bfc"
@@ -3100,8 +2980,8 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;",
         "finalize": "",
         "libs": [],
-        "x": 1360,
-        "y": 1500,
+        "x": 1280,
+        "y": 1580,
         "wires": [
             [
                 "51524983.5e5f28"
@@ -3126,8 +3006,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1340,
-        "y": 1560,
+        "x": 1260,
+        "y": 1640,
         "wires": [
             [
                 "35a2a04b.5bd63"
@@ -3181,8 +3061,8 @@
         "type": "ui_text",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "order": 14,
-        "width": 8,
+        "order": 13,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "GPS発行時間",
@@ -3386,69 +3266,11 @@
         ]
     },
     {
-        "id": "806fdc3c.7d996",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.time",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            },
-            {
-                "t": "set",
-                "p": "delay",
-                "pt": "msg",
-                "to": "delay",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2100,
-        "y": 1480,
-        "wires": [
-            [
-                "24981a3f.c9fbb6"
-            ]
-        ]
-    },
-    {
-        "id": "24981a3f.c9fbb6",
-        "type": "function",
-        "z": "f20b3fe7.75306",
-        "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\n\nif(flow.get(\"reset\") != i+1){\n//if(flow.get(\"odd\") >100){\n    flow.set(\"coe\",coe[i+1]);\n    flow.set(\"odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n}\n\ntrip[0]=j;\nflow.set(\"genku\",msg.payload.number);\nflow.set(\"reset\",msg.payload.reset);\nkukyori=msg.payload.kukyori;\nflow.set(\"kukyori\",kukyori);\n\nmsg.payload={\n    //dis:flow.get(\"odd\"),\n    //dis:msg.payload.meter,\n    name:msg.payload.name,\n    number:msg.payload.number,\n    kukyori:msg.payload.kukyori,\n    zenku:global.get(\"zenku\"),\n    trip:trip,\n    time:time,\n    lap:lap,\n    itrip:trip[i],\n    itime:TIME(msg.payload.time),\n    ilap:lap[i],\n    ku:i,\n    error:error,\n    lat:lat,\n    lon:lon,\n    dirdir:msg.payload.dirdir,\n    reset:msg.payload.reset,\n    //odd:msg.payload.meter+y,\n    odd:odd,\n    ody:y,\n}\n\nflow.set(\"trip\",trip);\nflow.set(\"error\",error);\nflow.set(\"time\",time);\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"trip\" ,Array());\ntrip =Array();\nflow.set(\"error\",Array());\nerror=Array();\ntime=Array();\ntst=Array();\nlap=Array();\nlat=Array();\nlon=Array();\nj=0;",
-        "finalize": "",
-        "libs": [],
-        "x": 2280,
-        "y": 1500,
-        "wires": [
-            [
-                "487bd37b.d2357c",
-                "729f997.47daf68",
-                "35604c7c.b53db4",
-                "60bef771.85ea88",
-                "e51aea7.d3c3d18",
-                "8eedf7f1.a8fd28"
-            ]
-        ]
-    },
-    {
         "id": "66c68784.fb6158",
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "手動リセット",
-        "func": "var i=msg.payload.reset;\nx=global.get(\"ku\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i],\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:i,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
+        "func": "i=msg.payload.reset;\nx=global.get(\"reset\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i].number,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3459,7 +3281,7 @@
         "wires": [
             [
                 "fe055578.b9ce88",
-                "91e21e63.592518"
+                "5a3d574f.e4ff08"
             ]
         ]
     },
@@ -3482,8 +3304,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1220,
-        "y": 620,
+        "x": 1320,
+        "y": 660,
         "wires": [
             [
                 "c848b4a6.5a3658"
@@ -3498,11 +3320,11 @@
         "label": "走距離修正",
         "group": "b90ab216.c29668",
         "order": 16,
-        "width": 5,
+        "width": 4,
         "height": 6,
         "options": [
             {
-                "label": "区",
+                "label": "リセットポイント",
                 "value": "reset",
                 "type": "number",
                 "required": true,
@@ -3526,8 +3348,8 @@
         "topic": "",
         "topicType": "str",
         "splitLayout": false,
-        "x": 970,
-        "y": 800,
+        "x": 790,
+        "y": 740,
         "wires": [
             [
                 "66c68784.fb6158"
@@ -3580,8 +3402,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 2,
-        "x": 1120,
-        "y": 1580,
+        "x": 1040,
+        "y": 1660,
         "wires": [
             [
                 "e9f75be9.d371f8"
@@ -3689,237 +3511,6 @@
         "wires": []
     },
     {
-        "id": "729f997.47daf68",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "グローバル化",
-        "rules": [
-            {
-                "t": "set",
-                "p": "kukyori1",
-                "pt": "global",
-                "to": "payload.kukyori",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "genku1",
-                "pt": "global",
-                "to": "payload.number",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "odd1",
-                "pt": "global",
-                "to": "odd",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2560,
-        "y": 1480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4c65dae8.846464",
-        "type": "file",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "filename": "/home/pi/samba/public/reset1.log",
-        "appendNewline": true,
-        "createDir": true,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 3020,
-        "y": 1440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b9932be6.04c718",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "payload.trip",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.name",
-                "pt": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.zenku",
-                "pt": "msg",
-                "to": "zenku",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2780,
-        "y": 1320,
-        "wires": [
-            [
-                "ada202f9.85452"
-            ]
-        ]
-    },
-    {
-        "id": "487bd37b.d2357c",
-        "type": "template",
-        "z": "f20b3fe7.75306",
-        "name": "通過距離・時刻",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "リセット回数　{{payload.trip.0}} {{payload.time.0}}<br>\n１区　{{payload.trip.1}}m　{{payload.error.1}}　{{payload.time.1}}　{{payload.lap.1}}<br>\n２区　{{payload.trip.2}}m　{{payload.error.2}}　{{payload.time.2}}　{{payload.lap.2}}<br>\n３区　{{payload.trip.3}}m　{{payload.error.3}}　{{payload.time.3}}　{{payload.lap.3}}<br>\n４区　{{payload.trip.4}}m　{{payload.error.4}}　{{payload.time.4}}　{{payload.lap.4}}<br>\n５区　{{payload.trip.5}}m　{{payload.error.5}}　{{payload.time.5}}　{{payload.lap.5}}<br>\n６区　{{payload.trip.6}}m　{{payload.error.6}}　{{payload.time.6}}　{{payload.lap.6}}<br>\n７区　{{payload.trip.7}}m　{{payload.error.7}}　{{payload.time.7}}　{{payload.lap.7}}<br>\n８区　{{payload.trip.8}}m　{{payload.error.8}}　{{payload.time.8}}　{{payload.lap.8}}<br>\n９区　{{payload.trip.9}}m　{{payload.error.9}}　{{payload.time.9}}　{{payload.lap.9}}<br>\n10区　{{payload.trip.10}}m　{{payload.error.10}}　{{payload.time.10}}　{{payload.lap.10}}<br>\n11区　{{payload.trip.11}}m　{{payload.error.11}}　{{payload.time.11}}　{{payload.lap.11}}<br>\n12区　{{payload.trip.12}}m　{{payload.error.12}}　{{payload.time.12}}　{{payload.lap.12}}",
-        "output": "str",
-        "x": 2560,
-        "y": 1440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "23d711a5.5b4c9e",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "msg.payload.trip",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.trip",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2780,
-        "y": 1440,
-        "wires": [
-            [
-                "4c65dae8.846464"
-            ]
-        ]
-    },
-    {
-        "id": "740c1c3f.cdca54",
-        "type": "delay",
-        "z": "f20b3fe7.75306",
-        "name": "シリアル遅延",
-        "pauseType": "delayv",
-        "timeout": "3000",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2780,
-        "y": 1380,
-        "wires": [
-            [
-                "a53705e6.331008"
-            ]
-        ]
-    },
-    {
-        "id": "a53705e6.331008",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "toシリアルデータ",
-        "rules": [
-            {
-                "t": "set",
-                "p": "kukyoris",
-                "pt": "flow",
-                "to": "kukyori1",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "genkus",
-                "pt": "flow",
-                "to": "genku1",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "odds",
-                "pt": "flow",
-                "to": "odd",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2970,
-        "y": 1380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ada202f9.85452",
-        "type": "json",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 2950,
-        "y": 1320,
-        "wires": [
-            [
-                "e9eaf26f.dab29"
-            ]
-        ]
-    },
-    {
-        "id": "35604c7c.b53db4",
-        "type": "template",
-        "z": "f20b3fe7.75306",
-        "name": "距離誤差",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "0　{{payload.error.0}}<br>\n1　{{payload.error.1}}<br>\n2　{{payload.error.2}}<br>\n3　{{payload.error.3}}<br>\n4　{{payload.error.4}}<br>\n5　{{payload.error.5}}<br>\n6　{{payload.error.6}}<br>\n7　{{payload.error.7}}<br>\n8　{{payload.error.8}}<br>\n9　{{payload.error.9}}<br>\n10　{{payload.error.10}}<br>\n11　{{payload.error.11}}<br>\n12　{{payload.error.12}}",
-        "output": "str",
-        "x": 2540,
-        "y": 1520,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "b0c40c50.5b596",
         "type": "ui_template",
         "z": "f20b3fe7.75306",
@@ -3972,12 +3563,13 @@
         "label": "IMU",
         "tooltip": "",
         "group": "b90ab216.c29668",
-        "order": 7,
+        "order": 8,
         "width": 2,
         "height": 1,
         "passthru": true,
         "decouple": "false",
         "topic": "",
+        "topicType": "str",
         "style": "",
         "onvalue": "true",
         "onvalueType": "bool",
@@ -3987,6 +3579,7 @@
         "offvalueType": "bool",
         "officon": "",
         "offcolor": "",
+        "animate": true,
         "x": 370,
         "y": 1540,
         "wires": [
@@ -4043,8 +3636,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1110,
-        "y": 1440,
+        "x": 1030,
+        "y": 1520,
         "wires": [
             [
                 "7d33f3d2.f4640c"
@@ -4070,8 +3663,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1320,
-        "y": 1440,
+        "x": 1240,
+        "y": 1520,
         "wires": [
             [
                 "1616e587.6aa70a"
@@ -4212,7 +3805,7 @@
         "wires": [
             [
                 "fe055578.b9ce88",
-                "91e21e63.592518"
+                "5a3d574f.e4ff08"
             ]
         ]
     },
@@ -4220,14 +3813,14 @@
         "id": "11e9e1.b934961f",
         "type": "template",
         "z": "f20b3fe7.75306",
-        "name": "現情報",
+        "name": "コントロール距離",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"5\">{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
         "output": "str",
-        "x": 1850,
+        "x": 1890,
         "y": 340,
         "wires": [
             [
@@ -4258,8 +3851,8 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "str",
-        "x": 970,
-        "y": 860,
+        "x": 630,
+        "y": 740,
         "wires": [
             [
                 "cede26ac.6c91e8"
@@ -4357,7 +3950,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1590,
+        "x": 1580,
         "y": 660,
         "wires": [
             [
@@ -4372,14 +3965,14 @@
         "group": "b90ab216.c29668",
         "name": "距離情報",
         "order": 4,
-        "width": 8,
+        "width": 7,
         "height": 2,
-        "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
+        "format": "<font size=\"3\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2020,
+        "x": 2080,
         "y": 340,
         "wires": [
             []
@@ -4501,8 +4094,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1140,
-        "y": 1660,
+        "x": 1060,
+        "y": 1740,
         "wires": [
             []
         ]
@@ -4533,7 +4126,7 @@
         "place": "Select option",
         "group": "4a48ee78.c45ed",
         "order": 1,
-        "width": 5,
+        "width": 4,
         "height": 1,
         "passthru": true,
         "multiple": false,
@@ -4868,8 +4461,8 @@
         "z": "90be64ef.6b4fc8",
         "group": "4a48ee78.c45ed",
         "order": 6,
-        "width": 0,
-        "height": 0,
+        "width": 7,
+        "height": 1,
         "name": "",
         "label": "nodered start time",
         "format": "{{msg.payload}}",
@@ -4960,84 +4553,6 @@
         ]
     },
     {
-        "id": "b8c01e7f.583a1",
-        "type": "ui_numeric",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "label": "accurate",
-        "tooltip": "",
-        "group": "693bf46.1e1860c",
-        "order": 17,
-        "width": 3,
-        "height": 1,
-        "wrap": false,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "step": "10",
-        "x": 120,
-        "y": 980,
-        "wires": [
-            [
-                "d1366209.cf0a1"
-            ]
-        ]
-    },
-    {
-        "id": "d1366209.cf0a1",
-        "type": "function",
-        "z": "9d68a1c7.f4976",
-        "name": "owntracksコマンド作成",
-        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        //locatorPriority:msg.payload, \n        ignoreInaccurateLocations:msg.payload,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 980,
-        "wires": [
-            [
-                "670e1ed4.e77ed"
-            ]
-        ]
-    },
-    {
-        "id": "bcda37aa.9c23e8",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 800,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "e9eaf26f.dab29",
-        "type": "debug",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3130,
-        "y": 1320,
-        "wires": []
-    },
-    {
         "id": "6aad71c3.bf96b",
         "type": "cast-to-client",
         "z": "f20b3fe7.75306",
@@ -5046,7 +4561,7 @@
         "contentType": "",
         "message": "もうすぐお父さんが、帰ってきます。",
         "language": "ja",
-        "ip": "192.168.24.10",
+        "ip": "192.168.24.62",
         "port": "8009",
         "volume": "",
         "x": 2370,
@@ -5126,7 +4641,7 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": "1",
+        "onceDelay": "0.1",
         "topic": "",
         "payload": "true",
         "payloadType": "bool",
@@ -5235,74 +4750,6 @@
         ]
     },
     {
-        "id": "a0410efb.c3bc7",
-        "type": "debug",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 530,
-        "y": 1340,
-        "wires": []
-    },
-    {
-        "id": "d1ec4eb2.66e0f",
-        "type": "trigger",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "op1": "true",
-        "op2": "0",
-        "op1type": "bool",
-        "op2type": "str",
-        "duration": "0",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "0",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 280,
-        "y": 1320,
-        "wires": [
-            [
-                "a0410efb.c3bc7",
-                "7a95fa74.9bada4"
-            ]
-        ]
-    },
-    {
-        "id": "8f7f03fe.1577a",
-        "type": "trigger",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "op1": "false",
-        "op2": "0",
-        "op1type": "bool",
-        "op2type": "str",
-        "duration": "0",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "1",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 280,
-        "y": 1360,
-        "wires": [
-            [
-                "a0410efb.c3bc7",
-                "7a95fa74.9bada4"
-            ]
-        ]
-    },
-    {
         "id": "350256d7.ed678a",
         "type": "debug",
         "z": "f20b3fe7.75306",
@@ -5323,18 +4770,18 @@
         "type": "ui_text_input",
         "z": "f20b3fe7.75306",
         "name": "",
-        "label": "リセットポイント半径",
+        "label": "リセット半径",
         "tooltip": "リセットポイント半径",
         "group": "b90ab216.c29668",
-        "order": 6,
-        "width": 3,
+        "order": 7,
+        "width": 2,
         "height": 1,
         "passthru": true,
         "mode": "number",
         "delay": "0",
         "topic": "topic",
         "topicType": "msg",
-        "x": 420,
+        "x": 400,
         "y": 1600,
         "wires": [
             [
@@ -5610,71 +5057,6 @@
         ]
     },
     {
-        "id": "60bef771.85ea88",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "payload.zenku",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.trip",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.time",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.lap",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.ku",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.error",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.lat",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.lon",
-                "pt": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.dis",
-                "pt": "msg",
-                "to": "odd",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2560,
-        "y": 1320,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "2dee9f39.82c15",
         "type": "change",
         "z": "90be64ef.6b4fc8",
@@ -5871,7 +5253,7 @@
         "contentType": "",
         "message": "名島海岸にゴジラ出現、アリストグレート、緊急出動にゃん",
         "language": "ja",
-        "ip": "192.168.24.10",
+        "ip": "192.168.24.62",
         "port": "8009",
         "volume": "",
         "x": 710,
@@ -6190,7 +5572,7 @@
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
         "name": "Speed",
-        "order": 5,
+        "order": 6,
         "width": 3,
         "height": 1,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
@@ -6209,7 +5591,7 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\")\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
+        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -6302,7 +5684,9 @@
         "topic": "trip3/pause",
         "qos": "2",
         "datatype": "auto",
-        "broker": "ac7569b4.5ada88",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
         "x": 330,
         "y": 1000,
         "wires": [
@@ -6501,8 +5885,8 @@
         "label": "最低速度",
         "tooltip": "",
         "group": "693bf46.1e1860c",
-        "order": 9,
-        "width": 6,
+        "order": 10,
+        "width": 5,
         "height": 1,
         "passthru": true,
         "outs": "all",
@@ -6523,7 +5907,7 @@
         "type": "ui_text",
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
-        "order": 8,
+        "order": 9,
         "width": 2,
         "height": 1,
         "name": "",
@@ -6542,8 +5926,8 @@
         "label": "速度制限",
         "tooltip": "",
         "group": "693bf46.1e1860c",
-        "order": 11,
-        "width": 6,
+        "order": 12,
+        "width": 5,
         "height": 1,
         "passthru": true,
         "outs": "all",
@@ -6564,7 +5948,7 @@
         "type": "ui_text",
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
-        "order": 10,
+        "order": 11,
         "width": 2,
         "height": 1,
         "name": "",
@@ -6706,7 +6090,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "100",
+        "payload": "60",
         "payloadType": "num",
         "x": 130,
         "y": 1140,
@@ -6735,7 +6119,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "0",
+        "payload": "2",
         "payloadType": "num",
         "x": 130,
         "y": 1200,
@@ -6750,7 +6134,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -6795,7 +6179,7 @@
         "label": "IMU",
         "tooltip": "",
         "group": "693bf46.1e1860c",
-        "order": 7,
+        "order": 8,
         "width": 2,
         "height": 1,
         "passthru": true,
@@ -6871,7 +6255,7 @@
         "tooltip": "",
         "group": "693bf46.1e1860c",
         "order": 3,
-        "width": 4,
+        "width": 3,
         "height": 1,
         "passthru": true,
         "mode": "number",
@@ -7030,7 +6414,7 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "手動リセット",
-        "func": "var i=msg.payload.reset;\nx=global.get(\"ku\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i],\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:i,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
+        "func": "i=msg.payload.reset;\nx=global.get(\"reset\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i].number,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -7053,11 +6437,11 @@
         "label": "走距離修正",
         "group": "693bf46.1e1860c",
         "order": 15,
-        "width": 5,
+        "width": 4,
         "height": 6,
         "options": [
             {
-                "label": "区",
+                "label": "リセットポイント",
                 "value": "reset",
                 "type": "number",
                 "required": true,
@@ -7079,6 +6463,9 @@
         "submit": "submit",
         "cancel": "cancel",
         "topic": "",
+        "topicType": "str",
+        "splitLayout": false,
+        "className": "",
         "x": 1230,
         "y": 560,
         "wires": [
@@ -7098,8 +6485,8 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"oddt\",0);\n//total=global.get(\"total\");\n//flow.set(\"genku\",1);\n//flow.set(\"oddt\",0);",
         "finalize": "",
         "libs": [],
-        "x": 2610,
-        "y": 220,
+        "x": 2650,
+        "y": 260,
         "wires": [
             []
         ]
@@ -7144,7 +6531,7 @@
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
         "order": 13,
-        "width": 8,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "GPS発行時間",
@@ -7252,6 +6639,7 @@
             [
                 "2abf06e4.628d2a",
                 "ed7da24b.b18b8",
+                "ba9c4bfb.712168",
                 "9030b05b.05224"
             ]
         ]
@@ -7302,8 +6690,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 130,
-        "y": 840,
+        "x": 90,
+        "y": 640,
         "wires": [
             []
         ]
@@ -7571,8 +6959,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 60,
+        "x": 480,
+        "y": 660,
         "wires": [
             [
                 "d30bd863.676a38"
@@ -7591,8 +6979,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 60,
+        "x": 650,
+        "y": 660,
         "wires": []
     },
     {
@@ -7641,7 +7029,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -7708,46 +7096,13 @@
         "wires": []
     },
     {
-        "id": "8eedf7f1.a8fd28",
-        "type": "debug",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2550,
-        "y": 1580,
-        "wires": []
-    },
-    {
-        "id": "e51aea7.d3c3d18",
-        "type": "template",
-        "z": "f20b3fe7.75306",
-        "name": "リセット情報",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<b>リセット{{payload.reset}}　　{{payload.name}}</b>",
-        "output": "str",
-        "x": 2560,
-        "y": 1380,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "c4b1dd3e.f3235",
         "type": "ui_template",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
         "name": "リセット情報",
-        "order": 12,
-        "width": 6,
+        "order": 5,
+        "width": 7,
         "height": 1,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
@@ -7777,35 +7132,6 @@
         "wires": []
     },
     {
-        "id": "c2ebd39.4cee4b",
-        "type": "inject",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "reset.3",
-        "payloadType": "global",
-        "x": 2110,
-        "y": 1540,
-        "wires": [
-            [
-                "24981a3f.c9fbb6"
-            ]
-        ]
-    },
-    {
         "id": "84b8dd27.abd21",
         "type": "change",
         "z": "536d4aff.8b6084",
@@ -7831,22 +7157,6 @@
         ]
     },
     {
-        "id": "6599347c.610e5c",
-        "type": "debug",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1630,
-        "y": 420,
-        "wires": []
-    },
-    {
         "id": "4560ed4d.5b7034",
         "type": "template",
         "z": "f20b3fe7.75306",
@@ -7855,7 +7165,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"5\">{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.kyori}}m/{{payload.kukyori}}m </font>",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.kyori}}m/{{payload.kukyori}}m </font>",
         "output": "str",
         "x": 2470,
         "y": 460,
@@ -7871,8 +7181,8 @@
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
         "name": "遅延現情報",
-        "order": 18,
-        "width": 8,
+        "order": 15,
+        "width": 7,
         "height": 1,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
@@ -7957,7 +7267,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
+        "x": 510,
         "y": 80,
         "wires": [
             [
@@ -7982,7 +7292,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 440,
+        "x": 700,
         "y": 80,
         "wires": [
             [
@@ -8001,7 +7311,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
+        "x": 650,
         "y": 140,
         "wires": [
             [
@@ -8020,7 +7330,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
+        "x": 790,
         "y": 140,
         "wires": [
             [
@@ -8047,7 +7357,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 390,
+        "x": 650,
         "y": 200,
         "wires": [
             [
@@ -8074,7 +7384,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 540,
+        "x": 800,
         "y": 200,
         "wires": [
             [
@@ -8087,7 +7397,7 @@
         "type": "function",
         "z": "7e6f2d4d.3bcd74",
         "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:kukyori,//ダッシュボード表示用\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\ntrip[0]=j;\n\n",
+        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:msg.payload.kukyori,//ダッシュボード表示用\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    trip[0]=j;\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\n    \n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\nover=Array();\ntime=Array();\ntst=Array();\nlap=Array();\n//lat=Array();\n//lon=Array();\nj=0;\nkukyori=0;",
@@ -8237,7 +7547,7 @@
         "type": "debug",
         "z": "f20b3fe7.75306",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -8373,8 +7683,7 @@
         "y": 380,
         "wires": [
             [
-                "ad3c93f9.7e7bd",
-                "d641656440677ba4"
+                "ad3c93f9.7e7bd"
             ]
         ]
     },
@@ -8504,9 +7813,9 @@
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
         "name": "リセット情報",
-        "order": 12,
-        "width": 0,
-        "height": 0,
+        "order": 5,
+        "width": 7,
+        "height": 1,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
         "fwdInMessages": true,
@@ -8523,7 +7832,7 @@
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\")\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
+        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -8538,9 +7847,9 @@
                 "c35aec7a.44ebb",
                 "1d2a44dd.f7a67b",
                 "d1086772.24d218",
-                "6599347c.610e5c",
                 "aef4c880.dd9898",
-                "10913bfb.8f3b4c"
+                "10913bfb.8f3b4c",
+                "f1bda9f1.4faa58"
             ]
         ]
     },
@@ -8669,7 +7978,7 @@
         "z": "9d68a1c7.f4976",
         "group": "693bf46.1e1860c",
         "order": 14,
-        "width": 8,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "サーバー時間",
@@ -8687,8 +7996,8 @@
         "label": "リセットポイント半径",
         "tooltip": "リセットポイント半径",
         "group": "693bf46.1e1860c",
-        "order": 6,
-        "width": 3,
+        "order": 7,
+        "width": 2,
         "height": 1,
         "passthru": true,
         "mode": "number",
@@ -8829,8 +8138,8 @@
         "y": 580,
         "wires": [
             [
-                "35707fe6.09419",
-                "be042f3f.f2fad"
+                "be042f3f.f2fad",
+                "9371e5be.f0d2f8"
             ]
         ]
     },
@@ -8839,10 +8148,10 @@
         "type": "worldmap",
         "z": "9d68a1c7.f4976",
         "name": "",
-        "lat": "",
-        "lon": "",
+        "lat": "33.59327347",
+        "lon": "130.3514673",
         "zoom": "",
-        "layer": "",
+        "layer": "OSM",
         "cluster": "",
         "maxage": "",
         "usermenu": "show",
@@ -8855,8 +8164,12 @@
         "showgrid": "false",
         "allowFileDrop": "false",
         "path": "/worldmap",
-        "x": 780,
-        "y": 620,
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 700,
+        "y": 580,
         "wires": []
     },
     {
@@ -8900,7 +8213,7 @@
         "y": 660,
         "wires": [
             [
-                "35707fe6.09419"
+                "9371e5be.f0d2f8"
             ]
         ]
     },
@@ -8927,7 +8240,7 @@
         "y": 700,
         "wires": [
             [
-                "35707fe6.09419"
+                "9371e5be.f0d2f8"
             ]
         ]
     },
@@ -8946,7 +8259,7 @@
         "y": 520,
         "wires": [
             [
-                "35707fe6.09419"
+                "9371e5be.f0d2f8"
             ]
         ]
     },
@@ -8988,11 +8301,11 @@
         "lat": "",
         "lon": "",
         "zoom": "",
-        "layer": "",
+        "layer": "OSM grey",
         "cluster": "",
         "maxage": "",
         "usermenu": "hide",
-        "layers": "show",
+        "layers": "hide",
         "panit": "false",
         "panlock": "false",
         "zoomlock": "false",
@@ -9001,8 +8314,12 @@
         "showgrid": "true",
         "allowFileDrop": "false",
         "path": "/worldmap",
-        "x": 640,
-        "y": 580,
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 700,
+        "y": 640,
         "wires": []
     },
     {
@@ -9174,7 +8491,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
+        "x": 1090,
         "y": 800,
         "wires": []
     },
@@ -9239,11 +8556,6 @@
             },
             {
                 "t": "delete",
-                "p": "payload.layer",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
                 "p": "payload.draggable",
                 "pt": "msg"
             }
@@ -9266,63 +8578,16 @@
         "type": "file",
         "z": "9d68a1c7.f4976",
         "name": "",
-        "filename": "point.csv",
+        "filename": "/home/pi/samba/public/point.csv",
         "appendNewline": false,
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 770,
+        "x": 840,
         "y": 800,
         "wires": [
             [
                 "67fd93ce.0458ac"
-            ]
-        ]
-    },
-    {
-        "id": "236fd815.607ec8",
-        "type": "file in",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "filename": "point.csv",
-        "format": "lines",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "x": 780,
-        "y": 840,
-        "wires": [
-            [
-                "67fd93ce.0458ac"
-            ]
-        ]
-    },
-    {
-        "id": "5c15e2bf.7b807c",
-        "type": "inject",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 600,
-        "y": 840,
-        "wires": [
-            [
-                "236fd815.607ec8"
             ]
         ]
     },
@@ -9341,7 +8606,7 @@
         "y": 620,
         "wires": [
             [
-                "35707fe6.09419"
+                "9371e5be.f0d2f8"
             ]
         ]
     },
@@ -9360,12 +8625,12 @@
         "color": "",
         "bgcolor": "",
         "icon": "",
-        "payload": "",
-        "payloadType": "str",
+        "payload": "{\"lat\":\"0\",\"lon\":\"0\"}",
+        "payloadType": "json",
         "topic": "topic",
         "topicType": "msg",
-        "x": 770,
-        "y": 520,
+        "x": 690,
+        "y": 420,
         "wires": [
             [
                 "5976f7cc.62d488"
@@ -9380,10 +8645,17 @@
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "payload.name",
                 "pt": "msg",
                 "to": "select",
                 "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "payload.tst",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
             }
         ],
         "action": "",
@@ -9391,8 +8663,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 950,
-        "y": 520,
+        "x": 850,
+        "y": 420,
         "wires": [
             [
                 "c1b3c6cc.ebf4d8"
@@ -9400,27 +8672,11 @@
         ]
     },
     {
-        "id": "774c9735.169ef8",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1390,
-        "y": 600,
-        "wires": []
-    },
-    {
         "id": "c1b3c6cc.ebf4d8",
         "type": "switch",
         "z": "9d68a1c7.f4976",
         "name": "",
-        "property": "payload",
+        "property": "payload.name",
         "propertyType": "msg",
         "rules": [
             {
@@ -9443,13 +8699,17 @@
         "repair": false,
         "outputs": 3,
         "x": 1030,
-        "y": 620,
+        "y": 420,
         "wires": [
+            [
+                "71992def.3a8e94"
+            ],
             [
                 "f02614a.69a6ce8"
             ],
-            [],
-            []
+            [
+                "e5ac5aa0.d6df78"
+            ]
         ]
     },
     {
@@ -9462,15 +8722,22 @@
                 "t": "set",
                 "p": "payload.lat",
                 "pt": "msg",
-                "to": "lat1",
+                "to": "lat2",
                 "tot": "global"
             },
             {
                 "t": "set",
                 "p": "payload.lon",
                 "pt": "msg",
-                "to": "lon1",
+                "to": "lon2",
                 "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.iconColor",
+                "pt": "msg",
+                "to": "red",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -9479,10 +8746,10 @@
         "to": "",
         "reg": false,
         "x": 1200,
-        "y": 600,
+        "y": 420,
         "wires": [
             [
-                "774c9735.169ef8"
+                "e9899199.4dc21"
             ]
         ]
     },
@@ -9586,7 +8853,8 @@
         "y": 280,
         "wires": [
             [
-                "e8754dac.c59448"
+                "e8754dac.c59448",
+                "f64648a5.3e4948"
             ]
         ]
     },
@@ -11658,18 +10926,17 @@
         "type": "mqtt in",
         "z": "dc1c6fdb.d2e7",
         "name": "",
-        "topic": "trip1/pause",
+        "topic": "trip2/pause",
         "qos": "0",
         "datatype": "auto",
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 140,
-        "y": 1020,
+        "x": 300,
+        "y": 1040,
         "wires": [
             [
-                "97d21219.cc7f9",
-                "b2427e37.dd04b"
+                "25e7e217.21902e"
             ]
         ]
     },
@@ -11682,10 +10949,14 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "true"
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
             },
             {
-                "t": "false"
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
             }
         ],
         "checkall": "true",
@@ -11791,8 +11062,8 @@
         "label": "最低速度",
         "tooltip": "",
         "group": "a3a1b34f.acf18",
-        "order": 9,
-        "width": 6,
+        "order": 10,
+        "width": 5,
         "height": 1,
         "passthru": true,
         "outs": "all",
@@ -11814,7 +11085,7 @@
         "type": "ui_text",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "order": 8,
+        "order": 9,
         "width": 2,
         "height": 1,
         "name": "",
@@ -11833,8 +11104,8 @@
         "label": "速度制限",
         "tooltip": "",
         "group": "a3a1b34f.acf18",
-        "order": 11,
-        "width": 6,
+        "order": 12,
+        "width": 5,
         "height": 1,
         "passthru": true,
         "outs": "all",
@@ -11856,7 +11127,7 @@
         "type": "ui_text",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "order": 10,
+        "order": 11,
         "width": 2,
         "height": 1,
         "name": "",
@@ -11981,7 +11252,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "100",
+        "payload": "60",
         "payloadType": "num",
         "x": 250,
         "y": 1120,
@@ -12010,7 +11281,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "0",
+        "payload": "2",
         "payloadType": "num",
         "x": 250,
         "y": 1180,
@@ -12053,7 +11324,7 @@
         "label": "IMU",
         "tooltip": "",
         "group": "a3a1b34f.acf18",
-        "order": 7,
+        "order": 8,
         "width": 2,
         "height": 1,
         "passthru": true,
@@ -12148,8 +11419,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 1040,
+        "x": 1070,
+        "y": 800,
         "wires": []
     },
     {
@@ -12169,12 +11440,11 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 320,
-        "y": 1020,
+        "x": 820,
+        "y": 780,
         "wires": [
             [
-                "3e579b53.cced04",
-                "25e7e217.21902e"
+                "3e579b53.cced04"
             ]
         ]
     },
@@ -12195,12 +11465,11 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 320,
-        "y": 1060,
+        "x": 820,
+        "y": 820,
         "wires": [
             [
-                "3e579b53.cced04",
-                "25e7e217.21902e"
+                "3e579b53.cced04"
             ]
         ]
     },
@@ -12212,8 +11481,8 @@
         "label": "リセットポイント半径",
         "tooltip": "リセットポイント半径",
         "group": "a3a1b34f.acf18",
-        "order": 6,
-        "width": 3,
+        "order": 7,
+        "width": 2,
         "height": 1,
         "passthru": true,
         "mode": "number",
@@ -12302,8 +11571,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1560,
-        "y": 1500,
+        "x": 1480,
+        "y": 1580,
         "wires": [
             [
                 "ea829e3.852856"
@@ -12338,8 +11607,8 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ndist=0.00",
         "finalize": "",
         "libs": [],
-        "x": 1550,
-        "y": 1560,
+        "x": 1470,
+        "y": 1640,
         "wires": [
             [
                 "4650f4c4.97a1ac"
@@ -12366,8 +11635,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1380,
-        "y": 1620,
+        "x": 1300,
+        "y": 1700,
         "wires": [
             []
         ]
@@ -12386,7 +11655,9 @@
         "x": 150,
         "y": 40,
         "wires": [
-            []
+            [
+                "c67bffe3.6786b"
+            ]
         ]
     },
     {
@@ -13217,14 +12488,14 @@
         "id": "10913bfb.8f3b4c",
         "type": "template",
         "z": "f20b3fe7.75306",
-        "name": "",
+        "name": "時速",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "時速 : {{payload.kmh}} km",
         "output": "str",
-        "x": 1860,
+        "x": 1850,
         "y": 260,
         "wires": [
             [
@@ -13238,7 +12509,7 @@
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
         "name": "Speed",
-        "order": 5,
+        "order": 6,
         "width": 3,
         "height": 1,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
@@ -13297,11 +12568,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1350,
-        "y": 760,
+        "x": 1330,
+        "y": 820,
         "wires": [
             [
-                "5a3d574f.e4ff08"
+                "9e8bddc.07e6d2"
             ]
         ]
     },
@@ -13324,7 +12595,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 720,
+        "x": 980,
         "y": 200,
         "wires": [
             []
@@ -13416,7 +12687,6 @@
         "wires": [
             [
                 "eb24db7b.d88d28",
-                "f64648a5.3e4948",
                 "5c393273.44ee3c",
                 "5bd34c7.0cc9034",
                 "5bb074e.4aaa18c"
@@ -13435,8 +12705,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 510,
-        "y": 360,
+        "x": 470,
+        "y": 380,
         "wires": []
     },
     {
@@ -13550,7 +12820,7 @@
         "tooltip": "",
         "group": "a3a1b34f.acf18",
         "order": 3,
-        "width": 4,
+        "width": 3,
         "height": 1,
         "passthru": true,
         "mode": "number",
@@ -13629,7 +12899,7 @@
         "type": "function",
         "z": "dc1c6fdb.d2e7",
         "name": "手動リセット",
-        "func": "var i=msg.payload.reset;\nx=global.get(\"ku\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i],\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:i,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
+        "func": "i=msg.payload.reset;\nx=global.get(\"reset\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i].number,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -13640,7 +12910,7 @@
         "wires": [
             [
                 "f975bd92.c335e8",
-                "a10c4bff.24f65"
+                "ece56e53.db27d"
             ]
         ]
     },
@@ -13748,7 +13018,7 @@
         "wires": [
             [
                 "f975bd92.c335e8",
-                "a10c4bff.24f65"
+                "ece56e53.db27d"
             ]
         ]
     },
@@ -13756,14 +13026,14 @@
         "id": "91c0485.788d1b8",
         "type": "template",
         "z": "dc1c6fdb.d2e7",
-        "name": "現情報",
+        "name": "コントロール距離",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"5\">{{payload.genku}}/{{payload.zenku}}区　2移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
         "output": "str",
-        "x": 1830,
+        "x": 1870,
         "y": 140,
         "wires": [
             [
@@ -13877,14 +13147,14 @@
         "group": "a3a1b34f.acf18",
         "name": "2移動距離情報",
         "order": 4,
-        "width": 8,
+        "width": 7,
         "height": 2,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2020,
+        "x": 2080,
         "y": 140,
         "wires": [
             []
@@ -13899,7 +13169,7 @@
         "contentType": "",
         "message": "もうすぐお父さんが、帰ってきます。",
         "language": "ja",
-        "ip": "192.168.24.10",
+        "ip": "192.168.24.62",
         "port": "8009",
         "volume": "",
         "x": 2350,
@@ -14075,8 +13345,8 @@
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "name": "リセット情報",
-        "order": 12,
-        "width": 8,
+        "order": 5,
+        "width": 7,
         "height": 1,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
@@ -14212,7 +13482,7 @@
         "type": "function",
         "z": "dc1c6fdb.d2e7",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\")\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
+        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -14273,40 +13543,6 @@
         ]
     },
     {
-        "id": "a10c4bff.24f65",
-        "type": "change",
-        "z": "dc1c6fdb.d2e7",
-        "name": "ディレイ/時間付加",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.time",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            },
-            {
-                "t": "set",
-                "p": "delay",
-                "pt": "msg",
-                "to": "delay",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1330,
-        "y": 560,
-        "wires": [
-            [
-                "ece56e53.db27d"
-            ]
-        ]
-    },
-    {
         "id": "5bd34c7.0cc9034",
         "type": "change",
         "z": "dc1c6fdb.d2e7",
@@ -14360,8 +13596,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 890,
-        "y": 300,
+        "x": 870,
+        "y": 320,
         "wires": [
             []
         ]
@@ -14393,11 +13629,11 @@
         "label": "走距離修正",
         "group": "a3a1b34f.acf18",
         "order": 14,
-        "width": 5,
-        "height": 1,
+        "width": 4,
+        "height": 6,
         "options": [
             {
-                "label": "区",
+                "label": "リセットポイント",
                 "value": "reset",
                 "type": "number",
                 "required": true,
@@ -14421,6 +13657,7 @@
         "topic": "",
         "topicType": "str",
         "splitLayout": false,
+        "className": "",
         "x": 950,
         "y": 620,
         "wires": [
@@ -14477,138 +13714,12 @@
         "wires": []
     },
     {
-        "id": "af04c593.7c0a6",
-        "type": "switch",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "property": "payload.mode",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            },
-            {
-                "t": "neq",
-                "v": "3",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 330,
-        "y": 220,
-        "wires": [
-            [
-                "32a1b17e.993c8e"
-            ],
-            [
-                "29c049e0.04b1f6"
-            ]
-        ]
-    },
-    {
-        "id": "32a1b17e.993c8e",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "background",
-                "pt": "msg",
-                "to": "lime",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "3D-FIX",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 520,
-        "y": 180,
-        "wires": [
-            [
-                "7a48075b.d743b8"
-            ]
-        ]
-    },
-    {
-        "id": "7a48075b.d743b8",
-        "type": "ui_button",
-        "z": "f20b3fe7.75306",
-        "name": "3dfix",
-        "group": "b90ab216.c29668",
-        "order": 13,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "{{msg.topic}}",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": " {{msg.background}}",
-        "icon": "",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "topicType": "str",
-        "x": 730,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "29c049e0.04b1f6",
-        "type": "change",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "background",
-                "pt": "msg",
-                "to": "red",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "2D-FIX",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 520,
-        "y": 220,
-        "wires": [
-            [
-                "7a48075b.d743b8"
-            ]
-        ]
-    },
-    {
         "id": "1561748e.9559bb",
         "type": "ui_text",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "order": 13,
-        "width": 8,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "GPS発行時間",
@@ -14684,7 +13795,7 @@
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "name": "Speed",
-        "order": 5,
+        "order": 6,
         "width": 3,
         "height": 1,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
@@ -14702,14 +13813,14 @@
         "id": "841fd23.9dbc33",
         "type": "template",
         "z": "8caaa155.e5486",
-        "name": "現情報",
+        "name": "グローバル距離",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m \n</b></font>",
         "output": "str",
-        "x": 2250,
+        "x": 2280,
         "y": 160,
         "wires": [
             [
@@ -14721,14 +13832,14 @@
         "id": "ff435400.9f3cc",
         "type": "template",
         "z": "8caaa155.e5486",
-        "name": "現情報",
+        "name": "コントロール距離",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"5\">{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
         "output": "str",
-        "x": 2250,
+        "x": 2290,
         "y": 200,
         "wires": [
             [
@@ -14743,14 +13854,14 @@
         "group": "693bf46.1e1860c",
         "name": "3移動距離情報",
         "order": 4,
-        "width": 8,
+        "width": 7,
         "height": 2,
-        "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
+        "format": "<font size=\"3\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2440,
+        "x": 2500,
         "y": 200,
         "wires": [
             []
@@ -14770,7 +13881,7 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2440,
+        "x": 2500,
         "y": 160,
         "wires": [
             []
@@ -15020,7 +14131,7 @@
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "name": "誤差",
-        "order": 17,
+        "order": 15,
         "width": 3,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -15039,7 +14150,7 @@
         "type": "debug",
         "z": "dc1c6fdb.d2e7",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -15251,7 +14362,7 @@
         "type": "debug",
         "z": "f20b3fe7.75306",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -15318,22 +14429,6 @@
         "wires": []
     },
     {
-        "id": "d641656440677ba4",
-        "type": "debug",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 440,
-        "wires": []
-    },
-    {
         "id": "a47c0748735fc712",
         "type": "inject",
         "z": "8caaa155.e5486",
@@ -15354,8 +14449,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 420,
-        "y": 60,
+        "x": 300,
+        "y": 660,
         "wires": [
             [
                 "75ac908c.5d04"
@@ -15423,5 +14518,798 @@
                 "49a74f74.dba1e"
             ]
         ]
+    },
+    {
+        "id": "2464d4da.17916c",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1690,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9e8bddc.07e6d2",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6838acae.042114",
+        "type": "inject",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 330,
+        "y": 840,
+        "wires": [
+            [
+                "a791c927.1fa628"
+            ]
+        ]
+    },
+    {
+        "id": "c87e610f.d8293",
+        "type": "mqtt out",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "topic": "owntracks/nodered/aquos/cmd",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 930,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "c2f0f28c.c6126",
+        "type": "function",
+        "z": "8caaa155.e5486",
+        "name": "owntracksコマンド作成",
+        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        moveModeLocatorInterval:1,\n        locatorPriority:3, \n        ignoreInaccurateLocations:40,\n        extendedData:false,\n        pubRetain:false,\n        pubQos :0,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1520,
+        "wires": [
+            [
+                "a384c325.85191"
+            ]
+        ]
+    },
+    {
+        "id": "f3e067f2.ea0198",
+        "type": "inject",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1520,
+        "wires": [
+            [
+                "c2f0f28c.c6126"
+            ]
+        ]
+    },
+    {
+        "id": "a384c325.85191",
+        "type": "json",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 650,
+        "y": 1480,
+        "wires": [
+            [
+                "c87e610f.d8293",
+                "6088a3c0.33462c"
+            ]
+        ]
+    },
+    {
+        "id": "5a3ad815.626ed8",
+        "type": "ui_dropdown",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "label": "locatorPriority",
+        "tooltip": "",
+        "place": "BALANCED",
+        "group": "693bf46.1e1860c",
+        "order": 17,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "LOW POWER",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "BALANCED",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "HIGH POWER",
+                "value": 3,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "x": 140,
+        "y": 1460,
+        "wires": [
+            [
+                "9ad8d8c7.32a598"
+            ]
+        ]
+    },
+    {
+        "id": "9ad8d8c7.32a598",
+        "type": "function",
+        "z": "8caaa155.e5486",
+        "name": "owntracksコマンド作成",
+        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        locatorPriority:msg.payload, \n        //ignoreInaccurateLocations:40,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1460,
+        "wires": [
+            [
+                "a384c325.85191"
+            ]
+        ]
+    },
+    {
+        "id": "43047108.891e9",
+        "type": "ui_numeric",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "label": "accurate",
+        "tooltip": "",
+        "group": "693bf46.1e1860c",
+        "order": 18,
+        "width": 3,
+        "height": 1,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "step": "10",
+        "x": 120,
+        "y": 1400,
+        "wires": [
+            [
+                "fc456a4b.371978"
+            ]
+        ]
+    },
+    {
+        "id": "fc456a4b.371978",
+        "type": "function",
+        "z": "8caaa155.e5486",
+        "name": "owntracksコマンド作成",
+        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        //locatorPriority:msg.payload, \n        ignoreInaccurateLocations:msg.payload,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1400,
+        "wires": [
+            [
+                "a384c325.85191"
+            ]
+        ]
+    },
+    {
+        "id": "6088a3c0.33462c",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "ba9c4bfb.712168",
+        "type": "change",
+        "z": "8caaa155.e5486",
+        "name": "秒速→時速",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "$round((payload.speed*3.6*10)/10)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 500,
+        "wires": [
+            [
+                "6837f265.76de4c"
+            ]
+        ]
+    },
+    {
+        "id": "6837f265.76de4c",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c67bffe3.6786b",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d89224cb.8a0cb8",
+        "type": "switch",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "lat not null",
+        "property": "payload.lat",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1170,
+        "y": 980,
+        "wires": [
+            [
+                "be8df6f8.5f1e28"
+            ]
+        ]
+    },
+    {
+        "id": "200409a6.1933f6",
+        "type": "function",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "前後GPS",
+        "func": "msg.payload={\n    lat:msg.payload.lat,\n    lon:msg.payload.lon,\n    latx:latx,\n    lony:lony,\n    tstd:tstd,\n    altd:altd,\n    //name:msg.payload.name,\n    alt:msg.payload.alt,\n    tst:msg.payload.time,\n    track:msg.payload.track,\n    speed:msg.payload.speed,\n    climb: msg.payload.climb,\n    epx:msg.payload.epx,\n    epy:msg.payload.epy,\n    //acc:(msg.payload.epx+msg.payload.epy)/2,\n}\nlatx=msg.payload.lat;\nlony=msg.payload.lon;\ntstd=msg.payload.tst;\naltd=msg.payload.alt;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 960,
+        "wires": [
+            [
+                "7d9e2d11.cc1284"
+            ]
+        ]
+    },
+    {
+        "id": "e2874834.3faae8",
+        "type": "switch",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "latx not 0",
+        "property": "payload.latx",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1380,
+        "y": 1020,
+        "wires": [
+            [
+                "4b3a40d2.1df55"
+            ]
+        ]
+    },
+    {
+        "id": "be8df6f8.5f1e28",
+        "type": "switch",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "flow.min",
+        "property": "payload.speed",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "$flowContext(\"min\")/3.6 ",
+                "vt": "jsonata"
+            },
+            {
+                "t": "lt",
+                "v": "$flowContext(\"min\")/3.6 ",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1160,
+        "y": 1040,
+        "wires": [
+            [
+                "200409a6.1933f6"
+            ],
+            [
+                "5e10ebd8.968a44"
+            ]
+        ]
+    },
+    {
+        "id": "1ec09886.755027",
+        "type": "switch",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "imuスイッチ",
+        "property": "imu",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1150,
+        "y": 900,
+        "wires": [
+            [
+                "ab2a6417.238a28"
+            ],
+            [
+                "d89224cb.8a0cb8"
+            ]
+        ]
+    },
+    {
+        "id": "ab2a6417.238a28",
+        "type": "switch",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "global.imu_gate",
+        "property": "imu_gate",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1360,
+        "y": 900,
+        "wires": [
+            [
+                "d89224cb.8a0cb8"
+            ]
+        ]
+    },
+    {
+        "id": "5e10ebd8.968a44",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "$round(payload.speed*3.6*10)/10",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.dis",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d9e2d11.cc1284",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.acc",
+                "pt": "msg",
+                "to": "(payload.epx+payload.epy)/2",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1600,
+        "y": 960,
+        "wires": [
+            [
+                "e2874834.3faae8"
+            ]
+        ]
+    },
+    {
+        "id": "4b3a40d2.1df55",
+        "type": "function",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "2点間距離",
+        "func": "function distance(lat1, lng1, lat2, lng2 ) {//２点間距離\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         return (Math.round(dis * 100)) / 100;\n    \n     \n}\n\nfunction direction(y1, x1, y2, x2) {//２点間角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {//進行方向との角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n\ndist=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\n\n\nif(dist>=0){\nmsg.payload.dis=dist;\n   \nreturn msg;\n}\n//}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ndist=0.00",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 1020,
+        "wires": [
+            [
+                "abdb113b.52f46"
+            ]
+        ]
+    },
+    {
+        "id": "abdb113b.52f46",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "$round(payload.speed*3.6*10)/10",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1420,
+        "y": 1080,
+        "wires": [
+            [
+                "34571342.e0752c"
+            ]
+        ]
+    },
+    {
+        "id": "34571342.e0752c",
+        "type": "debug",
+        "z": "dc1c6fdb.d2e7",
+        "g": "2a0ac812.53f518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1720,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "4dbde3cb.4b8bcc",
+        "type": "switch",
+        "z": "361ce87e.80f648",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "latx",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 230,
+        "y": 80,
+        "wires": [
+            [
+                "c2d88f2e.41a4f"
+            ]
+        ]
+    },
+    {
+        "id": "f1bda9f1.4faa58",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1610,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "e5ac5aa0.d6df78",
+        "type": "change",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.lat",
+                "pt": "msg",
+                "to": "lat3",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.lon",
+                "pt": "msg",
+                "to": "lon3",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.iconColor",
+                "pt": "msg",
+                "to": "green",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 460,
+        "wires": [
+            [
+                "e9899199.4dc21"
+            ]
+        ]
+    },
+    {
+        "id": "71992def.3a8e94",
+        "type": "change",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.lat",
+                "pt": "msg",
+                "to": "lat1",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.lon",
+                "pt": "msg",
+                "to": "lon1",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.iconColor",
+                "pt": "msg",
+                "to": "blue",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 380,
+        "wires": [
+            [
+                "e9899199.4dc21"
+            ]
+        ]
+    },
+    {
+        "id": "e9899199.4dc21",
+        "type": "change",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.icon",
+                "pt": "msg",
+                "to": "circle",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.name",
+                "pt": "msg",
+                "to": "payload.tst",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.tst",
+                "pt": "msg",
+                "to": "$fromMillis(payload.tst+32400000)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1440,
+        "y": 460,
+        "wires": [
+            [
+                "9371e5be.f0d2f8",
+                "2464d4da.17916c",
+                "dfdbfce.61426"
+            ]
+        ]
+    },
+    {
+        "id": "dfdbfce.61426",
+        "type": "ui_text",
+        "z": "9d68a1c7.f4976",
+        "group": "4707e75.554a618",
+        "order": 14,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "取得座標",
+        "format": "{{msg.payload.lat}} , {{msg.payload.lon}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1680,
+        "y": 500,
+        "wires": []
     }
 ]
