@@ -271,9 +271,7 @@
             "4650f4c4.97a1ac"
         ],
         "x": 934,
-        "y": 1479,
-        "w": 672,
-        "h": 302
+        "y": 1479
     },
     {
         "id": "2a0ac812.53f518",
@@ -725,7 +723,7 @@
         "id": "665ac286.d04e5c",
         "type": "serial-port",
         "serialport": "/dev/ttyUSB0",
-        "serialbaud": "1200",
+        "serialbaud": "9600",
         "databits": "8",
         "parity": "none",
         "stopbits": "1",
@@ -2472,20 +2470,6 @@
         "wires": [
             [
                 "8c7170d0.ed4a6"
-            ]
-        ]
-    },
-    {
-        "id": "f59a427b.32e1e",
-        "type": "serial in",
-        "z": "975620f5.ba38",
-        "name": "",
-        "serial": "665ac286.d04e5c",
-        "x": 90,
-        "y": 40,
-        "wires": [
-            [
-                "6c4ba7eb.f8c328"
             ]
         ]
     },
@@ -13630,7 +13614,7 @@
         "type": "debug",
         "z": "dc1c6fdb.d2e7",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -13879,15 +13863,15 @@
         "id": "92625acb2da84bf0",
         "type": "exec",
         "z": "dc1c6fdb.d2e7",
-        "command": "gpsctl -c 0.25 /dev/ttyS0",
+        "command": "gpsctl -c 0.25 /dev/ttyUSB0",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "gpsd 4hz",
-        "x": 680,
-        "y": 660,
+        "x": 740,
+        "y": 540,
         "wires": [
             [],
             [],
@@ -15495,5 +15479,98 @@
                 "be042f3f.f2fad"
             ]
         ]
+    },
+    {
+        "id": "ddb3f494.4d1cc8",
+        "type": "inject",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "92625acb2da84bf0"
+            ]
+        ]
+    },
+    {
+        "id": "9b66b5cf.0ba328",
+        "type": "inject",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 570,
+        "y": 620,
+        "wires": [
+            [
+                "e86a3628.34cb78"
+            ]
+        ]
+    },
+    {
+        "id": "e86a3628.34cb78",
+        "type": "exec",
+        "z": "dc1c6fdb.d2e7",
+        "command": "sudo sh /home/pi/gpsd_restart.sh",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "gpsd restart",
+        "x": 760,
+        "y": 640,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4d94c33c.b149cc",
+        "type": "debug",
+        "z": "975620f5.ba38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 560,
+        "wires": []
     }
 ]
