@@ -2076,7 +2076,7 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//context.flow.move==true;\n//flow.set(\"pause\",false);",
         "finalize": "",
         "libs": [],
-        "x": 280,
+        "x": 580,
         "y": 1260,
         "wires": [
             [
@@ -2095,11 +2095,11 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 260,
-        "y": 1340,
+        "x": 180,
+        "y": 1360,
         "wires": [
             [
-                "7a95fa74.9bada4"
+                "5f56c4f77c18f45f"
             ]
         ]
     },
@@ -2112,20 +2112,16 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
+                "t": "true"
             },
             {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
+                "t": "false"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 660,
+        "x": 960,
         "y": 1260,
         "wires": [
             [
@@ -2155,7 +2151,7 @@
         "payloadType": "date",
         "topic": "",
         "topicType": "str",
-        "x": 130,
+        "x": 430,
         "y": 1260,
         "wires": [
             [
@@ -2209,7 +2205,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
+        "x": 790,
         "y": 1260,
         "wires": [
             [
@@ -2377,7 +2373,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
+        "x": 1120,
         "y": 1200,
         "wires": [
             [
@@ -2411,7 +2407,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
+        "x": 1120,
         "y": 1320,
         "wires": [
             [
@@ -4550,7 +4546,7 @@
         "topic": "",
         "payload": "true",
         "payloadType": "bool",
-        "x": 270,
+        "x": 570,
         "y": 1180,
         "wires": [
             [
@@ -4997,8 +4993,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 820,
+        "x": 370,
+        "y": 900,
         "wires": [
             []
         ]
@@ -5024,7 +5020,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 190,
         "y": 900,
         "wires": [
             [
@@ -5191,7 +5187,7 @@
         "func": "genku=flow.get(\"genku\");\nku=global.get(\"ku\");\nremain=msg.payload;\nmsg.payload={\n    oddr:ku[genku]-remain,\n    remain:remain,\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nku=Array()",
+        "initialize": "// ここに記��したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nku=Array()",
         "finalize": "",
         "libs": [],
         "x": 2280,
@@ -5207,7 +5203,7 @@
         "type": "debug",
         "z": "f20b3fe7.75306",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -6934,7 +6930,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -7507,8 +7503,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 260,
-        "y": 620,
+        "x": 240,
+        "y": 680,
         "wires": [
             [
                 "a890f8fb.f37fe8"
@@ -8035,9 +8031,6 @@
         "name": "",
         "links": [
             "2abf06e4.628d2a",
-            "4b006a97.b509ac",
-            "5c56a248.7ed384",
-            "6ec15a43.80b15c",
             "b74f199d.ee4458",
             "eb24db7b.d88d28"
         ],
@@ -8537,7 +8530,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 640,
-        "y": 420,
+        "y": 320,
         "wires": [
             [
                 "5976f7cc.62d488"
@@ -8571,7 +8564,7 @@
         "to": "",
         "reg": false,
         "x": 850,
-        "y": 420,
+        "y": 320,
         "wires": [
             [
                 "c1b3c6cc.ebf4d8"
@@ -8665,15 +8658,15 @@
         "type": "worldmap-tracks",
         "z": "f20b3fe7.75306",
         "name": "tracks1",
-        "depth": "3600",
-        "layer": "separate",
+        "depth": "9600",
+        "layer": "single",
         "smooth": false,
-        "x": 680,
-        "y": 580,
+        "x": 880,
+        "y": 620,
         "wires": [
             [
                 "6ec15a43.80b15c",
-                "fcd67061.71d3b"
+                "37a236452360fcc7"
             ]
         ]
     },
@@ -8689,7 +8682,8 @@
         "y": 340,
         "wires": [
             [
-                "5c56a248.7ed384"
+                "5c56a248.7ed384",
+                "812e04676f65bc86"
             ]
         ]
     },
@@ -8761,7 +8755,8 @@
         "wires": [
             [
                 "e8754dac.c59448",
-                "f64648a5.3e4948"
+                "f64648a5.3e4948",
+                "f3540738.4df938"
             ]
         ]
     },
@@ -8860,7 +8855,7 @@
         "device": false,
         "gst": false,
         "att": false,
-        "x": 130,
+        "x": 110,
         "y": 140,
         "wires": [
             [
@@ -10786,7 +10781,7 @@
                 "t": "set",
                 "p": "payload.tid",
                 "pt": "msg",
-                "to": "gpsd",
+                "to": "gd",
                 "tot": "str"
             },
             {
@@ -11500,7 +11495,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
+        "x": 750,
         "y": 520,
         "wires": []
     },
@@ -12210,6 +12205,13 @@
                 "pt": "msg",
                 "to": "$parent.lony",
                 "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "payload.bearing",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
             }
         ],
         "action": "",
@@ -12277,7 +12279,7 @@
                 "t": "set",
                 "p": "payload.kmh",
                 "pt": "msg",
-                "to": "$round((payload.speed*3.6*10)/10)",
+                "to": "$round(payload.speed*3.6*10)/10",
                 "tot": "jsonata"
             }
         ],
@@ -12304,11 +12306,12 @@
         "y": 480,
         "wires": [
             [
-                "c80e1f66.e7508",
                 "c848b4a6.5a3658",
                 "9d5ce64.d0dd718",
-                "b8b1cea0.7dd62",
-                "b74f199d.ee4458"
+                "b74f199d.ee4458",
+                "c80e1f66.e7508",
+                "5f5a89a84bafafd4",
+                "eb86e33020ccc767"
             ]
         ]
     },
@@ -13646,9 +13649,7 @@
         "type": "link out",
         "z": "8caaa155.e5486",
         "name": "tracks3",
-        "links": [
-            "dfa3b187.7efc"
-        ],
+        "links": [],
         "x": 1035,
         "y": 340,
         "wires": []
@@ -13666,7 +13667,7 @@
         "wires": [
             [
                 "4b006a97.b509ac",
-                "ed23daa5.97b198"
+                "265e6c9e736da98c"
             ]
         ]
     },
@@ -13675,9 +13676,7 @@
         "type": "link out",
         "z": "dc1c6fdb.d2e7",
         "name": "tracks2",
-        "links": [
-            "dfa3b187.7efc"
-        ],
+        "links": [],
         "x": 815,
         "y": 360,
         "wires": []
@@ -13800,31 +13799,13 @@
         ]
     },
     {
-        "id": "ed23daa5.97b198",
-        "type": "debug",
-        "z": "dc1c6fdb.d2e7",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 710,
-        "y": 420,
-        "wires": []
-    },
-    {
         "id": "6ec15a43.80b15c",
         "type": "link out",
         "z": "f20b3fe7.75306",
         "name": "tracks1",
-        "links": [
-            "dfa3b187.7efc"
-        ],
-        "x": 815,
-        "y": 580,
+        "links": [],
+        "x": 1055,
+        "y": 600,
         "wires": []
     },
     {
@@ -13906,23 +13887,6 @@
         "info": "#!/bin/sh\necho -e \"\\$PMTK220,250*29\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK300,250,0,0,0,0*35\\r\\n\" > /dev/ttyS0\necho -e \"\\$PMTK251,57600*2C\\r\\n\" > /dev/ttyS0\nstty -F /dev/ttyS0 57600",
         "x": 610,
         "y": 800,
-        "wires": []
-    },
-    {
-        "id": "fcd67061.71d3b",
-        "type": "debug",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 880,
-        "y": 520,
         "wires": []
     },
     {
@@ -15438,7 +15402,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 420,
-        "y": 580,
+        "y": 600,
         "wires": [
             [
                 "b8b1cea0.7dd62"
@@ -15572,5 +15536,355 @@
         "x": 440,
         "y": 560,
         "wires": []
+    },
+    {
+        "id": "62ffb45ae135ea03",
+        "type": "trigger",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "op1": "true",
+        "op2": "",
+        "op1type": "bool",
+        "op2type": "nul",
+        "duration": "1",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 530,
+        "y": 1340,
+        "wires": [
+            [
+                "7a95fa74.9bada4"
+            ]
+        ]
+    },
+    {
+        "id": "5f56c4f77c18f45f",
+        "type": "switch",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 320,
+        "y": 1360,
+        "wires": [
+            [
+                "62ffb45ae135ea03"
+            ],
+            [
+                "645d3510f807655d"
+            ]
+        ]
+    },
+    {
+        "id": "645d3510f807655d",
+        "type": "trigger",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "op1": "false",
+        "op2": "",
+        "op1type": "bool",
+        "op2type": "nul",
+        "duration": "1",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 530,
+        "y": 1380,
+        "wires": [
+            [
+                "7a95fa74.9bada4"
+            ]
+        ]
+    },
+    {
+        "id": "f3540738.4df938",
+        "type": "mqtt out",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "topic": "owntracks/gpsd/gd",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 290,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "52184fea.295a2",
+        "type": "inject",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.reset",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "p": "payload.meter",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 1050,
+        "y": 560,
+        "wires": [
+            [
+                "1b2e12f.1bf64ed"
+            ]
+        ]
+    },
+    {
+        "id": "f5e892360c0ecbe8",
+        "type": "rbe",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 360,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f5a89a84bafafd4",
+        "type": "mqtt out",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "topic": "trip1/gps",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 780,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "eb86e33020ccc767",
+        "type": "rbe",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 710,
+        "y": 580,
+        "wires": [
+            [
+                "b8b1cea0.7dd62"
+            ]
+        ]
+    },
+    {
+        "id": "37a236452360fcc7",
+        "type": "change",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tracks1",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1070,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d98c264f93d84997",
+        "type": "inject",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "tracks3",
+        "payloadType": "global",
+        "x": 710,
+        "y": 500,
+        "wires": [
+            [
+                "9371e5be.f0d2f8"
+            ]
+        ]
+    },
+    {
+        "id": "265e6c9e736da98c",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tracks2",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "812e04676f65bc86",
+        "type": "change",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tracks3",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f7db520e2e7be1a",
+        "type": "inject",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "tracks2",
+        "payloadType": "global",
+        "x": 700,
+        "y": 460,
+        "wires": [
+            [
+                "9371e5be.f0d2f8"
+            ]
+        ]
+    },
+    {
+        "id": "44b19ec492f7c53b",
+        "type": "inject",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "tracks1",
+        "payloadType": "global",
+        "x": 700,
+        "y": 420,
+        "wires": [
+            [
+                "9371e5be.f0d2f8"
+            ]
+        ]
     }
 ]
