@@ -271,7 +271,9 @@
             "4650f4c4.97a1ac"
         ],
         "x": 934,
-        "y": 1479
+        "y": 1479,
+        "w": 672,
+        "h": 302
     },
     {
         "id": "2a0ac812.53f518",
@@ -5203,7 +5205,7 @@
         "type": "debug",
         "z": "f20b3fe7.75306",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -12310,8 +12312,8 @@
                 "9d5ce64.d0dd718",
                 "b74f199d.ee4458",
                 "c80e1f66.e7508",
-                "5f5a89a84bafafd4",
-                "eb86e33020ccc767"
+                "eb86e33020ccc767",
+                "c4102c9c.aaa99"
             ]
         ]
     },
@@ -15680,7 +15682,6 @@
         "inout": "out",
         "septopics": true,
         "property": "payload",
-        "topi": "topic",
         "x": 360,
         "y": 840,
         "wires": [
@@ -15701,8 +15702,8 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 780,
-        "y": 440,
+        "x": 1020,
+        "y": 380,
         "wires": []
     },
     {
@@ -15716,7 +15717,6 @@
         "inout": "out",
         "septopics": true,
         "property": "payload",
-        "topi": "topic",
         "x": 710,
         "y": 580,
         "wires": [
@@ -15884,6 +15884,81 @@
         "wires": [
             [
                 "9371e5be.f0d2f8"
+            ]
+        ]
+    },
+    {
+        "id": "c4102c9c.aaa99",
+        "type": "change",
+        "z": "f20b3fe7.75306",
+        "name": "データ削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.latx",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.lony",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload._type",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.tid",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.altd",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.tstd",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.tst",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.name",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.icon",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.iconColor",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.dis",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 380,
+        "wires": [
+            [
+                "5f5a89a84bafafd4"
             ]
         ]
     }
