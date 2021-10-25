@@ -56,6 +56,13 @@
         "info": ""
     },
     {
+        "id": "41821272.11be9c",
+        "type": "tab",
+        "label": "arduino　gpio",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "a4e498ec.1c79d8",
         "type": "tab",
         "label": "mqtt",
@@ -231,11 +238,11 @@
                 "y": 180,
                 "wires": [
                     {
-                        "id": "90d72ca8.a41cc8",
+                        "id": "e61de3f2.2fd438",
                         "port": 0
                     },
                     {
-                        "id": "e61de3f2.2fd438",
+                        "id": "80486c5a.54a6",
                         "port": 0
                     }
                 ]
@@ -1021,6 +1028,34 @@
         "order": 4,
         "width": 2,
         "height": 1
+    },
+    {
+        "id": "aae071b3.b33f",
+        "type": "arduino-board",
+        "device": "/dev/ttyUSB0"
+    },
+    {
+        "id": "1987b599.ec521a",
+        "type": "ioplugin",
+        "name": "",
+        "username": "",
+        "password": "",
+        "boardType": "firmata",
+        "serialportName": "/dev/ttyUSB0",
+        "connectionType": "local",
+        "mqttServer": "",
+        "pubTopic": "",
+        "subTopic": "",
+        "tcpHost": "",
+        "tcpPort": "",
+        "sparkId": "",
+        "sparkToken": "",
+        "beanId": "",
+        "impId": "",
+        "uuid": "",
+        "token": "",
+        "sendUuid": "",
+        "samplingInterval": "500"
     },
     {
         "id": "3d6df3db.cc4fdc",
@@ -2295,9 +2330,11 @@
         "passthru": true,
         "outs": "all",
         "topic": "",
-        "min": "10",
-        "max": "180",
+        "topicType": "str",
+        "min": "30",
+        "max": "120",
         "step": "10",
+        "className": "",
         "x": 370,
         "y": 1420,
         "wires": [
@@ -4136,8 +4173,8 @@
         "id": "6c299e81.44f1e",
         "type": "file in",
         "z": "90be64ef.6b4fc8",
-        "name": "princess.csv",
-        "filename": "/home/pi/samba/public/princess.csv",
+        "name": "fukuoka.csv",
+        "filename": "/home/pi/samba/public/fukuoka.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
@@ -5494,7 +5531,7 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
+        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=odd*flow.get(\"coe\");\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -5835,9 +5872,11 @@
         "passthru": true,
         "outs": "all",
         "topic": "",
-        "min": "10",
-        "max": "180",
+        "topicType": "str",
+        "min": "30",
+        "max": "120",
         "step": "10",
+        "className": "",
         "x": 320,
         "y": 1140,
         "wires": [
@@ -6919,7 +6958,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -7714,7 +7753,7 @@
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
+        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=odd*flow.get(\"coe\");\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -8645,7 +8684,7 @@
         "type": "worldmap-tracks",
         "z": "f20b3fe7.75306",
         "name": "tracks1",
-        "depth": "9600",
+        "depth": "4000",
         "layer": "single",
         "smooth": false,
         "x": 880,
@@ -11002,9 +11041,10 @@
         "outs": "all",
         "topic": "",
         "topicType": "str",
-        "min": "10",
-        "max": "180",
+        "min": "30",
+        "max": "120",
         "step": "10",
+        "className": "",
         "x": 410,
         "y": 1120,
         "wires": [
@@ -12242,7 +12282,7 @@
         "type": "function",
         "z": "79519d85.08b504",
         "name": "2点間距離",
-        "func": "function distance(lat1, lng1, lat2, lng2 ) {//２点間距離\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         return (Math.round(dis * 100)) / 100;\n    \n     \n}\n\nfunction direction(y1, x1, y2, x2) {//２点間角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {//進行方向との角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n\ndist=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\n\n\nif(dist>=0){\nmsg.payload.dis=dist;\n   \nreturn msg;\n}\n//}",
+        "func": "function distance(lat1, lng1, lat2, lng2 ) {//２点間距離\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         //return (Math.round(dis * 100)) / 100;\n         return dis;\n     \n}\n\nfunction direction(y1, x1, y2, x2) {//２点間角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {//進行方向との角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n\ndist=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\n\n\nif(dist>=0){\nmsg.payload.dis=dist;\n   \nreturn msg;\n}\n//}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ndist=0.00",
@@ -12251,9 +12291,7 @@
         "x": 1050,
         "y": 240,
         "wires": [
-            [
-                "90d72ca8.a41cc8"
-            ]
+            []
         ]
     },
     {
@@ -13357,7 +13395,7 @@
         "type": "function",
         "z": "dc1c6fdb.d2e7",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n}\n    \n\nreturn msg;\n",
+        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=odd*flow.get(\"coe\");\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -16095,5 +16133,58 @@
                 "5c393273.44ee3c"
             ]
         ]
+    },
+    {
+        "id": "a0f1c6f2.62c5c8",
+        "type": "mqtt in",
+        "z": "41821272.11be9c",
+        "name": "",
+        "topic": "t2ps5r",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 290,
+        "y": 840,
+        "wires": [
+            [
+                "3aa920a3.1d6e",
+                "976e7f0a.e2cc3"
+            ]
+        ]
+    },
+    {
+        "id": "3aa920a3.1d6e",
+        "type": "debug",
+        "z": "41821272.11be9c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "976e7f0a.e2cc3",
+        "type": "gpio out",
+        "z": "41821272.11be9c",
+        "name": "",
+        "state": "OUTPUT",
+        "pin": "13",
+        "i2cDelay": "0",
+        "i2cAddress": "",
+        "i2cRegister": "",
+        "outputs": 0,
+        "board": "1987b599.ec521a",
+        "x": 480,
+        "y": 840,
+        "wires": []
     }
 ]
