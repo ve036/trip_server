@@ -302,9 +302,7 @@
             "34571342.e0752c"
         ],
         "x": 1054,
-        "y": 859,
-        "w": 782,
-        "h": 302
+        "y": 859
     },
     {
         "id": "cd49fe9a.d0506",
@@ -725,7 +723,7 @@
         "id": "665ac286.d04e5c",
         "type": "serial-port",
         "serialport": "/dev/ttyUSB0",
-        "serialbaud": "9600",
+        "serialbaud": "1200",
         "databits": "8",
         "parity": "none",
         "stopbits": "1",
@@ -4137,11 +4135,12 @@
         "type": "file in",
         "z": "90be64ef.6b4fc8",
         "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/fukuoka.csv",
+        "filename": "/home/pi/samba/public/princess.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
+        "allProps": false,
         "x": 310,
         "y": 160,
         "wires": [
@@ -5323,11 +5322,12 @@
         "type": "file in",
         "z": "90be64ef.6b4fc8",
         "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/fukuoka.csv",
+        "filename": "/home/pi/samba/public/princess.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
+        "allProps": false,
         "x": 310,
         "y": 240,
         "wires": [
@@ -5442,12 +5442,10 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 150,
-        "y": 100,
+        "x": 330,
+        "y": 120,
         "wires": [
-            [
-                "235ebb81.276a44"
-            ]
+            []
         ]
     },
     {
@@ -6916,7 +6914,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -8660,7 +8658,7 @@
         "type": "worldmap-tracks",
         "z": "f20b3fe7.75306",
         "name": "tracks1",
-        "depth": "9600",
+        "depth": "4000",
         "layer": "single",
         "smooth": false,
         "x": 880,
@@ -8841,27 +8839,6 @@
         "wires": [
             [
                 "91c05e28.52298"
-            ]
-        ]
-    },
-    {
-        "id": "b75dc69f.00e1c8",
-        "type": "gpsd",
-        "z": "dc1c6fdb.d2e7",
-        "name": "gpsd",
-        "hostname": "localhost",
-        "port": "2947",
-        "tpv": true,
-        "sky": false,
-        "info": false,
-        "device": false,
-        "gst": false,
-        "att": false,
-        "x": 110,
-        "y": 140,
-        "wires": [
-            [
-                "53538238.2d612c"
             ]
         ]
     },
@@ -11552,17 +11529,18 @@
         "type": "mqtt in",
         "z": "8caaa155.e5486",
         "name": "",
-        "topic": "owntracks/nodered/sense3",
+        "topic": "owntracks/nodered/03",
         "qos": "0",
         "datatype": "auto",
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "x": 150,
+        "x": 140,
         "y": 40,
         "wires": [
             [
-                "c67bffe3.6786b"
+                "c67bffe3.6786b",
+                "235ebb81.276a44"
             ]
         ]
     },
@@ -14157,7 +14135,8 @@
         "y": 620,
         "wires": [
             [
-                "b368cd7b069d78d1"
+                "b368cd7b069d78d1",
+                "7d27578767899bae"
             ]
         ]
     },
@@ -15961,5 +15940,114 @@
                 "5f5a89a84bafafd4"
             ]
         ]
+    },
+    {
+        "id": "36dd8499a3d80cbd",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "base",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1400,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e944bf62695ed69",
+        "type": "join",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "1",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1190,
+        "y": 340,
+        "wires": [
+            [
+                "36dd8499a3d80cbd"
+            ]
+        ]
+    },
+    {
+        "id": "6e035480734b8870",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "データ削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.meter",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.kukyori",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.coefficient",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.approach",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 340,
+        "wires": [
+            [
+                "4e944bf62695ed69"
+            ]
+        ]
+    },
+    {
+        "id": "7d27578767899bae",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3020,
+        "y": 700,
+        "wires": []
     }
 ]
