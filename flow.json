@@ -338,9 +338,7 @@
             "4650f4c4.97a1ac"
         ],
         "x": 934,
-        "y": 1479,
-        "w": 672,
-        "h": 302
+        "y": 1479
     },
     {
         "id": "cd49fe9a.d0506",
@@ -760,7 +758,7 @@
     {
         "id": "665ac286.d04e5c",
         "type": "serial-port",
-        "serialport": "/dev/ttyAMA0",
+        "serialport": "/dev/ttyUSB0",
         "serialbaud": "1200",
         "databits": "8",
         "parity": "none",
@@ -1031,7 +1029,7 @@
         "uuid": "",
         "token": "",
         "sendUuid": "",
-        "samplingInterval": "500"
+        "samplingInterval": "100"
     },
     {
         "id": "3c24eea0.3de1f2",
@@ -2178,7 +2176,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 960,
         "y": 560,
         "wires": [
@@ -2217,7 +2214,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 180,
         "y": 1360,
         "wires": [
@@ -2633,7 +2629,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 130,
         "y": 340,
         "wires": [
@@ -3989,7 +3984,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "outputs": 1,
         "x": 2020,
         "y": 520,
         "wires": [
@@ -4732,7 +4726,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": true,
-        "outputs": 1,
         "x": 2630,
         "y": 400,
         "wires": [
@@ -5432,7 +5425,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 300,
         "y": 1040,
         "wires": [
@@ -6156,7 +6148,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 940,
         "y": 380,
         "wires": [
@@ -6626,7 +6617,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "outputs": 1,
         "x": 2040,
         "y": 320,
         "wires": [
@@ -7394,14 +7384,13 @@
         "type": "mqtt in",
         "z": "dc1c6fdb.d2e7",
         "name": "",
-        "topic": "owntracks/nodered/sense3",
+        "topic": "owntracks/nodered/02",
         "qos": "0",
         "datatype": "auto",
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
-        "x": 170,
+        "x": 160,
         "y": 40,
         "wires": [
             [
@@ -7451,13 +7440,10 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
-        "x": 150,
-        "y": 120,
+        "x": 130,
+        "y": 280,
         "wires": [
-            [
-                "235ebb81.276a44"
-            ]
+            []
         ]
     },
     {
@@ -7564,7 +7550,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 1220,
         "y": 360,
         "wires": [
@@ -8275,7 +8260,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "outputs": 1,
         "x": 2380,
         "y": 620,
         "wires": [
@@ -8870,7 +8854,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -9899,7 +9883,8 @@
         "y": 620,
         "wires": [
             [
-                "b368cd7b069d78d1"
+                "b368cd7b069d78d1",
+                "7d27578767899bae"
             ]
         ]
     },
@@ -10304,9 +10289,8 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
-        "x": 410,
-        "y": 60,
+        "x": 409,
+        "y": 94,
         "wires": [
             [
                 "93d9188a.74b8d8"
@@ -10624,7 +10608,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 190,
         "y": 1280,
         "wires": [
@@ -10676,7 +10659,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 110,
         "y": 1220,
         "wires": [
@@ -12113,11 +12095,12 @@
         "type": "file in",
         "z": "90be64ef.6b4fc8",
         "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/fukuoka.csv",
+        "filename": "/home/pi/samba/public/princess.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
+        "allProps": false,
         "x": 310,
         "y": 160,
         "wires": [
@@ -12477,11 +12460,12 @@
         "type": "file in",
         "z": "90be64ef.6b4fc8",
         "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/fukuoka.csv",
+        "filename": "/home/pi/samba/public/princess.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
+        "allProps": false,
         "x": 310,
         "y": 240,
         "wires": [
@@ -12613,7 +12597,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 150,
         "y": 280,
         "wires": [
@@ -14342,7 +14325,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 120,
         "y": 420,
         "wires": [
@@ -14521,28 +14503,6 @@
         ]
     },
     {
-        "id": "a0f1c6f2.62c5c8",
-        "type": "mqtt in",
-        "z": "41821272.11be9c",
-        "name": "",
-        "topic": "t2ps5r",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 290,
-        "y": 840,
-        "wires": [
-            [
-                "3aa920a3.1d6e",
-                "bc1dae36f74ee38b"
-            ]
-        ]
-    },
-    {
         "id": "3aa920a3.1d6e",
         "type": "debug",
         "z": "41821272.11be9c",
@@ -14554,24 +14514,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 480,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "bc1dae36f74ee38b",
-        "type": "gpio out",
-        "z": "41821272.11be9c",
-        "name": "",
-        "state": "OUTPUT",
-        "pin": "13",
-        "i2cDelay": "0",
-        "i2cAddress": "",
-        "i2cRegister": "",
-        "outputs": 0,
-        "board": "1987b599.ec521a",
-        "x": 500,
-        "y": 840,
+        "x": 310,
+        "y": 280,
         "wires": []
     },
     {
@@ -15795,7 +15739,6 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "b50fbb45.a8d5d8",
-        "inputs": 0,
         "x": 630,
         "y": 260,
         "wires": [
@@ -16027,7 +15970,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": true,
-        "outputs": 1,
         "x": 340,
         "y": 260,
         "wires": [
@@ -16068,7 +16010,6 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "b50fbb45.a8d5d8",
-        "inputs": 0,
         "x": 100,
         "y": 840,
         "wires": [
@@ -16086,7 +16027,6 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "b50fbb45.a8d5d8",
-        "inputs": 0,
         "x": 90,
         "y": 960,
         "wires": [
@@ -16330,5 +16270,168 @@
         "x": 320,
         "y": 80,
         "wires": []
+    },
+    {
+        "id": "be09b343.d5448",
+        "type": "mqtt in",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "topic": "owntracks/nodered/03",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
+        "x": 140,
+        "y": 40,
+        "wires": [
+            [
+                "235ebb81.276a44"
+            ]
+        ]
+    },
+    {
+        "id": "36dd8499a3d80cbd",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "base",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1400,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e944bf62695ed69",
+        "type": "join",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "1",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1190,
+        "y": 340,
+        "wires": [
+            [
+                "36dd8499a3d80cbd"
+            ]
+        ]
+    },
+    {
+        "id": "6e035480734b8870",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "データ削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.meter",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.kukyori",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.coefficient",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.approach",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 340,
+        "wires": [
+            [
+                "4e944bf62695ed69"
+            ]
+        ]
+    },
+    {
+        "id": "7d27578767899bae",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3020,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "a32905709960180a",
+        "type": "mqtt out",
+        "z": "41821272.11be9c",
+        "name": "",
+        "topic": "t1ps1r",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 280,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "859ae580055f7209",
+        "type": "gpio in",
+        "z": "41821272.11be9c",
+        "name": "",
+        "state": "PULLUP",
+        "pin": "2",
+        "board": "1987b599.ec521a",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "3aa920a3.1d6e",
+                "a32905709960180a"
+            ]
+        ]
     }
 ]
