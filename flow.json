@@ -338,7 +338,9 @@
             "4650f4c4.97a1ac"
         ],
         "x": 934,
-        "y": 1479
+        "y": 1479,
+        "w": 672,
+        "h": 302
     },
     {
         "id": "cd49fe9a.d0506",
@@ -865,6 +867,7 @@
         "broker": "localhost",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
         "protocolVersion": "4",
@@ -1049,6 +1052,32 @@
         "out": "char",
         "addchar": "",
         "responsetimeout": "10000"
+    },
+    {
+        "id": "50c6b968735ea611",
+        "type": "mqtt-broker",
+        "name": "rkb",
+        "broker": "210.203.214.250",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "c2d88f2e.41a4f",
@@ -2176,6 +2205,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 960,
         "y": 560,
         "wires": [
@@ -2214,6 +2244,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 180,
         "y": 1360,
         "wires": [
@@ -2629,6 +2660,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 130,
         "y": 340,
         "wires": [
@@ -3523,7 +3555,8 @@
         "y": 760,
         "wires": [
             [
-                "5e7554ca.c5832c"
+                "5e7554ca.c5832c",
+                "f4a917b1b222ac40"
             ]
         ]
     },
@@ -3984,6 +4017,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
+        "outputs": 1,
         "x": 2020,
         "y": 520,
         "wires": [
@@ -4257,7 +4291,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.kyori}}m/{{payload.kukyori}}m </font>",
+        "template": "{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.kyori}}m/{{payload.kukyori}}m ",
         "output": "str",
         "x": 2470,
         "y": 460,
@@ -4281,6 +4315,7 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
+        "className": "",
         "x": 2650,
         "y": 460,
         "wires": [
@@ -4726,6 +4761,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": true,
+        "outputs": 1,
         "x": 2630,
         "y": 400,
         "wires": [
@@ -5211,7 +5247,7 @@
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "resetエリア限定",
-        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= msg.payload.zenku){\n    point=1;\n}\nmsg.payload=[reset[0],reset[point+1]];\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
+        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= global.get(\"reset_q\")){\n    point=0;\n}\nmsg.payload=[reset[point+1],reset[point+2]];\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5308,6 +5344,22 @@
         "serial": "3c24eea0.3de1f2",
         "x": 3100,
         "y": 520,
+        "wires": []
+    },
+    {
+        "id": "f4a917b1b222ac40",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 720,
         "wires": []
     },
     {
@@ -5425,6 +5477,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 300,
         "y": 1040,
         "wires": [
@@ -6148,6 +6201,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 940,
         "y": 380,
         "wires": [
@@ -6617,6 +6671,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
+        "outputs": 1,
         "x": 2040,
         "y": 320,
         "wires": [
@@ -7302,7 +7357,7 @@
         "type": "function",
         "z": "dc1c6fdb.d2e7",
         "name": "resetエリア限定",
-        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= msg.payload.zenku){\n    point=1;\n}\nmsg.payload=[reset[0],reset[point+1]];\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
+        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\n//if(point >= msg.payload.zenku){\n//    point=1;\n//}\nmsg.payload=[reset[point+1],reset[point+2]];\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -7390,6 +7445,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 160,
         "y": 40,
         "wires": [
@@ -7440,10 +7496,13 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 130,
         "y": 280,
         "wires": [
-            []
+            [
+                "235ebb81.276a44"
+            ]
         ]
     },
     {
@@ -7550,6 +7609,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 1220,
         "y": 360,
         "wires": [
@@ -8260,6 +8320,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
+        "outputs": 1,
         "x": 2380,
         "y": 620,
         "wires": [
@@ -8746,7 +8807,8 @@
         "y": 740,
         "wires": [
             [
-                "2794ad37.bc62f2"
+                "2794ad37.bc62f2",
+                "c4d7554d04abc4a3"
             ]
         ]
     },
@@ -8854,7 +8916,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -8886,7 +8948,7 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "resetエリア限定",
-        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= msg.payload.zenku){\n    point=1;\n}\nmsg.payload=[reset[0],reset[point+1]];\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
+        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= global.get(\"reset_q\")){\n    point=0;\n}\nif(point+2 < global.get(\"reset_q\")){\n    msg.payload=[reset[point+1],reset[point+2]];\n}\nelse{\n    msg.payload=[reset[point+1]]; \n}\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -10289,6 +10351,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 409,
         "y": 94,
         "wires": [
@@ -10318,7 +10381,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10494,6 +10557,56 @@
         ]
     },
     {
+        "id": "be09b343.d5448",
+        "type": "mqtt in",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "topic": "owntracks/nodered/03",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 140,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d27578767899bae",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3020,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c4d7554d04abc4a3",
+        "type": "debug",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2240,
+        "y": 720,
+        "wires": []
+    },
+    {
         "id": "e5f734cd.f03418",
         "type": "inject",
         "z": "9d68a1c7.f4976",
@@ -10608,6 +10721,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 190,
         "y": 1280,
         "wires": [
@@ -10659,6 +10773,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 110,
         "y": 1220,
         "wires": [
@@ -12082,7 +12197,7 @@
         "strings": true,
         "include_empty_strings": false,
         "include_null_values": true,
-        "x": 470,
+        "x": 490,
         "y": 160,
         "wires": [
             [
@@ -12095,18 +12210,16 @@
         "type": "file in",
         "z": "90be64ef.6b4fc8",
         "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/princess.csv",
+        "filename": "/home/pi/samba/public/fukuoka.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 310,
-        "y": 160,
+        "x": 510,
+        "y": 100,
         "wires": [
-            [
-                "5bbabff7.7c3c9"
-            ]
+            []
         ]
     },
     {
@@ -12159,7 +12272,8 @@
         "y": 160,
         "wires": [
             [
-                "6c299e81.44f1e"
+                "eccfce558b0d2a23",
+                "4ef7d45f0afde81e"
             ]
         ]
     },
@@ -12305,7 +12419,7 @@
         "type": "function",
         "z": "90be64ef.6b4fc8",
         "name": "全区セット",
-        "func": "x=msg.payload.number;\ny=msg.payload.reset;\nif(x > zenku){\n    //zenku=x;\n    zenku=x;\n}\nif(y > no){\n    no=y;\n}\nglobal.set(\"zenku\",zenku-1);\nglobal.set(\"reset_q\",no);\nmsg.payload={\n    zenku:zenku-1,\n    no:no\n}\n//msg.payload=x;\nreturn msg;",
+        "func": "x=msg.payload.number;\ny=msg.payload.reset;\nif(x > zenku){\n    //zenku=x;\n    zenku=x;\n}\nif(y > no){\n    no=y;\n}\nglobal.set(\"zenku\",zenku);\nglobal.set(\"reset_q\",no);\nmsg.payload={\n    zenku:zenku,\n    no:no\n}\n//msg.payload=x;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nzenku=0;\nno=0;\n//global.set(\"genku1\",0)",
@@ -12460,18 +12574,16 @@
         "type": "file in",
         "z": "90be64ef.6b4fc8",
         "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/princess.csv",
+        "filename": "/home/pi/samba/public/fukuoka.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
         "allProps": false,
         "x": 310,
-        "y": 240,
+        "y": 220,
         "wires": [
-            [
-                "128caa6d.7cc306"
-            ]
+            []
         ]
     },
     {
@@ -12547,7 +12659,7 @@
         "y": 240,
         "wires": [
             [
-                "596d7ca3.b682d4"
+                "2033287edb0569e4"
             ]
         ]
     },
@@ -12597,11 +12709,12 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 150,
+        "inputs": 0,
+        "x": 110,
         "y": 280,
         "wires": [
             [
-                "596d7ca3.b682d4"
+                "2033287edb0569e4"
             ]
         ]
     },
@@ -12643,6 +12756,208 @@
             [
                 "b246a674.ba1868"
             ]
+        ]
+    },
+    {
+        "id": "36dd8499a3d80cbd",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "base",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1400,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e944bf62695ed69",
+        "type": "join",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "1",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1190,
+        "y": 340,
+        "wires": [
+            [
+                "36dd8499a3d80cbd"
+            ]
+        ]
+    },
+    {
+        "id": "6e035480734b8870",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "データ削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.meter",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.kukyori",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.coefficient",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.approach",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 340,
+        "wires": [
+            [
+                "4e944bf62695ed69"
+            ]
+        ]
+    },
+    {
+        "id": "43a6427000a45d74",
+        "type": "mqtt in",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "topic": "record",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "50c6b968735ea611",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "4f90784acb95fdf8"
+            ]
+        ]
+    },
+    {
+        "id": "4f90784acb95fdf8",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "record",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eccfce558b0d2a23",
+        "type": "file in",
+        "z": "90be64ef.6b4fc8",
+        "name": "毎日駅伝",
+        "filename": "/home/pi/samba/public/mainichi.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "5bbabff7.7c3c9"
+            ]
+        ]
+    },
+    {
+        "id": "2033287edb0569e4",
+        "type": "file in",
+        "z": "90be64ef.6b4fc8",
+        "name": "毎日駅伝",
+        "filename": "/home/pi/samba/public/mainichi.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "128caa6d.7cc306"
+            ]
+        ]
+    },
+    {
+        "id": "4ef7d45f0afde81e",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "zenku",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 180,
+        "wires": [
+            []
         ]
     },
     {
@@ -14325,6 +14640,7 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
+        "inputs": 0,
         "x": 120,
         "y": 420,
         "wires": [
@@ -14503,7 +14819,43 @@
         ]
     },
     {
-        "id": "3aa920a3.1d6e",
+        "id": "8d4bafef3fcc17ed",
+        "type": "mqtt in",
+        "z": "41821272.11be9c",
+        "name": "",
+        "topic": "t2ps5r",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 480,
+        "wires": [
+            [
+                "b23b63d65446a16a",
+                "0c045ee17a653ab8"
+            ]
+        ]
+    },
+    {
+        "id": "2208c51f216639b8",
+        "type": "rpi-gpio out",
+        "z": "41821272.11be9c",
+        "name": "",
+        "pin": "40",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 740,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b23b63d65446a16a",
         "type": "debug",
         "z": "41821272.11be9c",
         "name": "",
@@ -14514,9 +14866,96 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 310,
-        "y": 280,
+        "x": 370,
+        "y": 520,
         "wires": []
+    },
+    {
+        "id": "0c045ee17a653ab8",
+        "type": "switch",
+        "z": "41821272.11be9c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "e8d01c41aaf9fb6d"
+            ],
+            [
+                "76a221b3b796e42b"
+            ]
+        ]
+    },
+    {
+        "id": "e8d01c41aaf9fb6d",
+        "type": "change",
+        "z": "41821272.11be9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 420,
+        "wires": [
+            [
+                "2208c51f216639b8"
+            ]
+        ]
+    },
+    {
+        "id": "76a221b3b796e42b",
+        "type": "change",
+        "z": "41821272.11be9c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 480,
+        "wires": [
+            [
+                "2208c51f216639b8"
+            ]
+        ]
     },
     {
         "id": "3435817a.ae655e",
@@ -15739,6 +16178,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "b50fbb45.a8d5d8",
+        "inputs": 0,
         "x": 630,
         "y": 260,
         "wires": [
@@ -15970,6 +16410,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": true,
+        "outputs": 1,
         "x": 340,
         "y": 260,
         "wires": [
@@ -16010,6 +16451,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "b50fbb45.a8d5d8",
+        "inputs": 0,
         "x": 100,
         "y": 840,
         "wires": [
@@ -16027,6 +16469,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "b50fbb45.a8d5d8",
+        "inputs": 0,
         "x": 90,
         "y": 960,
         "wires": [
@@ -16270,168 +16713,5 @@
         "x": 320,
         "y": 80,
         "wires": []
-    },
-    {
-        "id": "be09b343.d5448",
-        "type": "mqtt in",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "topic": "owntracks/nodered/03",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 140,
-        "y": 40,
-        "wires": [
-            [
-                "235ebb81.276a44"
-            ]
-        ]
-    },
-    {
-        "id": "36dd8499a3d80cbd",
-        "type": "change",
-        "z": "90be64ef.6b4fc8",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "base",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1400,
-        "y": 340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4e944bf62695ed69",
-        "type": "join",
-        "z": "90be64ef.6b4fc8",
-        "name": "",
-        "mode": "custom",
-        "build": "array",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": false,
-        "timeout": "1",
-        "count": "",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 1190,
-        "y": 340,
-        "wires": [
-            [
-                "36dd8499a3d80cbd"
-            ]
-        ]
-    },
-    {
-        "id": "6e035480734b8870",
-        "type": "change",
-        "z": "90be64ef.6b4fc8",
-        "name": "データ削除",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "payload.meter",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.kukyori",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.coefficient",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.approach",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1010,
-        "y": 340,
-        "wires": [
-            [
-                "4e944bf62695ed69"
-            ]
-        ]
-    },
-    {
-        "id": "7d27578767899bae",
-        "type": "debug",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3020,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "a32905709960180a",
-        "type": "mqtt out",
-        "z": "41821272.11be9c",
-        "name": "",
-        "topic": "t1ps1r",
-        "qos": "2",
-        "retain": "false",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "4646bf9b.55c01",
-        "x": 280,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "859ae580055f7209",
-        "type": "gpio in",
-        "z": "41821272.11be9c",
-        "name": "",
-        "state": "PULLUP",
-        "pin": "2",
-        "board": "1987b599.ec521a",
-        "x": 110,
-        "y": 280,
-        "wires": [
-            [
-                "3aa920a3.1d6e",
-                "a32905709960180a"
-            ]
-        ]
     }
 ]
