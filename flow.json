@@ -429,13 +429,13 @@
             "allowTempTheme": "true",
             "dateFormat": "YYYY/MM/DD",
             "sizes": {
-                "sx": 46,
-                "sy": 46,
+                "sx": 48,
+                "sy": 48,
                 "gx": 4,
                 "gy": 4,
-                "cx": 4,
+                "cx": 6,
                 "cy": 8,
-                "px": 0,
+                "px": 2,
                 "py": 0
             }
         }
@@ -5351,7 +5351,7 @@
         "type": "debug",
         "z": "f20b3fe7.75306",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -6025,7 +6025,7 @@
         "type": "ui_text_input",
         "z": "dc1c6fdb.d2e7",
         "name": "",
-        "label": "リセットポイント半径",
+        "label": "リセット半径",
         "tooltip": "リセットポイント半径",
         "group": "a3a1b34f.acf18",
         "order": 7,
@@ -6035,8 +6035,9 @@
         "mode": "number",
         "delay": "0",
         "topic": "topic",
+        "sendOnBlur": true,
         "topicType": "msg",
-        "x": 460,
+        "x": 440,
         "y": 1300,
         "wires": [
             [
@@ -8383,7 +8384,7 @@
         "name": "",
         "label": "走距離修正",
         "group": "693bf46.1e1860c",
-        "order": 15,
+        "order": 16,
         "width": 4,
         "height": 6,
         "options": [
@@ -8553,7 +8554,7 @@
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
         "name": "誤差",
-        "order": 16,
+        "order": 15,
         "width": 3,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -9268,7 +9269,7 @@
         "type": "ui_text_input",
         "z": "8caaa155.e5486",
         "name": "",
-        "label": "リセットポイント半径",
+        "label": "リセット半径",
         "tooltip": "リセットポイント半径",
         "group": "693bf46.1e1860c",
         "order": 7,
@@ -9278,8 +9279,9 @@
         "mode": "number",
         "delay": "0",
         "topic": "topic",
+        "sendOnBlur": true,
         "topicType": "msg",
-        "x": 360,
+        "x": 340,
         "y": 1460,
         "wires": [
             [
@@ -10110,7 +10112,7 @@
         "tooltip": "",
         "place": "BALANCED",
         "group": "693bf46.1e1860c",
-        "order": 17,
+        "order": 18,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -10170,7 +10172,7 @@
         "label": "accurate",
         "tooltip": "",
         "group": "693bf46.1e1860c",
-        "order": 18,
+        "order": 17,
         "width": 3,
         "height": 1,
         "wrap": false,
@@ -10898,7 +10900,8 @@
             "2abf06e4.628d2a",
             "8b754ea0.6dfc5",
             "b74f199d.ee4458",
-            "eb24db7b.d88d28"
+            "eb24db7b.d88d28",
+            "d27c84f2e9c7b661"
         ],
         "x": 95,
         "y": 580,
@@ -10917,7 +10920,7 @@
         "lat": "33.59327347",
         "lon": "130.3514673",
         "zoom": "",
-        "layer": "OSM",
+        "layer": "OSMG",
         "cluster": "",
         "maxage": "",
         "usermenu": "show",
@@ -10930,6 +10933,8 @@
         "showgrid": "false",
         "allowFileDrop": "false",
         "path": "/worldmap",
+        "overlist": "DR,TL",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,OpTop",
         "mapname": "",
         "mapurl": "",
         "mapopt": "",
@@ -10944,7 +10949,7 @@
         "z": "9d68a1c7.f4976",
         "name": "",
         "path": "/worldmap",
-        "events": "all",
+        "events": "connect",
         "x": 220,
         "y": 680,
         "wires": [
@@ -11006,7 +11011,8 @@
         "y": 700,
         "wires": [
             [
-                "9371e5be.f0d2f8"
+                "9371e5be.f0d2f8",
+                "aaef08e10d796370"
             ]
         ]
     },
@@ -11066,7 +11072,7 @@
         "lat": "",
         "lon": "",
         "zoom": "",
-        "layer": "OSM grey",
+        "layer": "OSMG",
         "cluster": "",
         "maxage": "",
         "usermenu": "hide",
@@ -11079,6 +11085,8 @@
         "showgrid": "true",
         "allowFileDrop": "false",
         "path": "/worldmap",
+        "overlist": "DR,TL",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,OpTop",
         "mapname": "",
         "mapurl": "",
         "mapopt": "",
@@ -11455,7 +11463,7 @@
         "type": "debug",
         "z": "9d68a1c7.f4976",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -11633,7 +11641,8 @@
         "links": [
             "2abf06e4.628d2a",
             "b74f199d.ee4458",
-            "eb24db7b.d88d28"
+            "eb24db7b.d88d28",
+            "d27c84f2e9c7b661"
         ],
         "x": 95,
         "y": 520,
@@ -11738,7 +11747,7 @@
         "label": "リセット：NEXT限定",
         "tooltip": "",
         "group": "4a48ee78.c45ed",
-        "order": 4,
+        "order": 5,
         "width": 7,
         "height": 1,
         "passthru": true,
@@ -11944,7 +11953,8 @@
         "links": [
             "4002acad.fc2d34",
             "8b754ea0.6dfc5",
-            "a3355c73.de1e8"
+            "a3355c73.de1e8",
+            "7b4f68c8f0f279f3"
         ],
         "x": 35,
         "y": 240,
@@ -12046,7 +12056,7 @@
         "type": "ui_text",
         "z": "9d68a1c7.f4976",
         "group": "4a48ee78.c45ed",
-        "order": 8,
+        "order": 9,
         "width": 0,
         "height": 0,
         "name": "",
@@ -12063,7 +12073,7 @@
         "type": "ui_text",
         "z": "9d68a1c7.f4976",
         "group": "4a48ee78.c45ed",
-        "order": 9,
+        "order": 10,
         "width": 0,
         "height": 0,
         "name": "",
@@ -12080,7 +12090,7 @@
         "type": "ui_text",
         "z": "9d68a1c7.f4976",
         "group": "4a48ee78.c45ed",
-        "order": 10,
+        "order": 11,
         "width": 0,
         "height": 0,
         "name": "",
@@ -12093,6 +12103,22 @@
         "wires": []
     },
     {
+        "id": "aaef08e10d796370",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 700,
+        "wires": []
+    },
+    {
         "id": "ec9c7841.f68298",
         "type": "ui_dropdown",
         "z": "90be64ef.6b4fc8",
@@ -12101,7 +12127,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "4a48ee78.c45ed",
-        "order": 1,
+        "order": 2,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -12241,8 +12267,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1480,
-        "y": 240,
+        "x": 1420,
+        "y": 200,
         "wires": [
             []
         ]
@@ -12271,10 +12297,7 @@
         "x": 120,
         "y": 160,
         "wires": [
-            [
-                "eccfce558b0d2a23",
-                "4ef7d45f0afde81e"
-            ]
+            []
         ]
     },
     {
@@ -12298,7 +12321,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 1230,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "27529622.5c066a"
@@ -12327,7 +12350,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 810,
+        "x": 850,
         "y": 160,
         "wires": [
             [
@@ -12359,7 +12382,7 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1010,
+        "x": 1050,
         "y": 140,
         "wires": [
             [
@@ -12386,7 +12409,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1180,
+        "x": 1220,
         "y": 140,
         "wires": [
             [
@@ -12406,7 +12429,7 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ntotal=Array();\nku=Array();\ncoe=Array();\ntotal[0]=0;\ncoe[0]=1;\nku[0]=0;",
         "finalize": "",
         "libs": [],
-        "x": 1370,
+        "x": 1410,
         "y": 140,
         "wires": [
             [
@@ -12425,7 +12448,7 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nzenku=0;\nno=0;\n//global.set(\"genku1\",0)",
         "finalize": "",
         "libs": [],
-        "x": 1030,
+        "x": 1070,
         "y": 80,
         "wires": [
             []
@@ -12436,7 +12459,7 @@
         "type": "ui_text",
         "z": "90be64ef.6b4fc8",
         "group": "4a48ee78.c45ed",
-        "order": 6,
+        "order": 7,
         "width": 7,
         "height": 1,
         "name": "",
@@ -12565,7 +12588,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1580,
+        "x": 1620,
         "y": 140,
         "wires": []
     },
@@ -12580,8 +12603,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 310,
-        "y": 220,
+        "x": 1590,
+        "y": 260,
         "wires": [
             []
         ]
@@ -12602,7 +12625,7 @@
         "include_empty_strings": false,
         "include_null_values": true,
         "x": 470,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "f1fe3774.4d8a58"
@@ -12627,7 +12650,7 @@
         "to": "",
         "reg": false,
         "x": 650,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "7a9fae8b.356d"
@@ -12678,7 +12701,7 @@
         "expiry": "",
         "broker": "4646bf9b.55c01",
         "x": 840,
-        "y": 300,
+        "y": 280,
         "wires": []
     },
     {
@@ -12693,7 +12716,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1390,
+        "x": 1430,
         "y": 80,
         "wires": []
     },
@@ -12750,8 +12773,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1000,
-        "y": 240,
+        "x": 1070,
+        "y": 200,
         "wires": [
             [
                 "b246a674.ba1868"
@@ -12908,8 +12931,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 300,
-        "y": 120,
+        "x": 320,
+        "y": 160,
         "wires": [
             [
                 "5bbabff7.7c3c9"
@@ -12954,8 +12977,474 @@
         "from": "",
         "to": "",
         "reg": false,
+        "x": 340,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d061e91cb9f91af8",
+        "type": "ui_dropdown",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "label": "レース選択",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "4a48ee78.c45ed",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "プリンセス駅伝",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "毎日駅伝",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "通勤",
+                "value": 0,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
         "x": 330,
-        "y": 180,
+        "y": 720,
+        "wires": [
+            [
+                "e9f6cb4fcdaed335",
+                "799764140c0b1551"
+            ]
+        ]
+    },
+    {
+        "id": "f01bdea5e4f56325",
+        "type": "file in",
+        "z": "90be64ef.6b4fc8",
+        "name": "fukuoka.csv",
+        "filename": "/home/pi/samba/public/fukuoka.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 650,
+        "y": 680,
+        "wires": [
+            [
+                "41a9e7107cdfe1c4"
+            ]
+        ]
+    },
+    {
+        "id": "16c1adaa04b5cfe2",
+        "type": "file in",
+        "z": "90be64ef.6b4fc8",
+        "name": "毎日駅伝",
+        "filename": "/home/pi/samba/public/mainichi.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 640,
+        "y": 760,
+        "wires": [
+            [
+                "41a9e7107cdfe1c4"
+            ]
+        ]
+    },
+    {
+        "id": "bf5f9e4db7bed8b3",
+        "type": "file in",
+        "z": "90be64ef.6b4fc8",
+        "name": "プリンセス駅伝",
+        "filename": "/home/pi/samba/public/princess.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 660,
+        "y": 720,
+        "wires": [
+            [
+                "41a9e7107cdfe1c4"
+            ]
+        ]
+    },
+    {
+        "id": "e9f6cb4fcdaed335",
+        "type": "switch",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 490,
+        "y": 720,
+        "wires": [
+            [
+                "f01bdea5e4f56325"
+            ],
+            [
+                "bf5f9e4db7bed8b3"
+            ],
+            [
+                "16c1adaa04b5cfe2"
+            ]
+        ]
+    },
+    {
+        "id": "3484c30c0959bbd7",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "base",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1780,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d256abd006b06cc7",
+        "type": "join",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "1",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1590,
+        "y": 760,
+        "wires": [
+            [
+                "3484c30c0959bbd7"
+            ]
+        ]
+    },
+    {
+        "id": "30e8c94e788ca8c8",
+        "type": "switch",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "property": "payload.reset",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "1000",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1210,
+        "y": 720,
+        "wires": [
+            [
+                "8b18203f59c8a8ac",
+                "7ff7d029d32ae740"
+            ],
+            [
+                "f7bb16a6d939e310"
+            ]
+        ]
+    },
+    {
+        "id": "7ff7d029d32ae740",
+        "type": "join",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "1",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1410,
+        "y": 700,
+        "wires": [
+            [
+                "1f5aca4e3ce73fe4"
+            ]
+        ]
+    },
+    {
+        "id": "1f5aca4e3ce73fe4",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1580,
+        "y": 700,
+        "wires": [
+            [
+                "289217e66f103e46",
+                "d364b8567f27747a"
+            ]
+        ]
+    },
+    {
+        "id": "289217e66f103e46",
+        "type": "function",
+        "z": "90be64ef.6b4fc8",
+        "name": "global.total",
+        "func": "x=global.get(\"reset\");\n\nfor(i=1;i<=global.get(\"reset_q\");i++){\n    if(x[i].meter==0){\n        total[i]=total[i-1]+x[i-1].kukyori;\n        to=total[i];\n    }\n    else{\n    total[i]=total[i-1];    \n    }\n    \n    ku[x[i].number]=x[i].kukyori;\n    //ku[i]=x[i-1].kukyori;\n    coe[i]=x[i].coefficient;\n}\nglobal.set(\"total\",total);\nglobal.set(\"ku\",ku);\nglobal.set(\"coe\",coe);\nmsg.payload={\n    total:total,\n    ku:ku,\n    coe:coe,\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ntotal=Array();\nku=Array();\ncoe=Array();\ntotal[0]=0;\ncoe[0]=1;\nku[0]=0;",
+        "finalize": "",
+        "libs": [],
+        "x": 1770,
+        "y": 700,
+        "wires": [
+            [
+                "ea721bd531847c32"
+            ]
+        ]
+    },
+    {
+        "id": "8b18203f59c8a8ac",
+        "type": "function",
+        "z": "90be64ef.6b4fc8",
+        "name": "全区セット",
+        "func": "x=msg.payload.number;\ny=msg.payload.reset;\nif(x > zenku){\n    //zenku=x;\n    zenku=x;\n}\nif(y > no){\n    no=y;\n}\nglobal.set(\"zenku\",zenku);\nglobal.set(\"reset_q\",no);\nmsg.payload={\n    zenku:zenku,\n    no:no\n}\n//msg.payload=x;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nzenku=0;\nno=0;\n//global.set(\"genku1\",0)",
+        "finalize": "",
+        "libs": [],
+        "x": 1430,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ea721bd531847c32",
+        "type": "debug",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1980,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "d364b8567f27747a",
+        "type": "debug",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1790,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f7bb16a6d939e310",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "データ削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.meter",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.kukyori",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.coefficient",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.approach",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 760,
+        "wires": [
+            [
+                "d256abd006b06cc7"
+            ]
+        ]
+    },
+    {
+        "id": "41a9e7107cdfe1c4",
+        "type": "csv",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": true,
+        "x": 850,
+        "y": 720,
+        "wires": [
+            [
+                "ede486b1f696b19c"
+            ]
+        ]
+    },
+    {
+        "id": "ede486b1f696b19c",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "parts",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1030,
+        "y": 720,
+        "wires": [
+            [
+                "30e8c94e788ca8c8"
+            ]
+        ]
+    },
+    {
+        "id": "799764140c0b1551",
+        "type": "change",
+        "z": "90be64ef.6b4fc8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "zenku",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 820,
         "wires": [
             []
         ]
@@ -13407,7 +13896,7 @@
         "z": "709630c3.37daf",
         "d": true,
         "group": "4a48ee78.c45ed",
-        "order": 5,
+        "order": 6,
         "width": 7,
         "height": 1,
         "name": "",
@@ -13655,7 +14144,7 @@
         "type": "ui_text",
         "z": "709630c3.37daf",
         "group": "4a48ee78.c45ed",
-        "order": 7,
+        "order": 8,
         "width": 7,
         "height": 1,
         "name": "",
@@ -14341,7 +14830,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "4a48ee78.c45ed",
-        "order": 3,
+        "order": 4,
         "width": 7,
         "height": 1,
         "passthru": true,
@@ -14407,7 +14896,7 @@
         "label": "シリアル遅延(m/s）",
         "tooltip": "",
         "group": "4a48ee78.c45ed",
-        "order": 2,
+        "order": 3,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -14504,7 +14993,7 @@
         "contentType": "",
         "message": "あゆみん、もうすぐバスが来るよ、幼稚園に行くにゃん",
         "language": "Ja",
-        "ip": "192.168.24.62",
+        "ip": "192.168.24.11",
         "port": "8009",
         "volume": "70",
         "x": 450,
@@ -14551,7 +15040,7 @@
         "contentType": "",
         "message": "きんきゅうじたい、みかさ、あゆみん、アリストグレートで出動してください",
         "language": "ja",
-        "ip": "192.168.24.62",
+        "ip": "192.168.24.11",
         "port": "8009",
         "volume": "70",
         "x": 710,
@@ -14762,7 +15251,7 @@
         "contentType": "",
         "message": "名島海岸にゴジラ出現、アリストグレート、緊急出動にゃん",
         "language": "ja",
-        "ip": "192.168.24.62",
+        "ip": "192.168.24.11",
         "port": "8009",
         "volume": "",
         "x": 710,
