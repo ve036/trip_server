@@ -278,21 +278,21 @@
         ],
         "out": [
             {
-                "x": 820,
-                "y": 80,
+                "x": 560,
+                "y": 120,
                 "wires": [
                     {
-                        "id": "668fe10b.a2d0b",
+                        "id": "68a930f2.d4a95",
                         "port": 0
                     }
                 ]
             },
             {
-                "x": 960,
-                "y": 140,
+                "x": 720,
+                "y": 200,
                 "wires": [
                     {
-                        "id": "61cf182f.ad3b28",
+                        "id": "87d1316e.f4513",
                         "port": 0
                     }
                 ]
@@ -812,6 +812,7 @@
         "broker": "ve036.mydns.jp",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
         "protocolVersion": "4",
@@ -1916,8 +1917,7 @@
         "y": 200,
         "wires": [
             [
-                "87d1316e.f4513",
-                "668fe10b.a2d0b"
+                "87d1316e.f4513"
             ]
         ]
     },
@@ -1984,32 +1984,8 @@
         "y": 200,
         "wires": [
             [
-                "61cf182f.ad3b28",
                 "f8963e23.afe26"
             ]
-        ]
-    },
-    {
-        "id": "61cf182f.ad3b28",
-        "type": "moment",
-        "z": "b2e52e9a.27b3a",
-        "name": "",
-        "topic": "",
-        "input": "payload.time",
-        "inputType": "msg",
-        "inTz": "Asia/Tokyo",
-        "adjAmount": "9",
-        "adjType": "hours",
-        "adjDir": "add",
-        "format": "date",
-        "locale": "ja-JP",
-        "output": "payload.time",
-        "outputType": "msg",
-        "outTz": "Asia/Tokyo",
-        "x": 780,
-        "y": 140,
-        "wires": [
-            []
         ]
     },
     {
@@ -2040,31 +2016,6 @@
             [
                 "f1999762.63c718"
             ],
-            []
-        ]
-    },
-    {
-        "id": "668fe10b.a2d0b",
-        "type": "change",
-        "z": "b2e52e9a.27b3a",
-        "name": "gps誤差グローバル化",
-        "rules": [
-            {
-                "t": "set",
-                "p": "acc3",
-                "pt": "global",
-                "to": "payload.acc",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 640,
-        "y": 80,
-        "wires": [
             []
         ]
     },
@@ -3188,7 +3139,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2050,
+        "x": 2290,
         "y": 400,
         "wires": [
             [
@@ -3210,7 +3161,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2200,
+        "x": 2480,
         "y": 400,
         "wires": []
     },
@@ -4258,7 +4209,7 @@
         "y": 400,
         "wires": [
             [
-                "f4aa4475.720a88"
+                "1d3527b87962c145"
             ]
         ]
     },
@@ -4763,7 +4714,7 @@
         "drop": true,
         "outputs": 1,
         "x": 2630,
-        "y": 400,
+        "y": 260,
         "wires": [
             []
         ]
@@ -5363,6 +5314,57 @@
         "wires": []
     },
     {
+        "id": "1d3527b87962c145",
+        "type": "change",
+        "z": "f20b3fe7.75306",
+        "name": "m→km",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.odd",
+                "pt": "msg",
+                "to": "($floor(payload.odd*10))/10000",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.kukyori",
+                "pt": "msg",
+                "to": "($floor(payload.kukyori))/1000",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2100,
+        "y": 400,
+        "wires": [
+            [
+                "f4aa4475.720a88",
+                "e90ed069d31d3d3d"
+            ]
+        ]
+    },
+    {
+        "id": "e90ed069d31d3d3d",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2300,
+        "y": 360,
+        "wires": []
+    },
+    {
         "id": "1cab13e2.14cf6c",
         "type": "change",
         "z": "dc1c6fdb.d2e7",
@@ -5416,8 +5418,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 450,
-        "y": 280,
+        "x": 350,
+        "y": 220,
         "wires": [
             [
                 "e8754dac.c59448",
@@ -5443,7 +5445,9 @@
         "wires": [
             [],
             [
-                "37a7760f.1d829a"
+                "1cab13e2.14cf6c",
+                "9878cc7c3630ab2b",
+                "cb02f433daba1fc1"
             ]
         ]
     },
@@ -6401,7 +6405,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2030,
+        "x": 2290,
         "y": 200,
         "wires": [
             [
@@ -6423,7 +6427,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2180,
+        "x": 2500,
         "y": 200,
         "wires": []
     },
@@ -6761,7 +6765,7 @@
         "y": 200,
         "wires": [
             [
-                "b4bb0ae.4fd9c78"
+                "873a8c6b3f37c6e8"
             ]
         ]
     },
@@ -7057,7 +7061,7 @@
         "format": "{{msg.payload.time}}",
         "layout": "row-spread",
         "className": "",
-        "x": 500,
+        "x": 620,
         "y": 180,
         "wires": []
     },
@@ -7272,7 +7276,7 @@
         "format": "{{msg.payload.epx}}/{{msg.payload.epy}}",
         "layout": "row-spread",
         "className": "",
-        "x": 490,
+        "x": 610,
         "y": 140,
         "wires": []
     },
@@ -7463,15 +7467,9 @@
         "x": 140,
         "y": 180,
         "wires": [
-            [
-                "91c05e28.52298"
-            ],
-            [
-                "1561748e.9559bb"
-            ],
-            [
-                "1cab13e2.14cf6c"
-            ]
+            [],
+            [],
+            []
         ]
     },
     {
@@ -7484,6 +7482,129 @@
         ],
         "x": 1795,
         "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9878cc7c3630ab2b",
+        "type": "moment",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "topic": "",
+        "input": "payload.time",
+        "inputType": "msg",
+        "inTz": "Asia/Tokyo",
+        "adjAmount": "9",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "date",
+        "locale": "ja-JP",
+        "output": "payload.time",
+        "outputType": "msg",
+        "outTz": "Asia/Tokyo",
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "1561748e.9559bb"
+            ]
+        ]
+    },
+    {
+        "id": "cb02f433daba1fc1",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "gps誤差グローバル化",
+        "rules": [
+            {
+                "t": "set",
+                "p": "acc3",
+                "pt": "global",
+                "to": "payload.acc",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "91c05e28.52298"
+            ]
+        ]
+    },
+    {
+        "id": "1bcbe3884935257d",
+        "type": "mqtt in",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "topic": "owntracks/GPS/p0",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "ac7569b4.5ada88",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 430,
+        "y": 40,
+        "wires": [
+            [
+                "53538238.2d612c"
+            ]
+        ]
+    },
+    {
+        "id": "873a8c6b3f37c6e8",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "m→km",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.odd",
+                "pt": "msg",
+                "to": "($floor(payload.odd*10))/10000",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.kukyori",
+                "pt": "msg",
+                "to": "($floor(payload.kukyori))/1000",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2060,
+        "y": 200,
+        "wires": [
+            [
+                "b4bb0ae.4fd9c78",
+                "42852ab4655e9e21"
+            ]
+        ]
+    },
+    {
+        "id": "42852ab4655e9e21",
+        "type": "debug",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2300,
+        "y": 160,
         "wires": []
     },
     {
@@ -8453,7 +8574,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2700,
+        "x": 2820,
         "y": 400,
         "wires": []
     },
@@ -8465,7 +8586,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 2490,
+        "x": 2650,
         "y": 400,
         "wires": [
             [
@@ -8486,7 +8607,7 @@
         "format": "{{msg.payload.time}}",
         "layout": "row-spread",
         "className": "",
-        "x": 660,
+        "x": 800,
         "y": 220,
         "wires": []
     },
@@ -9373,8 +9494,8 @@
         "y": 400,
         "wires": [
             [
-                "e888c71e.889998",
-                "5e3caa41.2acf84"
+                "5e3caa41.2acf84",
+                "8e4b698fb44c3a0f"
             ]
         ]
     },
@@ -10282,7 +10403,7 @@
         "format": "{{msg.payload.acc}}",
         "layout": "row-spread",
         "className": "",
-        "x": 650,
+        "x": 790,
         "y": 160,
         "wires": []
     },
@@ -10432,10 +10553,10 @@
         "y": 220,
         "wires": [
             [
-                "1d0cbfd6.99571"
+                "21752cc6b6430452"
             ],
             [
-                "1565f0cc.bd222f"
+                "9d2854247b6ce657"
             ],
             [
                 "ad3c93f9.7e7bd"
@@ -10607,6 +10728,92 @@
         "x": 2240,
         "y": 720,
         "wires": []
+    },
+    {
+        "id": "8e4b698fb44c3a0f",
+        "type": "change",
+        "z": "8caaa155.e5486",
+        "name": "m→km",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.odd",
+                "pt": "msg",
+                "to": "($floor(payload.odd*10))/10000",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.kukyori",
+                "pt": "msg",
+                "to": "($floor(payload.kukyori))/1000",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2480,
+        "y": 400,
+        "wires": [
+            [
+                "e888c71e.889998"
+            ]
+        ]
+    },
+    {
+        "id": "21752cc6b6430452",
+        "type": "change",
+        "z": "8caaa155.e5486",
+        "name": "gps誤差グローバル化",
+        "rules": [
+            {
+                "t": "set",
+                "p": "acc3",
+                "pt": "global",
+                "to": "payload.acc",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "1d0cbfd6.99571"
+            ]
+        ]
+    },
+    {
+        "id": "9d2854247b6ce657",
+        "type": "moment",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "topic": "",
+        "input": "payload.time",
+        "inputType": "msg",
+        "inTz": "Asia/Tokyo",
+        "adjAmount": "9",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "date",
+        "locale": "ja-JP",
+        "output": "payload.time",
+        "outputType": "msg",
+        "outTz": "Asia/Tokyo",
+        "x": 580,
+        "y": 220,
+        "wires": [
+            [
+                "1565f0cc.bd222f"
+            ]
+        ]
     },
     {
         "id": "e5f734cd.f03418",
