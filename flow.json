@@ -1059,6 +1059,47 @@
         "className": ""
     },
     {
+        "id": "5a0a782e010ecd4e",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "3e0f4abb06-certificate.pem.crt",
+        "keyname": "3e0f4abb06-private.pem.key",
+        "caname": "AmazonRootCA1.pem",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "f7d66dab367e42a6",
+        "type": "mqtt-broker",
+        "name": "AWS",
+        "broker": "a17jm6cbfebqgo-ats.iot.us-west-2.amazonaws.com",
+        "port": "8883",
+        "tls": "5a0a782e010ecd4e",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
         "id": "c2d88f2e.41a4f",
         "type": "function",
         "z": "361ce87e.80f648",
@@ -4719,6 +4760,24 @@
             [
                 "e44036015bdc6cb8"
             ]
+        ]
+    },
+    {
+        "id": "9bb0aa4fed8cc416",
+        "type": "mqtt in",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "topic": "owntracks/GPS/p0",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "f7d66dab367e42a6",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 130,
+        "y": 280,
+        "wires": [
+            []
         ]
     },
     {
