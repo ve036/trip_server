@@ -783,12 +783,13 @@
     {
         "id": "693bf46.1e1860c",
         "type": "ui_group",
-        "name": "3移動",
+        "name": "iPhone",
         "tab": "43f4f39.b4faf8c",
         "order": 3,
         "disp": true,
-        "width": 7,
-        "collapse": true
+        "width": "7",
+        "collapse": true,
+        "className": ""
     },
     {
         "id": "b90ab216.c29668",
@@ -1050,7 +1051,7 @@
     {
         "id": "ab1c9b08cdc72155",
         "type": "ui_group",
-        "name": "２移動",
+        "name": "1&2移動",
         "tab": "43f4f39.b4faf8c",
         "order": 5,
         "disp": true,
@@ -1080,7 +1081,6 @@
         "port": "8883",
         "tls": "5a0a782e010ecd4e",
         "clientid": "",
-        "autoConnect": true,
         "usetls": true,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -1098,6 +1098,64 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
+    },
+    {
+        "id": "39d1fb3d61a27783",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB2",
+        "serialbaud": "1200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "0xaa",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "13",
+        "bin": "bin",
+        "out": "count",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "e1781214ad28257b",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB3",
+        "serialbaud": "1200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "0xaa",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "13",
+        "bin": "bin",
+        "out": "count",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "4ee279a17ebd8f2d",
+        "type": "ui_spacer",
+        "z": "f20b3fe7.75306",
+        "name": "spacer",
+        "group": "b90ab216.c29668",
+        "order": 7,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "779dcaf2d7845cc4",
+        "type": "ui_spacer",
+        "z": "f20b3fe7.75306",
+        "name": "spacer",
+        "group": "a3a1b34f.acf18",
+        "order": 7,
+        "width": 3,
+        "height": 1
     },
     {
         "id": "c2d88f2e.41a4f",
@@ -2423,7 +2481,7 @@
         "label": "最低速度",
         "tooltip": "",
         "group": "b90ab216.c29668",
-        "order": 11,
+        "order": 13,
         "width": 5,
         "height": 1,
         "passthru": true,
@@ -2445,7 +2503,7 @@
         "type": "ui_text",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "order": 10,
+        "order": 12,
         "width": 2,
         "height": 1,
         "name": "",
@@ -2464,7 +2522,7 @@
         "label": "速度制限",
         "tooltip": "",
         "group": "b90ab216.c29668",
-        "order": 13,
+        "order": 15,
         "width": 5,
         "height": 1,
         "passthru": true,
@@ -2488,7 +2546,7 @@
         "type": "ui_text",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "order": 12,
+        "order": 14,
         "width": 2,
         "height": 1,
         "name": "",
@@ -2769,7 +2827,7 @@
         "type": "ui_text",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "order": 14,
+        "order": 16,
         "width": 7,
         "height": 1,
         "name": "",
@@ -2893,7 +2951,7 @@
         "name": "",
         "label": "走距離修正",
         "group": "b90ab216.c29668",
-        "order": 16,
+        "order": 18,
         "width": 4,
         "height": 6,
         "options": [
@@ -2995,7 +3053,7 @@
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
         "name": "誤差",
-        "order": 17,
+        "order": 19,
         "width": 3,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -3042,7 +3100,7 @@
         "label": "IMU",
         "tooltip": "",
         "group": "b90ab216.c29668",
-        "order": 9,
+        "order": 11,
         "width": 2,
         "height": 1,
         "passthru": true,
@@ -3181,7 +3239,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　1バイク距離:{{payload.oddc}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
         "output": "str",
         "x": 1890,
         "y": 340,
@@ -3336,6 +3394,7 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
+        "className": "",
         "x": 2080,
         "y": 340,
         "wires": [
@@ -3445,7 +3504,7 @@
         "label": "リセット半径",
         "tooltip": "リセットポイント半径",
         "group": "b90ab216.c29668",
-        "order": 8,
+        "order": 10,
         "width": 2,
         "height": 1,
         "passthru": true,
@@ -3647,7 +3706,7 @@
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
         "name": "リセット情報",
-        "order": 6,
+        "order": 8,
         "width": 7,
         "height": 1,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
@@ -3748,7 +3807,8 @@
         "y": 680,
         "wires": [
             [
-                "a890f8fb.f37fe8"
+                "a890f8fb.f37fe8",
+                "7a6ae1d49baab641"
             ]
         ]
     },
@@ -3843,7 +3903,7 @@
         "type": "ui_template",
         "z": "f20b3fe7.75306",
         "group": "4707e75.554a618",
-        "name": "1移動距離情報",
+        "name": "1バイク距離情報",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -3852,7 +3912,8 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2040,
+        "className": "",
+        "x": 2050,
         "y": 300,
         "wires": [
             []
@@ -3867,7 +3928,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.odd}}m/{{payload.kukyori}}m \n</b></font>",
+        "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　1移動距離:{{payload.oddc}}m/{{payload.kukyori}}m \n</b></font>",
         "output": "str",
         "x": 1850,
         "y": 300,
@@ -3954,7 +4015,7 @@
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
         "name": "Speed",
-        "order": 7,
+        "order": 9,
         "width": 3,
         "height": 1,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
@@ -4708,8 +4769,8 @@
         "wires": [
             [
                 "1d3527b87962c145",
-                "6a117de17368ef3e",
-                "cc8070a4b8cf464e"
+                "cc8070a4b8cf464e",
+                "862afc77d3c7230b"
             ]
         ]
     },
@@ -4770,10 +4831,9 @@
         "topic": "owntracks/GPS/p0",
         "qos": "0",
         "datatype": "json",
-        "broker": "f7d66dab367e42a6",
+        "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 130,
         "y": 280,
         "wires": [
@@ -5027,7 +5087,7 @@
         "label": "最低速度",
         "tooltip": "",
         "group": "a3a1b34f.acf18",
-        "order": 11,
+        "order": 13,
         "width": 5,
         "height": 1,
         "passthru": true,
@@ -5050,7 +5110,7 @@
         "type": "ui_text",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "order": 10,
+        "order": 12,
         "width": 2,
         "height": 1,
         "name": "",
@@ -5069,7 +5129,7 @@
         "label": "速度制限",
         "tooltip": "",
         "group": "a3a1b34f.acf18",
-        "order": 13,
+        "order": 15,
         "width": 5,
         "height": 1,
         "passthru": true,
@@ -5093,7 +5153,7 @@
         "type": "ui_text",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "order": 12,
+        "order": 14,
         "width": 2,
         "height": 1,
         "name": "",
@@ -5290,7 +5350,7 @@
         "label": "IMU",
         "tooltip": "",
         "group": "a3a1b34f.acf18",
-        "order": 9,
+        "order": 11,
         "width": 2,
         "height": 1,
         "passthru": true,
@@ -5447,7 +5507,7 @@
         "label": "リセット半径",
         "tooltip": "リセットポイント半径",
         "group": "a3a1b34f.acf18",
-        "order": 8,
+        "order": 10,
         "width": 2,
         "height": 1,
         "passthru": true,
@@ -5874,7 +5934,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　2移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　2バイク距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
         "output": "str",
         "x": 1870,
         "y": 140,
@@ -5989,7 +6049,7 @@
         "type": "ui_template",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "name": "2移動距離情報",
+        "name": "2バイク距離情報",
         "order": 4,
         "width": 7,
         "height": 2,
@@ -5998,7 +6058,8 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2080,
+        "className": "",
+        "x": 2090,
         "y": 140,
         "wires": [
             []
@@ -6091,7 +6152,7 @@
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "name": "リセット情報",
-        "order": 6,
+        "order": 8,
         "width": 7,
         "height": 1,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
@@ -6193,7 +6254,7 @@
         "type": "ui_template",
         "z": "dc1c6fdb.d2e7",
         "group": "4707e75.554a618",
-        "name": "2移動距離情報",
+        "name": "2バイク距離情報",
         "order": 5,
         "width": 0,
         "height": 0,
@@ -6202,7 +6263,8 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 2020,
+        "className": "",
+        "x": 2030,
         "y": 100,
         "wires": [
             []
@@ -6294,7 +6356,7 @@
         "name": "",
         "label": "走距離修正",
         "group": "a3a1b34f.acf18",
-        "order": 16,
+        "order": 18,
         "width": 4,
         "height": 6,
         "options": [
@@ -6368,7 +6430,7 @@
         "type": "ui_text",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "order": 14,
+        "order": 16,
         "width": 7,
         "height": 1,
         "name": "",
@@ -6432,7 +6494,7 @@
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "name": "Speed",
-        "order": 7,
+        "order": 9,
         "width": 3,
         "height": 1,
         "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
@@ -6484,7 +6546,7 @@
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
         "name": "誤差",
-        "order": 17,
+        "order": 19,
         "width": 3,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -6764,7 +6826,8 @@
         "y": 140,
         "wires": [
             [
-                "91c05e28.52298"
+                "91c05e28.52298",
+                "3c334e25834cbd38"
             ]
         ]
     },
@@ -6882,7 +6945,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　2移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<b>DELAY距離計</b><br>\n<font size=\"4\">{{payload.genku}}区　距離:{{payload.odd}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ",
         "output": "str",
         "x": 2310,
         "y": 240,
@@ -6897,9 +6960,9 @@
         "type": "ui_template",
         "z": "dc1c6fdb.d2e7",
         "group": "a3a1b34f.acf18",
-        "name": "2移動遅延距離",
+        "name": "2バイク遅延距離",
         "order": 5,
-        "width": 7,
+        "width": 4,
         "height": 2,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
@@ -6907,7 +6970,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 2520,
+        "x": 2530,
         "y": 240,
         "wires": [
             []
@@ -7115,7 +7178,7 @@
         "type": "serial in",
         "z": "a74bd00bd0957478",
         "name": "",
-        "serial": "cf2ec0bd9514c8b5",
+        "serial": "39d1fb3d61a27783",
         "x": 115,
         "y": 267,
         "wires": [
@@ -7256,6 +7319,7 @@
         "id": "6dcc1e548e304a08",
         "type": "ui_dropdown",
         "z": "a74bd00bd0957478",
+        "d": true,
         "name": "",
         "label": "シリアル出力セレクト",
         "tooltip": "",
@@ -7286,6 +7350,7 @@
         "payload": "",
         "topic": "",
         "topicType": "str",
+        "className": "",
         "x": 160,
         "y": 620,
         "wires": [
@@ -8775,7 +8840,7 @@
         "name": "",
         "label": "走距離修正",
         "group": "693bf46.1e1860c",
-        "order": 15,
+        "order": 17,
         "width": 4,
         "height": 6,
         "options": [
@@ -8945,7 +9010,7 @@
         "z": "8caaa155.e5486",
         "group": "693bf46.1e1860c",
         "name": "誤差",
-        "order": 16,
+        "order": 18,
         "width": 3,
         "height": 6,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -10492,7 +10557,7 @@
         "tooltip": "",
         "place": "BALANCED",
         "group": "693bf46.1e1860c",
-        "order": 17,
+        "order": 16,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -10552,7 +10617,7 @@
         "label": "accurate",
         "tooltip": "",
         "group": "693bf46.1e1860c",
-        "order": 18,
+        "order": 15,
         "width": 3,
         "height": 1,
         "wrap": false,
@@ -11132,7 +11197,7 @@
         "type": "ui_text",
         "z": "9d68a1c7.f4976",
         "group": "b90ab216.c29668",
-        "order": 15,
+        "order": 17,
         "width": 7,
         "height": 1,
         "name": "",
@@ -11568,18 +11633,18 @@
         "multiple": false,
         "options": [
             {
-                "label": "1移動",
-                "value": "1移動",
+                "label": "1バイク",
+                "value": "1バイク",
                 "type": "str"
             },
             {
-                "label": "2移動",
-                "value": "2移動",
+                "label": "2バイク",
+                "value": "2バイク",
                 "type": "str"
             },
             {
-                "label": "3移動",
-                "value": "3移動",
+                "label": "iPhone",
+                "value": "iPhone",
                 "type": "str"
             },
             {
@@ -11591,6 +11656,7 @@
         "payload": "",
         "topic": "topic",
         "topicType": "msg",
+        "className": "",
         "x": 120,
         "y": 1160,
         "wires": [
@@ -11827,17 +11893,17 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "1移動",
+                "v": "1バイク",
                 "vt": "str"
             },
             {
                 "t": "eq",
-                "v": "2移動",
+                "v": "2バイク",
                 "vt": "str"
             },
             {
                 "t": "eq",
-                "v": "3移動",
+                "v": "iPhone",
                 "vt": "str"
             }
         ],
@@ -12078,7 +12144,7 @@
         "type": "ui_text",
         "z": "9d68a1c7.f4976",
         "group": "a3a1b34f.acf18",
-        "order": 15,
+        "order": 17,
         "width": 7,
         "height": 1,
         "name": "",
@@ -12521,7 +12587,7 @@
         "format": "{{msg.payload.dis12}}m",
         "layout": "row-spread",
         "className": "",
-        "x": 810,
+        "x": 800,
         "y": 120,
         "wires": []
     },
@@ -12579,6 +12645,7 @@
         "id": "ec9c7841.f68298",
         "type": "ui_dropdown",
         "z": "90be64ef.6b4fc8",
+        "d": true,
         "name": "",
         "label": "駅伝/マラソン",
         "tooltip": "",
@@ -12603,6 +12670,8 @@
         ],
         "payload": "",
         "topic": "",
+        "topicType": "str",
+        "className": "",
         "x": 320,
         "y": 60,
         "wires": [
@@ -12754,9 +12823,7 @@
         "x": 120,
         "y": 160,
         "wires": [
-            [
-                "eccfce558b0d2a23"
-            ]
+            []
         ]
     },
     {
@@ -13322,7 +13389,7 @@
         "topic": "record",
         "qos": "2",
         "datatype": "auto",
-        "broker": "50c6b968735ea611",
+        "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -13475,14 +13542,14 @@
         "id": "f01bdea5e4f56325",
         "type": "file in",
         "z": "90be64ef.6b4fc8",
-        "name": "fukuoka.csv",
-        "filename": "/home/pi/samba/public/fukuoka.csv",
+        "name": "通勤",
+        "filename": "/home/pi/samba/public/go_to_work.csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 650,
+        "x": 630,
         "y": 680,
         "wires": [
             [
@@ -13715,8 +13782,8 @@
         "y": 700,
         "wires": [
             [
-                "289217e66f103e46",
-                "d364b8567f27747a"
+                "d364b8567f27747a",
+                "cb81b198e4ea5da2"
             ]
         ]
     },
@@ -13731,12 +13798,10 @@
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ntotal=Array();\nku=Array();\ncoe=Array();\ntotal[0]=0;\ncoe[0]=1;\nku[0]=0;",
         "finalize": "",
         "libs": [],
-        "x": 1770,
-        "y": 700,
+        "x": 1990,
+        "y": 840,
         "wires": [
-            [
-                "ea721bd531847c32"
-            ]
+            []
         ]
     },
     {
@@ -13761,7 +13826,7 @@
         "type": "debug",
         "z": "90be64ef.6b4fc8",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -13777,7 +13842,7 @@
         "type": "debug",
         "z": "90be64ef.6b4fc8",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -14663,32 +14728,13 @@
         ]
     },
     {
-        "id": "6a117de17368ef3e",
-        "type": "template",
-        "z": "f20b3fe7.75306",
-        "name": "コントロール距離",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　2移動距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
-        "output": "str",
-        "x": 2310,
-        "y": 300,
-        "wires": [
-            [
-                "40edbd5fed617259"
-            ]
-        ]
-    },
-    {
         "id": "40edbd5fed617259",
         "type": "ui_template",
         "z": "f20b3fe7.75306",
         "group": "b90ab216.c29668",
-        "name": "1移動遅延距離",
+        "name": "1バイク遅延距離",
         "order": 5,
-        "width": 7,
+        "width": 4,
         "height": 2,
         "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
         "storeOutMessages": true,
@@ -14696,7 +14742,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 2540,
+        "x": 2550,
         "y": 300,
         "wires": [
             []
@@ -14839,5 +14885,106 @@
                 "41a9e7107cdfe1c4"
             ]
         ]
+    },
+    {
+        "id": "c539c5fc4b8b0c68",
+        "type": "inject",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 1040,
+        "wires": [
+            [
+                "da1eb1ce.ec0b5"
+            ]
+        ]
+    },
+    {
+        "id": "cb81b198e4ea5da2",
+        "type": "function",
+        "z": "90be64ef.6b4fc8",
+        "name": "global.total",
+        "func": "x=global.get(\"reset\");\n\nfor(i=1;i<=global.get(\"reset_q\");i++){\n    if(x[i].meter==0){\n        total[i]=total[i-1]+x[i-1].kukyori;\n        to=total[i];\n    }\n    else{\n    total[i]=total[i-1];    \n    }\n    \n    ku[x[i].number]=x[i].kukyori;\n    //ku[i]=x[i-1].kukyori;\n    coe[i]=x[i].coefficient;\n}\nfor(i=1;i<=global.get(\"zenku\");i++){\n    totaln[i]=totaln[i-1]+ku[i]\n}\nglobal.set(\"total\",total);\nglobal.set(\"ku\",ku);\nglobal.set(\"coe\",coe);\nglobal.set(\"totaln\",totaln);\nmsg.payload={\n    total:total,\n    ku:ku,\n    coe:coe,\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ntotal=Array();\nku=Array();\ncoe=Array();\ntotaln=Array();\ntotal[0]=0;\ncoe[0]=1;\nku[0]=0;\ntotaln[0]=0;",
+        "finalize": "",
+        "libs": [],
+        "x": 1790,
+        "y": 700,
+        "wires": [
+            [
+                "ea721bd531847c32"
+            ]
+        ]
+    },
+    {
+        "id": "3c334e25834cbd38",
+        "type": "ui_text",
+        "z": "dc1c6fdb.d2e7",
+        "group": "a3a1b34f.acf18",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "2GPS誤差",
+        "format": "{{msg.payload.epx}}/{{msg.payload.epy}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 610,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "862afc77d3c7230b",
+        "type": "template",
+        "z": "f20b3fe7.75306",
+        "name": "コントロール距離",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<b>DELAY距離計</b><br>\n<font size=\"4\">{{payload.genku}}区　距離:{{payload.odd}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ",
+        "output": "str",
+        "x": 2319.800048828125,
+        "y": 298.20001220703125,
+        "wires": [
+            [
+                "40edbd5fed617259"
+            ]
+        ]
+    },
+    {
+        "id": "7a6ae1d49baab641",
+        "type": "ui_text",
+        "z": "f20b3fe7.75306",
+        "group": "b90ab216.c29668",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "name": "",
+        "label": "1GPS誤差",
+        "format": "{{msg.payload.epx}}/{{msg.payload.epy}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 470,
+        "y": 720,
+        "wires": []
     }
 ]
