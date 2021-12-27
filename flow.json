@@ -216,6 +216,10 @@
                     {
                         "id": "80486c5a.54a6",
                         "port": 0
+                    },
+                    {
+                        "id": "591413626c87e431",
+                        "port": 0
                     }
                 ]
             }
@@ -1348,7 +1352,7 @@
         "type": "function",
         "z": "7e6f2d4d.3bcd74",
         "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:msg.payload.kukyori,//ダッシュボード表示用\n        meter:msg.payload.meter,//リセット距離\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    trip[0]=j;\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\n    \n\n\n\n\n",
+        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.oddb\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:msg.payload.kukyori,//ダッシュボード表示用\n        meter:msg.payload.meter,//リセット距離\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    trip[0]=j;\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\n    \n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\nover=Array();\ntime=Array();\ntst=Array();\nlap=Array();\n//lat=Array();\n//lon=Array();\nj=0;\nkukyori=0;",
@@ -1566,23 +1570,6 @@
         ]
     },
     {
-        "id": "3abde50f.8979c2",
-        "type": "function",
-        "z": "79519d85.08b504",
-        "name": "前後GPS",
-        "func": "msg.payload={\n    lat:msg.payload.lat,\n    lon:msg.payload.lon,\n    latx:latx,\n    lony:lony,\n    tstd:tstd,\n    altd:altd,\n    //name:msg.payload.name,\n    alt:msg.payload.alt,\n    tst:msg.payload.time,\n    track:msg.payload.track,\n    speed:msg.payload.speed,\n    climb: msg.payload.climb,\n    epx:msg.payload.epx,\n    epy:msg.payload.epy,\n    //acc:(msg.payload.epx+msg.payload.epy)/2,\n}\nlatx=msg.payload.lat;\nlony=msg.payload.lon;\ntstd=msg.payload.tst;\naltd=msg.payload.alt;\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;",
-        "finalize": "",
-        "libs": [],
-        "x": 780,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "d3c795d5.b5cde",
         "type": "switch",
         "z": "79519d85.08b504",
@@ -1633,7 +1620,7 @@
         "y": 280,
         "wires": [
             [
-                "e61de3f2.2fd438"
+                "591413626c87e431"
             ],
             [
                 "c31d0199.ec87c"
@@ -1655,7 +1642,7 @@
                 "t": "false"
             }
         ],
-        "checkall": "true",
+        "checkall": "false",
         "repair": false,
         "outputs": 2,
         "x": 430,
@@ -1745,31 +1732,6 @@
         ]
     },
     {
-        "id": "6f772333.9430bc",
-        "type": "change",
-        "z": "79519d85.08b504",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.acc",
-                "pt": "msg",
-                "to": "(payload.epx+payload.epy)/2",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 560,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "80486c5a.54a6",
         "type": "function",
         "z": "79519d85.08b504",
@@ -1842,74 +1804,7 @@
                 "e61de3f2.2fd438"
             ],
             [
-                "9f74b127.76f968"
-            ]
-        ]
-    },
-    {
-        "id": "9f74b127.76f968",
-        "type": "switch",
-        "z": "79519d85.08b504",
-        "name": "pause",
-        "property": "$parent.pause",
-        "propertyType": "flow",
-        "rules": [
-            {
-                "t": "true"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 910,
-        "y": 360,
-        "wires": [
-            [
-                "bfe60aea.47e338"
-            ]
-        ]
-    },
-    {
-        "id": "90d72ca8.a41cc8",
-        "type": "change",
-        "z": "79519d85.08b504",
-        "name": "係数ｘ距離",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.dis",
-                "pt": "msg",
-                "to": "$flowContext(\"$parent.coe\")*msg.payload.dis",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1050,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bfe60aea.47e338",
-        "type": "function",
-        "z": "79519d85.08b504",
-        "name": "前GPS付加",
-        "func": "if(msg.payload.time != tstd){\n   \n    msg.payload.latx=latx;\n    msg.payload.lony=lony;\n    msg.payload.tstd=tstd;\n    msg.payload.altd=altd;\n    \n    latx=msg.payload.lat;\n    lony=msg.payload.lon;\n    tstd=msg.payload.time;\n    altd=msg.payload.alt;\n    flow.set(\"$parent.latx\",latx);\n    flow.set(\"$parent.lony\",lony);\n    return msg;\n}\nelse{\n    flow.set(\"$parent.duplication\",i);\n    i++\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;\ni=0;",
-        "finalize": "",
-        "libs": [],
-        "x": 1070,
-        "y": 360,
-        "wires": [
-            [
-                "d3c795d5.b5cde"
+                "1062a525580c5eeb"
             ]
         ]
     },
@@ -2242,8 +2137,15 @@
                 "t": "set",
                 "p": "topic",
                 "pt": "msg",
-                "to": "r1",
+                "to": "b1",
                 "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "time",
+                "pt": "global",
+                "to": "payload.time",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -3239,7 +3141,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　1バイク距離:{{payload.oddc}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　1バイク距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
         "output": "str",
         "x": 1890,
         "y": 340,
@@ -3578,10 +3480,10 @@
         "id": "b74f199d.ee4458",
         "type": "link out",
         "z": "f20b3fe7.75306",
-        "name": "1移動",
+        "name": "1バイクＧＰＳ",
         "links": [
-            "dfa3b187.7efc",
-            "bc3fc049.2e3b9"
+            "bc3fc049.2e3b9",
+            "dfa3b187.7efc"
         ],
         "x": 635,
         "y": 440,
@@ -3877,7 +3779,7 @@
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=Math.floor(odd*flow.get(\"coe\"));\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n}\n    \n\nreturn msg;\n",
+        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -4582,7 +4484,7 @@
         "id": "4002acad.fc2d34",
         "type": "link out",
         "z": "f20b3fe7.75306",
-        "name": "odd1",
+        "name": "1バイク",
         "links": [
             "ec2f5623.35b288"
         ],
@@ -4624,6 +4526,13 @@
                 "p": "payload.kukyori",
                 "pt": "msg",
                 "to": "($floor(payload.kukyori))/1000",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.oddc",
+                "pt": "msg",
+                "to": "($floor(payload.oddc*10))/10000",
                 "tot": "jsonata"
             }
         ],
@@ -4686,11 +4595,6 @@
             {
                 "t": "delete",
                 "p": "payload.time",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.oddc",
                 "pt": "msg"
             },
             {
@@ -4784,7 +4688,7 @@
                 "t": "set",
                 "p": "oddt3",
                 "pt": "global",
-                "to": "payload.oddt",
+                "to": "payload.oddtc",
                 "tot": "msg"
             }
         ],
@@ -4794,7 +4698,7 @@
         "to": "",
         "reg": false,
         "x": 2320,
-        "y": 340,
+        "y": 360,
         "wires": [
             []
         ]
@@ -4850,7 +4754,7 @@
                 "t": "set",
                 "p": "payload.name",
                 "pt": "msg",
-                "to": "2移動",
+                "to": "2バイク",
                 "tot": "str"
             },
             {
@@ -4885,7 +4789,7 @@
                 "t": "set",
                 "p": "topic",
                 "pt": "msg",
-                "to": "r2",
+                "to": "b2",
                 "tot": "str"
             }
         ],
@@ -5615,10 +5519,10 @@
         "id": "eb24db7b.d88d28",
         "type": "link out",
         "z": "dc1c6fdb.d2e7",
-        "name": "2移動",
+        "name": "2バイクＧＰＳ",
         "links": [
-            "dfa3b187.7efc",
-            "bc3fc049.2e3b9"
+            "bc3fc049.2e3b9",
+            "dfa3b187.7efc"
         ],
         "x": 755,
         "y": 200,
@@ -5872,22 +5776,6 @@
         ]
     },
     {
-        "id": "b4bb0ae.4fd9c78",
-        "type": "json",
-        "z": "dc1c6fdb.d2e7",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 2430,
-        "y": 200,
-        "wires": [
-            [
-                "63aa14eb.d1bff4"
-            ]
-        ]
-    },
-    {
         "id": "63aa14eb.d1bff4",
         "type": "mqtt out",
         "z": "dc1c6fdb.d2e7",
@@ -5901,8 +5789,8 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2620,
-        "y": 200,
+        "x": 2040,
+        "y": 260,
         "wires": []
     },
     {
@@ -6102,7 +5990,10 @@
         "x": 2220,
         "y": 500,
         "wires": [
-            []
+            [
+                "5af668f1c6255786",
+                "d8682b6160784445"
+            ]
         ]
     },
     {
@@ -6142,7 +6033,8 @@
         "y": 200,
         "wires": [
             [
-                "5200518804b2cfed"
+                "5200518804b2cfed",
+                "63aa14eb.d1bff4"
             ]
         ]
     },
@@ -6178,8 +6070,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1610,
-        "y": 220,
+        "x": 2650,
+        "y": 100,
         "wires": []
     },
     {
@@ -6228,7 +6120,7 @@
         "type": "function",
         "z": "dc1c6fdb.d2e7",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=Math.floor(odd*flow.get(\"coe\"));\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n}\n    \n\nreturn msg;\n",
+        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -6241,7 +6133,6 @@
                 "91c0485.788d1b8",
                 "fc3a4b9e.3ad03",
                 "994a4c51.124bb",
-                "a76513a5.7ac5e",
                 "5bbaf733.8566d8",
                 "1fec0af3.e53725",
                 "2232d8c6.92d848",
@@ -6770,7 +6661,7 @@
         "id": "a3355c73.de1e8",
         "type": "link out",
         "z": "dc1c6fdb.d2e7",
-        "name": "r2",
+        "name": "2バイク",
         "links": [
             "ec2f5623.35b288"
         ],
@@ -6869,6 +6760,13 @@
                 "pt": "msg",
                 "to": "($floor(payload.kukyori))/1000",
                 "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.oddc",
+                "pt": "msg",
+                "to": "($floor(payload.oddc*10))/10000",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -6880,7 +6778,6 @@
         "y": 200,
         "wires": [
             [
-                "b4bb0ae.4fd9c78",
                 "c077521448e91a0e"
             ]
         ]
@@ -6921,7 +6818,7 @@
                 "t": "set",
                 "p": "oddt4",
                 "pt": "global",
-                "to": "payload.oddt",
+                "to": "payload.oddtc",
                 "tot": "msg"
             }
         ],
@@ -6930,8 +6827,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2280,
-        "y": 120,
+        "x": 2300,
+        "y": 280,
         "wires": [
             []
         ]
@@ -6945,7 +6842,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<b>DELAY距離計</b><br>\n<font size=\"4\">{{payload.genku}}区　距離:{{payload.odd}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ",
+        "template": "<b>DELAY＆補正距離計</b><br>\n<font size=\"4\">{{payload.genku}}区　距離:{{payload.oddc}}m </font>\n<br><b>総距離　{{payload.oddtc}}ｍ",
         "output": "str",
         "x": 2310,
         "y": 240,
@@ -7008,11 +6905,6 @@
                 "pt": "msg"
             },
             {
-                "t": "delete",
-                "p": "payload.oddc",
-                "pt": "msg"
-            },
-            {
                 "t": "set",
                 "p": "payload.dis",
                 "pt": "msg",
@@ -7029,7 +6921,8 @@
         "y": 160,
         "wires": [
             [
-                "aee8458cde2b46a7"
+                "aee8458cde2b46a7",
+                "a76513a5.7ac5e"
             ]
         ]
     },
@@ -7047,8 +6940,8 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2800,
-        "y": 120,
+        "x": 2820,
+        "y": 160,
         "wires": []
     },
     {
@@ -7067,8 +6960,8 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "x": 2630,
-        "y": 120,
+        "x": 2650,
+        "y": 160,
         "wires": [
             [
                 "01809c0d5bd6c42c"
@@ -7124,7 +7017,7 @@
         "type": "function",
         "z": "a74bd00bd0957478",
         "name": "シリアルデータ変換",
-        "func": "zenku=global.get(\"zenku\");\nkukyori=global.get(\"ku\");\ngenku=msg.payload.genku;\noffset=flow.get(\"offset\");\nif(genku>zenku){\n    genku=zenku;\n}\ntotal=global.get(\"totaln\");\nodd=msg.payload.odd;\noddt=Math.floor(total[genku-1]+odd*1000);\ncar=msg.payload.car;\noddtn=\"oddt\"+car;\nglobal.set(oddtn,oddt);\n\nmsg.payload={\n    car:car,\n    genku:genku,\n    zenku:zenku,\n    odd:odd,\n    kukyori:kukyori[genku]/1000,\n    oddt:oddt,\n    \n}\nreturn msg;\n",
+        "func": "zenku=global.get(\"zenku\");\nkukyori=global.get(\"ku\");\ngenku=msg.payload.genku;\noffset=flow.get(\"offset\");\nif(genku>zenku){\n    genku=zenku;\n}\ntotal=global.get(\"totaln\");\nodd=msg.payload.odd;\noddt=Math.floor(total[genku-1]+odd*1000);\ncar=msg.payload.car;\noddtn=\"oddt\"+car;\nglobal.set(oddtn,oddt);\n\nmsg.payload={\n    car:car,\n    genku:genku,\n    zenku:zenku,\n    oddc:odd,\n    kukyori:kukyori[genku]/1000,\n    oddt:oddt,\n    \n}\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -7163,7 +7056,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{{payload.car}}号車\n{{payload.genku}}/{{payload.zenku}}区:{{payload.odd}}km/{{payload.kukyori}}km ",
+        "template": "{{payload.car}}号車\n{{payload.genku}}/{{payload.zenku}}区:{{payload.oddc}}km/{{payload.kukyori}}km ",
         "output": "str",
         "x": 1070,
         "y": 140,
@@ -7204,7 +7097,7 @@
         "type": "function",
         "z": "a74bd00bd0957478",
         "name": "シリアルデータ変換",
-        "func": "zenku=global.get(\"zenku\");\nkukyori=global.get(\"ku\");\ngenku=msg.payload.genku;\nif(genku>zenku){\n    genku=zenku;\n}\ntotal=global.get(\"totaln\");\nodd=msg.payload.odd;\noddt=Math.floor(total[genku-1]+odd*1000);\ncar=msg.payload.car;\noddtn=\"oddt\"+car;\nglobal.set(oddtn,oddt);\n\nmsg.payload={\n    car:car,\n    genku:genku,\n    zenku:zenku,\n    odd:odd,\n    kukyori:kukyori[genku]/1000,\n    oddt:oddt,\n    \n}\nreturn msg;\n",
+        "func": "zenku=global.get(\"zenku\");\nkukyori=global.get(\"ku\");\ngenku=msg.payload.genku;\nif(genku>zenku){\n    genku=zenku;\n}\ntotal=global.get(\"totaln\");\nodd=msg.payload.odd;\noddt=Math.floor(total[genku-1]+odd*1000);\ncar=msg.payload.car;\noddtn=\"oddt\"+car;\nglobal.set(oddtn,oddt);\n\nmsg.payload={\n    car:car,\n    genku:genku,\n    zenku:zenku,\n    oddc:odd,\n    kukyori:kukyori[genku]/1000,\n    oddt:oddt,\n    \n}\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -7623,7 +7516,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{{payload.car}}号車\n{{payload.genku}}/{{payload.zenku}}区:{{payload.odd}}km/{{payload.kukyori}}km ",
+        "template": "{{payload.car}}号車\n{{payload.genku}}/{{payload.zenku}}区:{{payload.oddc}}km/{{payload.kukyori}}km ",
         "output": "str",
         "x": 1050,
         "y": 260,
@@ -10892,7 +10785,6 @@
         "z": "8caaa155.e5486",
         "name": "odd3",
         "links": [
-            "dfa3b187.7efc",
             "ec2f5623.35b288"
         ],
         "x": 2235,
@@ -11424,10 +11316,8 @@
         "name": "",
         "links": [
             "2abf06e4.628d2a",
-            "8b754ea0.6dfc5",
             "b74f199d.ee4458",
-            "eb24db7b.d88d28",
-            "d27c84f2e9c7b661"
+            "eb24db7b.d88d28"
         ],
         "x": 95,
         "y": 580,
@@ -11473,15 +11363,12 @@
         "z": "9d68a1c7.f4976",
         "name": "",
         "path": "/worldmap",
-        "events": "connect",
-        "x": 220,
+        "events": "all",
+        "x": 80,
         "y": 680,
         "wires": [
             [
-                "8c597f4f.e582",
-                "20f3026.d6648fe",
-                "a94a3dd0.7277f",
-                "84a80025.1574e"
+                "a94a3dd0.7277f"
             ]
         ]
     },
@@ -11535,8 +11422,7 @@
         "y": 700,
         "wires": [
             [
-                "9371e5be.f0d2f8",
-                "aaef08e10d796370"
+                "9371e5be.f0d2f8"
             ]
         ]
     },
@@ -11702,8 +11588,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1090,
-        "y": 840,
+        "x": 630,
+        "y": 780,
         "wires": []
     },
     {
@@ -11716,16 +11602,26 @@
         "rules": [
             {
                 "t": "eq",
+                "v": "connected",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
                 "v": "point",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
-        "x": 250,
-        "y": 840,
+        "outputs": 2,
+        "x": 230,
+        "y": 680,
         "wires": [
+            [
+                "20f3026.d6648fe",
+                "8c597f4f.e582",
+                "84a80025.1574e"
+            ],
             [
                 "3958886e.02f2b8"
             ]
@@ -11780,7 +11676,8 @@
         "y": 840,
         "wires": [
             [
-                "15e54224.13283e"
+                "15e54224.13283e",
+                "67fd93ce.0458ac"
             ]
         ]
     },
@@ -11797,9 +11694,7 @@
         "x": 840,
         "y": 840,
         "wires": [
-            [
-                "67fd93ce.0458ac"
-            ]
+            []
         ]
     },
     {
@@ -12171,7 +12066,8 @@
         "y": 520,
         "wires": [
             [
-                "be042f3f.f2fad"
+                "be042f3f.f2fad",
+                "8a6b4449c9c0d05c"
             ]
         ]
     },
@@ -12322,56 +12218,6 @@
         ]
     },
     {
-        "id": "685c1cab.b3d0fc",
-        "type": "inject",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 180,
-        "wires": [
-            [
-                "39fd339c.505b0c"
-            ]
-        ]
-    },
-    {
-        "id": "39fd339c.505b0c",
-        "type": "change",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "time",
-                "pt": "flow",
-                "to": "$ceil(payload/1000)*1000\t",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 430,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "96aebe78.583d98",
         "type": "switch",
         "z": "9d68a1c7.f4976",
@@ -12380,17 +12226,23 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
-                "v": "time",
-                "vt": "flow"
+                "t": "lt",
+                "v": "$globalContext(\"time\")+100",
+                "vt": "jsonata"
+            },
+            {
+                "t": "gte",
+                "v": "$globalContext(\"time\")-100",
+                "vt": "jsonata"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 150,
-        "y": 240,
+        "y": 160,
         "wires": [
+            [],
             [
                 "b337a77c.cf9838"
             ]
@@ -12409,37 +12261,20 @@
         "joiner": "\\n",
         "joinerType": "str",
         "accumulate": false,
-        "timeout": "0.7",
+        "timeout": "0.8",
         "count": "",
         "reduceRight": false,
         "reduceExp": "",
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 450,
-        "y": 240,
+        "x": 470,
+        "y": 200,
         "wires": [
             [
-                "278e61b8.cd0abe",
                 "c1d3953f.389df8"
             ]
         ]
-    },
-    {
-        "id": "278e61b8.cd0abe",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 630,
-        "y": 300,
-        "wires": []
     },
     {
         "id": "90635f32.60758",
@@ -12476,11 +12311,10 @@
         "links": [
             "4002acad.fc2d34",
             "8b754ea0.6dfc5",
-            "a3355c73.de1e8",
-            "7b4f68c8f0f279f3"
+            "a3355c73.de1e8"
         ],
         "x": 35,
-        "y": 240,
+        "y": 160,
         "wires": [
             [
                 "96aebe78.583d98"
@@ -12497,21 +12331,21 @@
                 "t": "set",
                 "p": "payload.dis13",
                 "pt": "msg",
-                "to": "payload.r1-payload.r3",
+                "to": "payload.b1-payload.r3",
                 "tot": "jsonata"
             },
             {
                 "t": "set",
                 "p": "payload.dis12",
                 "pt": "msg",
-                "to": "payload.r1-payload.r2",
+                "to": "payload.b1-payload.b2",
                 "tot": "jsonata"
             },
             {
                 "t": "set",
                 "p": "payload.dis23",
                 "pt": "msg",
-                "to": "$abs(payload.r2-payload.r3)\t",
+                "to": "$abs(payload.b2-payload.r3)\t",
                 "tot": "jsonata"
             }
         ],
@@ -12520,8 +12354,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 590,
-        "y": 240,
+        "x": 610,
+        "y": 200,
         "wires": [
             [
                 "6dd0536c.68a4dc",
@@ -12557,7 +12391,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "payload.oddt",
+                "to": "payload.oddtc",
                 "tot": "msg"
             }
         ],
@@ -12567,7 +12401,7 @@
         "to": "",
         "reg": false,
         "x": 300,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "a42fb7a2.81525"
@@ -12583,12 +12417,12 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "1-2距離差",
+        "label": "1-2バイク距離差",
         "format": "{{msg.payload.dis12}}m",
         "layout": "row-spread",
         "className": "",
-        "x": 800,
-        "y": 120,
+        "x": 830,
+        "y": 80,
         "wires": []
     },
     {
@@ -12622,23 +12456,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 800,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "aaef08e10d796370",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 630,
-        "y": 700,
+        "y": 120,
         "wires": []
     },
     {
@@ -14960,7 +14778,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<b>DELAY距離計</b><br>\n<font size=\"4\">{{payload.genku}}区　距離:{{payload.odd}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ",
+        "template": "<b>DELAY&補正距離計</b><br>\n<font size=\"4\">{{payload.genku}}区　距離:{{payload.oddc}}m </font>\n<br><b>総距離　{{payload.oddtc}}ｍ",
         "output": "str",
         "x": 2319.800048828125,
         "y": 298.20001220703125,
@@ -14986,5 +14804,336 @@
         "x": 470,
         "y": 720,
         "wires": []
+    },
+    {
+        "id": "2373c7bf1cd9c178",
+        "type": "function",
+        "z": "79519d85.08b504",
+        "name": "前GPS付加",
+        "func": "if(msg.payload.time != tstd){\n   \n    msg.payload.latx=flow.get(\"$parent.latx\");\n    msg.payload.lony=flow.get(\"$parent.lony\");\n    //msg.payload.tstd=tstd;\n    //msg.payload.altd=altd;\n    \n    latx=msg.payload.lat;\n    lony=msg.payload.lon;\n    //tstd=msg.payload.time;\n    //altd=msg.payload.alt;\n    flow.set(\"$parent.latx\",latx);\n    flow.set(\"$parent.lony\",lony);\n    return msg;\n}\nelse{\n    flow.set(\"$parent.duplication\",i);\n    i++\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nlatx=0;\nlony=0;\ntstd=0;\naltd=0;\ni=0;",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 420,
+        "wires": [
+            [
+                "d3c795d5.b5cde"
+            ]
+        ]
+    },
+    {
+        "id": "1062a525580c5eeb",
+        "type": "switch",
+        "z": "79519d85.08b504",
+        "name": "pause",
+        "property": "$parent.pause",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 870,
+        "y": 380,
+        "wires": [
+            [
+                "591413626c87e431"
+            ],
+            [
+                "2373c7bf1cd9c178"
+            ]
+        ]
+    },
+    {
+        "id": "591413626c87e431",
+        "type": "change",
+        "z": "79519d85.08b504",
+        "name": "dis＝0　座標固定なし",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.dis",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "$parent.latx",
+                "pt": "flow",
+                "to": "payload.lat",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "$parent.lony",
+                "pt": "flow",
+                "to": "payload.lon",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c37fa66f9a65693c",
+        "type": "function",
+        "z": "9d68a1c7.f4976",
+        "name": "2点間距離",
+        "func": "function distance(lat1, lng1, lat2, lng2 ) {//２点間距離\n    \n         lat1 *= Math.PI / 180;\n         lng1 *= Math.PI / 180;\n         lat2 *= Math.PI / 180;\n         lng2 *= Math.PI / 180;\n         dis = 1000*6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2))\n         //return (Math.round(dis * 100)) / 100;\n         return dis;\n     \n}\n\nfunction direction(y1, x1, y2, x2) {//２点間角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI / 180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n   \n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\nreturn (Math.floor(dir*100)) / 100;\n}\n\nfunction redirection(y1, x1, y2, x2, bearing) {//進行方向との角度\n    z = x2-x1\n    z *=  Math.PI / 180;\n    y1 *= Math.PI / 180;\n    x1 *= Math.PI / 180;\n    y2 *= Math.PI /180;\n    x2 *= Math.PI / 180;\n\n    a=Math.sin(z);\n    b=Math.cos(y1)*Math.tan(y2);\n    c=Math.sin(y1)*Math.cos(z);\n\n    dir=Math.atan2(a,b-c)*180/Math.PI;\n\n    if(dir<0){\n        dir=dir+360;\n    }\n    re_dir=dir-bearing;\n    if(re_dir<0){\n        re_dir=re_dir+360;\n    }\nreturn (Math.floor(re_dir*100)) / 100;\n}\n\n\ndist=distance(msg.payload.lat,msg.payload.lon,msg.payload.latx, msg.payload.lony);\n\n\nif(dist>=0){\nmsg.payload.dis=dist;\n   \nreturn msg;\n}\n//}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\ndist=0.00",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8a6b4449c9c0d05c",
+        "type": "switch",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "property": "payload.time",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "$globalContext(\"time\")+100",
+                "vt": "jsonata"
+            },
+            {
+                "t": "gte",
+                "v": "$globalContext(\"time\")-100",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [],
+            [
+                "c03d78aa4e5a4b57",
+                "15e116838c5225bd"
+            ]
+        ]
+    },
+    {
+        "id": "c03d78aa4e5a4b57",
+        "type": "change",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.lat",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "d9fdaa864ea251ed"
+            ]
+        ]
+    },
+    {
+        "id": "15e116838c5225bd",
+        "type": "change",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.lon",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "dc23de2aced550dc"
+            ]
+        ]
+    },
+    {
+        "id": "dc23de2aced550dc",
+        "type": "join",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "0.8",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 450,
+        "y": 420,
+        "wires": [
+            [
+                "725fdcf87fd5a8d2"
+            ]
+        ]
+    },
+    {
+        "id": "d9fdaa864ea251ed",
+        "type": "join",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "0.8",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 450,
+        "y": 460,
+        "wires": [
+            [
+                "725fdcf87fd5a8d2"
+            ]
+        ]
+    },
+    {
+        "id": "725fdcf87fd5a8d2",
+        "type": "join",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "0.8",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 600,
+        "y": 360,
+        "wires": [
+            [
+                "e4c09c47769e3c3d"
+            ]
+        ]
+    },
+    {
+        "id": "e4c09c47769e3c3d",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "5af668f1c6255786",
+        "type": "debug",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2430,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "d8682b6160784445",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "oddr",
+                "pt": "flow",
+                "to": "payload.oddr",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2390,
+        "y": 560,
+        "wires": [
+            []
+        ]
     }
 ]
