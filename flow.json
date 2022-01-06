@@ -787,7 +787,7 @@
     {
         "id": "693bf46.1e1860c",
         "type": "ui_group",
-        "name": "iPhone",
+        "name": "スマートフォン1",
         "tab": "43f4f39.b4faf8c",
         "order": 3,
         "disp": true,
@@ -1352,7 +1352,7 @@
         "type": "function",
         "z": "7e6f2d4d.3bcd74",
         "name": "リセット",
-        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.oddb\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:msg.payload.kukyori,//ダッシュボード表示用\n        meter:msg.payload.meter,//リセット距離\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    trip[0]=j;\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\n    \n\n\n\n\n",
+        "func": "\nfunction TIME(time){\ndate = new Date(time);\nvar hh = (\"0\"+date.getHours()).slice(-2);\nvar mm = (\"0\"+date.getMinutes()).slice(-2);\nvar ss = (\"0\"+date.getSeconds()).slice(-2);\nvar mmm =(\"00\"+date.getMilliseconds()).slice(-3);\n\nreturn hh+\":\"+mm+\":\"+ss+\":\"+mmm;\n}\n\nfunction degToRad(degrees) {\n  return degrees * (Math.PI / 180);\n}\n\ndirdir=90-Math.abs(msg.payload.dirdir)\nrad=degToRad(dirdir);\ny=Math.sin(rad)*msg.payload.kyori*1000;//前後座標間距離\ny=Math.round(y*10)/10;\n//x=Math.round((flow.get(\"odd\")*10))/10;\nodd=flow.get(\"$parent.odd\");\ntotal=global.get(\"total\");\ncoe=global.get(\"coe\");\nj++;\nvar i=msg.payload.reset-1;\nnow = new Date();\n//date=Date.now(date);\n\nif(flow.get(\"$parent.reset\") != i+1){//リセット区間が違うなら\n\n    flow.set(\"$parent.coe\",coe[i+1]);\n    flow.set(\"$parent.odd\",msg.payload.meter+y);\n    tst[i]=msg.payload.time;\n    time[i]=TIME(msg.payload.time);\n    \n    trip[i]=Math.round((odd-y)*100)/100;\n    if(msg.payload.meter==0){\n        error[i]=Math.round((trip[i]-kukyori)*100)/100;\n    }else{\n        error[i]=error[i]=Math.round((trip[i]-msg.payload.meter)*100)/100;\n    }\n    lap[i]=(TIME(tst[i]-tst[i-1]-9*60*60*1000)).slice(-9);\n    over[i]=y;\n    \n    msg.payload={\n        reset:msg.payload.reset,//ダッシュボード表示用リセットNO.\n        number:msg.payload.number,//グローバル化？\n        name:msg.payload.name,//ダッシュボード表示用\n        kukyori:msg.payload.kukyori,//ダッシュボード表示用\n        meter:msg.payload.meter,//リセット距離\n        trip:trip,//通過距離（配列）\n        itrip:trip[i],//通過距離　記録用\n        error:error,//ダッシュボード表示用距離誤差（配列）\n        ierror:error[i],//誤差記録用\n        dirdir:msg.payload.dirdir,//記録用　移動体進行方向からみたポイントの方向\n        time:time,//通過gps時間（配列）\n        itime:time[i],//通過gps時刻　記録用\n        date:TIME(now),\n        zenku:global.get(\"zenku\"),//ダッシュボード表示用\n        lap:lap,//ラップタイム(配列）\n        ilap:lap[i],//ラップタイム//記録用\n        ku:i,//更新区間\n        odd:odd,//overを含むリセット時の積算距離\n        over:over,\n    }\n    trip[0]=j;\n    kukyori=msg.payload.kukyori;\n    flow.set(\"$parent.genku\",msg.payload.number);\n    flow.set(\"$parent.reset\",msg.payload.reset);\n    flow.set(\"$parent.kukyori\",kukyori);\n\n    flow.set(\"$parent.trip\",trip);\n    flow.set(\"$parent.error\",error);\n    flow.set(\"$parent.time\",time);\n    return msg;\n}\n\n    \n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"$parent.trip\" ,Array());\ntrip =Array();\nflow.set(\"$parent.error\",Array());\nerror=Array();\nover=Array();\ntime=Array();\ntst=Array();\nlap=Array();\n//lat=Array();\n//lon=Array();\nj=0;\nkukyori=0;",
@@ -7852,9 +7852,7 @@
         "x": 130,
         "y": 280,
         "wires": [
-            [
-                "235ebb81.276a44"
-            ]
+            []
         ]
     },
     {
@@ -7901,7 +7899,7 @@
         "type": "function",
         "z": "8caaa155.e5486",
         "name": "新距離積算",
-        "func": "flow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=Math.floor(odd*flow.get(\"coe\"));\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:flow.get(\"coe\"),\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n}\n    \n\nreturn msg;\n",
+        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -9282,7 +9280,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -12242,7 +12240,9 @@
         "x": 150,
         "y": 160,
         "wires": [
-            [],
+            [
+                "1e3d5094e29d140a"
+            ],
             [
                 "b337a77c.cf9838"
             ]
@@ -12317,7 +12317,8 @@
         "y": 160,
         "wires": [
             [
-                "96aebe78.583d98"
+                "96aebe78.583d98",
+                "3b8625c1b24ee656"
             ]
         ]
     },
@@ -15134,6 +15135,57 @@
         "y": 560,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "3b8625c1b24ee656",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1e3d5094e29d140a",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c110b7356f46c151",
+        "type": "mqtt in",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "topic": "owntracks/nodered/sense3",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "235ebb81.276a44"
+            ]
         ]
     }
 ]
