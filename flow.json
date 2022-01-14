@@ -832,7 +832,7 @@
         "usetls": false,
         "compatmode": false,
         "protocolVersion": "4",
-        "keepalive": "60",
+        "keepalive": "600",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
@@ -3331,7 +3331,7 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 2050,
+        "x": 2030,
         "y": 880,
         "wires": [
             [
@@ -3695,22 +3695,22 @@
                 "t": "set",
                 "p": "payload.epx",
                 "pt": "msg",
-                "to": "epx1",
-                "tot": "global"
+                "to": "epx",
+                "tot": "flow"
             },
             {
                 "t": "set",
                 "p": "payload.epy",
                 "pt": "msg",
-                "to": "epy1",
-                "tot": "global"
+                "to": "epy",
+                "tot": "flow"
             },
             {
                 "t": "set",
                 "p": "payload.prns",
                 "pt": "msg",
-                "to": "prns1",
-                "tot": "global"
+                "to": "prns",
+                "tot": "flow"
             }
         ],
         "action": "",
@@ -3723,8 +3723,7 @@
         "wires": [
             [
                 "60ed6cf03df16b5d",
-                "38a45995.86adc6",
-                "42b59503ca17e5fd"
+                "38a45995.86adc6"
             ]
         ]
     },
@@ -3809,26 +3808,26 @@
         "id": "ccec0a3e.cb1d48",
         "type": "change",
         "z": "f20b3fe7.75306",
-        "name": "gps誤差グローバル化",
+        "name": "gps誤差フロー化",
         "rules": [
             {
                 "t": "set",
-                "p": "epx1",
-                "pt": "global",
+                "p": "epx",
+                "pt": "flow",
                 "to": "payload.epx",
                 "tot": "msg"
             },
             {
                 "t": "set",
-                "p": "epy1",
-                "pt": "global",
+                "p": "epy",
+                "pt": "flow",
                 "to": "payload.epy",
                 "tot": "msg"
             },
             {
                 "t": "set",
-                "p": "prns1",
-                "pt": "global",
+                "p": "prns",
+                "pt": "flow",
                 "to": "payload.prns",
                 "tot": "msg"
             }
@@ -3838,7 +3837,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 240,
+        "x": 230,
         "y": 680,
         "wires": [
             [
@@ -4726,11 +4725,23 @@
                 "pt": "msg"
             },
             {
+                "t": "delete",
+                "p": "payload.time",
+                "pt": "msg"
+            },
+            {
                 "t": "set",
                 "p": "payload.dis",
                 "pt": "msg",
                 "to": "dis13",
                 "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload,time",
+                "pt": "msg",
+                "to": "$fromMillis(payload.time+32400000)\t",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -4743,7 +4754,7 @@
         "wires": [
             [
                 "173b530318191c50",
-                "e44036015bdc6cb8"
+                "93f83dd53cd9600b"
             ]
         ]
     },
@@ -4777,7 +4788,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2780,
+        "x": 2820,
         "y": 460,
         "wires": []
     },
@@ -4848,11 +4859,12 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
-        "x": 2630,
-        "y": 400,
+        "x": 2650,
+        "y": 460,
         "wires": [
-            []
+            [
+                "e44036015bdc6cb8"
+            ]
         ]
     },
     {
@@ -5011,7 +5023,7 @@
             [
                 "1cab13e2.14cf6c",
                 "9878cc7c3630ab2b",
-                "cb02f433daba1fc1"
+                "5aae974a82bdfab1"
             ]
         ]
     },
@@ -5023,7 +5035,7 @@
         "func": "//context.flow.move = !context.flow.move;\n//msg.payload = context.flow.move;\n\npause=flow.get(\"pause\");\npause=!pause;\n//flow.set(\"move\",move);\nmsg.payload=pause;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//context.flow.move==true;\n//flow.set(\"pause\",false);",
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されま��。\n//context.flow.move==true;\n//flow.set(\"pause\",false);",
         "finalize": "",
         "libs": [],
         "x": 320,
@@ -6183,15 +6195,22 @@
                 "t": "set",
                 "p": "payload.epx",
                 "pt": "msg",
-                "to": "epx2",
-                "tot": "global"
+                "to": "epx",
+                "tot": "flow"
             },
             {
                 "t": "set",
                 "p": "payload.epy",
                 "pt": "msg",
-                "to": "epy2",
-                "tot": "global"
+                "to": "epy",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "payload.prns",
+                "pt": "msg",
+                "to": "prns",
+                "tot": "flow"
             }
         ],
         "action": "",
@@ -6240,7 +6259,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2830,
+        "x": 2930,
         "y": 80,
         "wires": []
     },
@@ -6846,34 +6865,6 @@
         ]
     },
     {
-        "id": "cb02f433daba1fc1",
-        "type": "change",
-        "z": "dc1c6fdb.d2e7",
-        "name": "gps誤差グローバル化",
-        "rules": [
-            {
-                "t": "set",
-                "p": "acc3",
-                "pt": "global",
-                "to": "payload.acc",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 140,
-        "wires": [
-            [
-                "91c05e28.52298",
-                "3c334e25834cbd38"
-            ]
-        ]
-    },
-    {
         "id": "1bcbe3884935257d",
         "type": "mqtt in",
         "z": "dc1c6fdb.d2e7",
@@ -7058,6 +7049,13 @@
                 "pt": "msg",
                 "to": "dis14",
                 "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.time",
+                "pt": "msg",
+                "to": "$fromMillis(payload.time+32400000)\t",
+                "tot": "jsonata"
             }
         ],
         "action": "",
@@ -7069,7 +7067,8 @@
         "y": 160,
         "wires": [
             [
-                "604ade6b5aaa5c14"
+                "01809c0d5bd6c42c",
+                "a76513a5.7ac5e"
             ]
         ]
     },
@@ -7087,7 +7086,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 3020,
+        "x": 2940,
         "y": 160,
         "wires": []
     },
@@ -7099,22 +7098,18 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.5",
+        "rate": "2",
+        "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
-        "x": 2830,
-        "y": 160,
+        "x": 2790,
+        "y": 360,
         "wires": [
-            [
-                "01809c0d5bd6c42c",
-                "a76513a5.7ac5e"
-            ]
+            []
         ]
     },
     {
@@ -7760,6 +7755,20 @@
                 "pt": "msg",
                 "to": "dis12",
                 "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "payload.time",
+                "pt": "msg",
+                "to": "no time",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -7767,7 +7776,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 850,
+        "x": 830,
         "y": 140,
         "wires": [
             [
@@ -7789,6 +7798,20 @@
                 "pt": "msg",
                 "to": "dis12",
                 "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "payload.time",
+                "pt": "msg",
+                "to": "no time",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -7796,7 +7819,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 840,
+        "x": 820,
         "y": 260,
         "wires": [
             [
@@ -17784,6 +17807,48 @@
         "wires": [
             [
                 "5dbc33b3b1dec0d5"
+            ]
+        ]
+    },
+    {
+        "id": "5aae974a82bdfab1",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "gps誤差フロー化",
+        "rules": [
+            {
+                "t": "set",
+                "p": "epx",
+                "pt": "flow",
+                "to": "payload.epx",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "epy",
+                "pt": "flow",
+                "to": "payload.epy",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "prns",
+                "pt": "flow",
+                "to": "payload.prns",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "3c334e25834cbd38",
+                "91c05e28.52298"
             ]
         ]
     }
