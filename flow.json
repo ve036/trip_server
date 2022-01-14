@@ -28,6 +28,13 @@
         "info": ""
     },
     {
+        "id": "316743418d7f988e",
+        "type": "tab",
+        "label": "4移動",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "9d68a1c7.f4976",
         "type": "tab",
         "label": "グローバル",
@@ -1015,6 +1022,7 @@
         "broker": "210.203.214.250",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -1070,8 +1078,8 @@
         "cert": "",
         "key": "",
         "ca": "",
-        "certname": "3e0f4abb06-certificate.pem.crt",
-        "keyname": "3e0f4abb06-private.pem.key",
+        "certname": "4aa8232759-certificate.pem.crt",
+        "keyname": "4aa8232759-private.pem.key",
         "caname": "AmazonRootCA1.pem",
         "servername": "",
         "verifyservercert": true,
@@ -1081,10 +1089,11 @@
         "id": "f7d66dab367e42a6",
         "type": "mqtt-broker",
         "name": "AWS",
-        "broker": "a17jm6cbfebqgo-ats.iot.us-west-2.amazonaws.com",
+        "broker": "a17jm6cbfebqgo-ats.iot.ap-northeast-1.amazonaws.com",
         "port": "8883",
         "tls": "5a0a782e010ecd4e",
         "clientid": "",
+        "autoConnect": true,
         "usetls": true,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -1140,6 +1149,37 @@
         "out": "count",
         "addchar": "",
         "responsetimeout": "10000"
+    },
+    {
+        "id": "2f9052c0d4bbebd1",
+        "type": "ui_group",
+        "name": "スマートフォン２",
+        "tab": "43f4f39.b4faf8c",
+        "order": 4,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "de2a428cd68565e5",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "b90ab216.c29668",
+        "order": 7,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "bb383c2d5fc066b5",
+        "type": "ui_spacer",
+        "z": "9d68a1c7.f4976",
+        "name": "spacer",
+        "group": "a3a1b34f.acf18",
+        "order": 7,
+        "width": 3,
+        "height": 1
     },
     {
         "id": "c2d88f2e.41a4f",
@@ -1862,6 +1902,13 @@
                 "pt": "flow",
                 "to": "payload.lon",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.fix",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
             }
         ],
         "action": "",
@@ -2739,7 +2786,7 @@
         "topic": "owntracks/GPS/pi",
         "qos": "0",
         "datatype": "json",
-        "broker": "4646bf9b.55c01",
+        "broker": "50c6b968735ea611",
         "nl": false,
         "rap": false,
         "inputs": 0,
@@ -3016,7 +3063,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2060,
+        "x": 2100,
         "y": 460,
         "wires": []
     },
@@ -3657,6 +3704,13 @@
                 "pt": "msg",
                 "to": "epy1",
                 "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.prns",
+                "pt": "msg",
+                "to": "prns1",
+                "tot": "global"
             }
         ],
         "action": "",
@@ -3669,7 +3723,8 @@
         "wires": [
             [
                 "60ed6cf03df16b5d",
-                "38a45995.86adc6"
+                "38a45995.86adc6",
+                "42b59503ca17e5fd"
             ]
         ]
     },
@@ -3769,6 +3824,13 @@
                 "pt": "global",
                 "to": "payload.epy",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "prns1",
+                "pt": "global",
+                "to": "payload.prns",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -3850,7 +3912,7 @@
         "type": "function",
         "z": "f20b3fe7.75306",
         "name": "新距離積算",
-        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n}\n    \n\nreturn msg;\n",
+        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n    prns:msg.payload.prns,\n}\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
@@ -4664,11 +4726,6 @@
                 "pt": "msg"
             },
             {
-                "t": "delete",
-                "p": "payload.time",
-                "pt": "msg"
-            },
-            {
                 "t": "set",
                 "p": "payload.dis",
                 "pt": "msg",
@@ -4686,7 +4743,7 @@
         "wires": [
             [
                 "173b530318191c50",
-                "93f83dd53cd9600b"
+                "e44036015bdc6cb8"
             ]
         ]
     },
@@ -4792,28 +4849,8 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 2610,
-        "y": 460,
-        "wires": [
-            [
-                "e44036015bdc6cb8"
-            ]
-        ]
-    },
-    {
-        "id": "9bb0aa4fed8cc416",
-        "type": "mqtt in",
-        "z": "f20b3fe7.75306",
-        "name": "",
-        "topic": "owntracks/GPS/p0",
-        "qos": "0",
-        "datatype": "json",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 130,
-        "y": 280,
+        "x": 2630,
+        "y": 400,
         "wires": [
             []
         ]
@@ -4873,6 +4910,22 @@
         "className": "",
         "x": 470,
         "y": 720,
+        "wires": []
+    },
+    {
+        "id": "42b59503ca17e5fd",
+        "type": "debug",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2090,
+        "y": 520,
         "wires": []
     },
     {
@@ -5470,22 +5523,6 @@
         ]
     },
     {
-        "id": "3e579b53.cced04",
-        "type": "debug",
-        "z": "dc1c6fdb.d2e7",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1070,
-        "y": 800,
-        "wires": []
-    },
-    {
         "id": "97d21219.cc7f9",
         "type": "trigger",
         "z": "dc1c6fdb.d2e7",
@@ -5627,7 +5664,7 @@
                 "eb24db7b.d88d28",
                 "5c393273.44ee3c",
                 "5bd34c7.0cc9034",
-                "5bb074e.4aaa18c"
+                "54faadea06cd47e4"
             ]
         ]
     },
@@ -5643,8 +5680,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 470,
-        "y": 380,
+        "x": 370,
+        "y": 280,
         "wires": []
     },
     {
@@ -6203,8 +6240,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2650,
-        "y": 100,
+        "x": 2830,
+        "y": 80,
         "wires": []
     },
     {
@@ -6545,7 +6582,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 330,
+        "x": 290,
         "y": 480,
         "wires": []
     },
@@ -6759,26 +6796,6 @@
         ]
     },
     {
-        "id": "40a0b59.6a8f34c",
-        "type": "mqtt in",
-        "z": "dc1c6fdb.d2e7",
-        "name": "",
-        "topic": "owntracks/nodered/02",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 160,
-        "y": 40,
-        "wires": [
-            [
-                "53538238.2d612c"
-            ]
-        ]
-    },
-    {
         "id": "37a7760f.1d829a",
         "type": "subflow:b2e52e9a.27b3a",
         "z": "dc1c6fdb.d2e7",
@@ -6864,7 +6881,7 @@
         "topic": "owntracks/GPS/p0",
         "qos": "0",
         "datatype": "json",
-        "broker": "4646bf9b.55c01",
+        "broker": "50c6b968735ea611",
         "nl": false,
         "rap": false,
         "inputs": 0,
@@ -7036,11 +7053,6 @@
                 "pt": "msg"
             },
             {
-                "t": "delete",
-                "p": "payload.time",
-                "pt": "msg"
-            },
-            {
                 "t": "set",
                 "p": "payload.dis",
                 "pt": "msg",
@@ -7057,8 +7069,7 @@
         "y": 160,
         "wires": [
             [
-                "aee8458cde2b46a7",
-                "a76513a5.7ac5e"
+                "604ade6b5aaa5c14"
             ]
         ]
     },
@@ -7076,7 +7087,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4646bf9b.55c01",
-        "x": 2820,
+        "x": 3020,
         "y": 160,
         "wires": []
     },
@@ -7088,8 +7099,8 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "2",
-        "nbRateUnits": "1",
+        "rate": "1",
+        "nbRateUnits": "0.5",
         "rateUnits": "second",
         "randomFirst": "1",
         "randomLast": "5",
@@ -7097,11 +7108,12 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 2650,
+        "x": 2830,
         "y": 160,
         "wires": [
             [
-                "01809c0d5bd6c42c"
+                "01809c0d5bd6c42c",
+                "a76513a5.7ac5e"
             ]
         ]
     },
@@ -7210,6 +7222,105 @@
         "y": 560,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "54faadea06cd47e4",
+        "type": "switch",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "property": "payload.fix",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 360,
+        "wires": [
+            [
+                "5bb074e.4aaa18c"
+            ],
+            [
+                "a4c738498fd97547"
+            ]
+        ]
+    },
+    {
+        "id": "909bd41e98be9512",
+        "type": "worldmap-tracks",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "depth": "1200",
+        "layer": "combined",
+        "smooth": false,
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "4b006a97.b509ac"
+            ]
+        ]
+    },
+    {
+        "id": "a4c738498fd97547",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "purple",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "909bd41e98be9512"
+            ]
+        ]
+    },
+    {
+        "id": "604ade6b5aaa5c14",
+        "type": "change",
+        "z": "dc1c6fdb.d2e7",
+        "name": "時間変換",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.time",
+                "pt": "msg",
+                "to": "$fromMillis(payload.time,'[H01]:[m01]:[s01]', '+0900')\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2640,
+        "y": 160,
+        "wires": [
+            [
+                "aee8458cde2b46a7"
+            ]
         ]
     },
     {
@@ -8076,14 +8187,16 @@
         "topic": "owntracks/nodered/aquos",
         "qos": "0",
         "datatype": "auto",
-        "broker": "4646bf9b.55c01",
+        "broker": "50c6b968735ea611",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 130,
-        "y": 280,
+        "x": 150,
+        "y": 80,
         "wires": [
-            []
+            [
+                "235ebb81.276a44"
+            ]
         ]
     },
     {
@@ -10912,42 +11025,6 @@
         ]
     },
     {
-        "id": "e6db4f47.6a684",
-        "type": "mqtt in",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "topic": "owntracks/nodered/iphone",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 410,
-        "y": 60,
-        "wires": [
-            [
-                "93d9188a.74b8d8"
-            ]
-        ]
-    },
-    {
-        "id": "93d9188a.74b8d8",
-        "type": "debug",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 60,
-        "wires": []
-    },
-    {
         "id": "21e74823.284308",
         "type": "debug",
         "z": "8caaa155.e5486",
@@ -11127,24 +11204,6 @@
         ]
     },
     {
-        "id": "be09b343.d5448",
-        "type": "mqtt in",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "topic": "owntracks/nodered/03",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 140,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "7d27578767899bae",
         "type": "debug",
         "z": "8caaa155.e5486",
@@ -11263,22 +11322,2577 @@
         ]
     },
     {
-        "id": "8e92be2352bb5359",
+        "id": "856c04f611c45d0c",
         "type": "mqtt in",
         "z": "8caaa155.e5486",
         "name": "",
-        "topic": "owntracks/nodered/sense3",
+        "topic": "owntracks/nodered/02",
         "qos": "0",
         "datatype": "auto",
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 130,
+        "x": 120,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e6bbdc78393d675d",
+        "type": "mqtt in",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "topic": "owntracks/nodered/03",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 120,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db0e896a7fce723e",
+        "type": "template",
+        "z": "316743418d7f988e",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "時速 : {{payload.kmh}} km",
+        "output": "str",
+        "x": 2260,
+        "y": 260,
+        "wires": [
+            [
+                "dbf8c391265bc92c"
+            ]
+        ]
+    },
+    {
+        "id": "dbf8c391265bc92c",
+        "type": "ui_template",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "name": "Speed",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2410,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4a1f2e4520cf16c",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "新距離積算",
+        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n    name:msg.payload.name,\n}\n    \n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 420,
+        "wires": [
+            [
+                "ac7bf8ca23f81cf4",
+                "bfbf9a481c2ebec1",
+                "b33bb4d99e9d48a2",
+                "1965099f64caf71c",
+                "4875af9575161720",
+                "db0e896a7fce723e",
+                "426de02950a9d371",
+                "6d517fe58cc71caa",
+                "872808b3a86e06d7",
+                "3eb0bd2ed1e5dc1e"
+            ]
+        ]
+    },
+    {
+        "id": "370d0df0332e6ece",
+        "type": "ui_button",
+        "z": "316743418d7f988e",
+        "name": "",
+        "group": "2f9052c0d4bbebd1",
+        "order": 2,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "リセット",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "",
+        "topicType": "str",
+        "x": 1160,
+        "y": 600,
+        "wires": [
+            [
+                "726137586d812f21"
+            ]
+        ]
+    },
+    {
+        "id": "3f4199c8da3104e1",
+        "type": "mqtt in",
+        "z": "316743418d7f988e",
+        "name": "",
+        "topic": "trip4/zero",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 1220,
         "y": 360,
         "wires": [
             [
-                "235ebb81.276a44"
+                "6aad3643bcbce8ad"
+            ]
+        ]
+    },
+    {
+        "id": "0ab801ca259faf75",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "true/false",
+        "func": "//context.flow.move = !context.flow.move;\n//msg.payload = context.flow.move;\n\npause=flow.get(\"pause\");\npause=!pause;\n//flow.set(\"move\",move);\nmsg.payload=pause;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//context.flow.move==true;\n//flow.set(\"pause\",false);",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 920,
+        "wires": [
+            [
+                "3434f6a3d0819c45"
+            ]
+        ]
+    },
+    {
+        "id": "d5132f5a8707d24e",
+        "type": "switch",
+        "z": "316743418d7f988e",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 790,
+        "y": 920,
+        "wires": [
+            [
+                "e12b9292b0aaa1a6"
+            ],
+            [
+                "f9f2b1549c803204"
+            ]
+        ]
+    },
+    {
+        "id": "42896e2dcb639c85",
+        "type": "ui_button",
+        "z": "316743418d7f988e",
+        "name": "PAUSE",
+        "group": "2f9052c0d4bbebd1",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "{{msg.topic}}",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": " {{msg.background}}",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "",
+        "topicType": "str",
+        "x": 136.1180419921875,
+        "y": 919.1111450195312,
+        "wires": [
+            [
+                "0ab801ca259faf75"
+            ]
+        ]
+    },
+    {
+        "id": "3434f6a3d0819c45",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pause",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 920,
+        "wires": [
+            [
+                "d5132f5a8707d24e"
+            ]
+        ]
+    },
+    {
+        "id": "e12b9292b0aaa1a6",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "background",
+                "pt": "msg",
+                "to": "red",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "計測中",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 860,
+        "wires": [
+            [
+                "42896e2dcb639c85"
+            ]
+        ]
+    },
+    {
+        "id": "f9f2b1549c803204",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "background",
+                "pt": "msg",
+                "to": "blue",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "PAUSE",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 980,
+        "wires": [
+            [
+                "42896e2dcb639c85"
+            ]
+        ]
+    },
+    {
+        "id": "f93404ecdf7f8b40",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "limit",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 1260,
+        "wires": [
+            [
+                "d71b6e5f7cc56484"
+            ]
+        ]
+    },
+    {
+        "id": "7be240a8bc05731c",
+        "type": "ui_slider",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "最低速度",
+        "tooltip": "",
+        "group": "2f9052c0d4bbebd1",
+        "order": 10,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "outs": "all",
+        "topic": "",
+        "topicType": "str",
+        "min": 0,
+        "max": "5",
+        "step": "0.2",
+        "className": "",
+        "x": 340,
+        "y": 1320,
+        "wires": [
+            [
+                "3aaee91bd8f45b18"
+            ]
+        ]
+    },
+    {
+        "id": "54f0c0991357d982",
+        "type": "ui_text",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "order": 9,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}ｋｍ",
+        "layout": "row-spread",
+        "className": "",
+        "x": 750,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "41f3f3458ccfc2a2",
+        "type": "ui_slider",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "速度制限",
+        "tooltip": "",
+        "group": "2f9052c0d4bbebd1",
+        "order": 12,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "outs": "all",
+        "topic": "",
+        "topicType": "str",
+        "min": "30",
+        "max": "120",
+        "step": "10",
+        "className": "",
+        "x": 340,
+        "y": 1260,
+        "wires": [
+            [
+                "f93404ecdf7f8b40"
+            ]
+        ]
+    },
+    {
+        "id": "d71b6e5f7cc56484",
+        "type": "ui_text",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "order": 11,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}ｋｍ",
+        "layout": "row-spread",
+        "className": "",
+        "x": 750,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "3aaee91bd8f45b18",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "min",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 1320,
+        "wires": [
+            [
+                "54f0c0991357d982"
+            ]
+        ]
+    },
+    {
+        "id": "7dd0dade6700f64e",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "global3移動",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lat3",
+                "pt": "global",
+                "to": "payload.lat",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "lon3",
+                "pt": "global",
+                "to": "payload.lon",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "name3",
+                "pt": "global",
+                "to": "payload.name",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "bearing3",
+                "pt": "global",
+                "to": "payload.bearing",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "iconColor3",
+                "pt": "global",
+                "to": "payload.iconColor",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "color3",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ac7bf8ca23f81cf4",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "global.dis",
+        "rules": [
+            {
+                "t": "set",
+                "p": "odd3",
+                "pt": "global",
+                "to": "payload.dis",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2240,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16f249aa79efd636",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "60",
+        "payloadType": "num",
+        "x": 150,
+        "y": 1260,
+        "wires": [
+            [
+                "41f3f3458ccfc2a2"
+            ]
+        ]
+    },
+    {
+        "id": "89fd736ae7ae7409",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "x": 150,
+        "y": 1320,
+        "wires": [
+            [
+                "7be240a8bc05731c"
+            ]
+        ]
+    },
+    {
+        "id": "f298152a3f9cc748",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 450,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "9ec8a79c156bf902",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "flow.imu",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "imu",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d6e870ab5db2142",
+        "type": "ui_switch",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "IMU",
+        "tooltip": "",
+        "group": "2f9052c0d4bbebd1",
+        "order": 8,
+        "width": 2,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 350,
+        "y": 1400,
+        "wires": [
+            [
+                "9ec8a79c156bf902"
+            ]
+        ]
+    },
+    {
+        "id": "175b972ba5541aad",
+        "type": "catch",
+        "z": "316743418d7f988e",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 220,
+        "y": 740,
+        "wires": [
+            [
+                "f298152a3f9cc748"
+            ]
+        ]
+    },
+    {
+        "id": "4cfbdbab84f4e8ba",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 150,
+        "y": 1400,
+        "wires": [
+            [
+                "2d6e870ab5db2142"
+            ]
+        ]
+    },
+    {
+        "id": "f52f2ddcc0c08d5d",
+        "type": "ui_text_input",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "4距離補正",
+        "tooltip": "",
+        "group": "2f9052c0d4bbebd1",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": "0",
+        "topic": "payload",
+        "sendOnBlur": true,
+        "topicType": "msg",
+        "x": 1230,
+        "y": 300,
+        "wires": [
+            [
+                "5fdfdfb26278e90b"
+            ]
+        ]
+    },
+    {
+        "id": "c2560290ba89982f",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "isNaN",
+        "func": "if (isNaN(msg.payload)) {\n    msg.payload=0;\n  }\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 350,
+        "y": 1200,
+        "wires": [
+            [
+                "e37c62dbcc749266"
+            ]
+        ]
+    },
+    {
+        "id": "c74a69a00743bcf9",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "odd3",
+        "payloadType": "global",
+        "x": 170,
+        "y": 1200,
+        "wires": [
+            [
+                "c2560290ba89982f"
+            ]
+        ]
+    },
+    {
+        "id": "e37c62dbcc749266",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "odd",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 1200,
+        "wires": [
+            [
+                "73dc62f8f9daa44e"
+            ]
+        ]
+    },
+    {
+        "id": "73dc62f8f9daa44e",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "4c0e0651f2475a91",
+        "type": "delay",
+        "z": "316743418d7f988e",
+        "name": "",
+        "pauseType": "delayv",
+        "timeout": "3000",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 2380,
+        "y": 620,
+        "wires": [
+            [
+                "815226827ebfc2ed"
+            ]
+        ]
+    },
+    {
+        "id": "0777d25868fd6caa",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "ディレイ付加",
+        "rules": [
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "delay",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1720,
+        "y": 420,
+        "wires": [
+            [
+                "a4a1f2e4520cf16c"
+            ]
+        ]
+    },
+    {
+        "id": "e067f50f113771a7",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "手動リセット",
+        "func": "i=msg.payload.reset;\nx=global.get(\"reset\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i].number,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 660,
+        "wires": [
+            [
+                "62673379e0b5be2a",
+                "efecf03e993fcf84"
+            ]
+        ]
+    },
+    {
+        "id": "2c38b33f12b2e9b4",
+        "type": "ui_form",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "走距離修正",
+        "group": "2f9052c0d4bbebd1",
+        "order": 17,
+        "width": 4,
+        "height": 6,
+        "options": [
+            {
+                "label": "リセットポイント",
+                "value": "reset",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "距離",
+                "value": "meter",
+                "type": "number",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "reset": "",
+            "meter": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "topicType": "str",
+        "splitLayout": false,
+        "className": "",
+        "x": 1170,
+        "y": 660,
+        "wires": [
+            [
+                "e067f50f113771a7"
+            ]
+        ]
+    },
+    {
+        "id": "48aafbda365e2f57",
+        "type": "mqtt out",
+        "z": "316743418d7f988e",
+        "name": "",
+        "topic": "trip4/odd",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 2820,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "de9599d6faba285c",
+        "type": "json",
+        "z": "316743418d7f988e",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 2650,
+        "y": 400,
+        "wires": [
+            [
+                "48aafbda365e2f57"
+            ]
+        ]
+    },
+    {
+        "id": "2b78dd9f6e48edd7",
+        "type": "ui_text",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "order": 13,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "GPS発行時間",
+        "format": "{{msg.payload.time}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e278a0455cf75fb4",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "スマホ2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.name",
+                "pt": "msg",
+                "to": "スマホ2",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.icon",
+                "pt": "msg",
+                "to": "arrow",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.iconColor",
+                "pt": "msg",
+                "to": "orange",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "orange",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "r4",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "8ef5e315c4cb3c02",
+                "7dd0dade6700f64e",
+                "41f839b6648b8999",
+                "bcbb62418f71ac59"
+            ]
+        ]
+    },
+    {
+        "id": "81f2cf4a508f863b",
+        "type": "ui_template",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "name": "誤差",
+        "order": 18,
+        "width": 3,
+        "height": 6,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2230,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "726137586d812f21",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "NEXTリセット",
+        "func": "x=global.get(\"reset\");\ni=flow.get(\"reset\");\n\nmsg.payload={\n    meter:x[i+1].meter,\n    name:\"手動　\"+x[i+1].name,\n    reset:i+1,\n    kukyori:x[i+1].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i+1].number,\n    kyori:0,\n    dirdir:0,\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 600,
+        "wires": [
+            [
+                "62673379e0b5be2a",
+                "efecf03e993fcf84"
+            ]
+        ]
+    },
+    {
+        "id": "ff0c7df542d82a53",
+        "type": "msg-size",
+        "z": "316743418d7f988e",
+        "name": "",
+        "frequency": "sec",
+        "interval": 1,
+        "statusContent": "tot",
+        "estimation": false,
+        "ignore": false,
+        "pauseAtStartup": false,
+        "humanReadableStatus": true,
+        "topicDependent": false,
+        "x": 100,
+        "y": 200,
+        "wires": [
+            [],
+            [
+                "ca20839d1e86bf67"
+            ]
+        ]
+    },
+    {
+        "id": "1ad9a6b65caa6ca9",
+        "type": "split",
+        "z": "316743418d7f988e",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1850,
+        "y": 740,
+        "wires": [
+            [
+                "edab98b79bf0eac3"
+            ]
+        ]
+    },
+    {
+        "id": "edab98b79bf0eac3",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "g.lat3→latx",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.latx",
+                "pt": "msg",
+                "to": "lat3",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.lony",
+                "pt": "msg",
+                "to": "lon3",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.bearing",
+                "pt": "msg",
+                "to": "bearing3",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2010,
+        "y": 740,
+        "wires": [
+            [
+                "1e68111ef12d784d",
+                "c4a604f8e0aaa5f9"
+            ]
+        ]
+    },
+    {
+        "id": "9b043c6bc9495d53",
+        "type": "file",
+        "z": "316743418d7f988e",
+        "name": "",
+        "filename": "/home/pi/samba/public/log3.csv",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 2470,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d26fa3e4d10a7f5f",
+        "type": "csv",
+        "z": "316743418d7f988e",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 2230,
+        "y": 840,
+        "wires": [
+            [
+                "9b043c6bc9495d53"
+            ]
+        ]
+    },
+    {
+        "id": "1965099f64caf71c",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "odd3t",
+        "rules": [
+            {
+                "t": "set",
+                "p": "odd3t",
+                "pt": "global",
+                "to": "payload.oddt",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2250,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e33218b7ccef7de",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2510,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "bfbf9a481c2ebec1",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2280,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "98431b7e123c36b7",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "resetエリア限定",
+        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= global.get(\"reset_q\")){\n    point=0;\n}\nif(point+2 < global.get(\"reset_q\")){\n    msg.payload=[reset[point+1],reset[point+2]];\n}\nelse{\n    msg.payload=[reset[point+1]]; \n}\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1920,
+        "y": 540,
+        "wires": [
+            [
+                "1ad9a6b65caa6ca9"
+            ]
+        ]
+    },
+    {
+        "id": "b33bb4d99e9d48a2",
+        "type": "switch",
+        "z": "316743418d7f988e",
+        "name": "",
+        "property": "car",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 2220,
+        "y": 620,
+        "wires": [
+            [
+                "4c0e0651f2475a91"
+            ]
+        ]
+    },
+    {
+        "id": "8ef5e315c4cb3c02",
+        "type": "link out",
+        "z": "316743418d7f988e",
+        "name": "4移動",
+        "links": [
+            "bc3fc049.2e3b9",
+            "dfa3b187.7efc"
+        ],
+        "x": 715,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "62673379e0b5be2a",
+        "type": "subflow:7e6f2d4d.3bcd74",
+        "z": "316743418d7f988e",
+        "name": "",
+        "env": [],
+        "x": 1860,
+        "y": 880,
+        "wires": [
+            [
+                "d26fa3e4d10a7f5f"
+            ],
+            [
+                "37c5757680feed6b"
+            ],
+            [
+                "81f2cf4a508f863b"
+            ],
+            [
+                "77075441900d5e0c"
+            ]
+        ]
+    },
+    {
+        "id": "77075441900d5e0c",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2250,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "37c5757680feed6b",
+        "type": "ui_template",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "name": "リセット情報",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2260,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e68111ef12d784d",
+        "type": "subflow:361ce87e.80f648",
+        "z": "316743418d7f988e",
+        "name": "",
+        "x": 1900,
+        "y": 800,
+        "wires": [
+            [
+                "0605d518ed49b98c"
+            ],
+            [
+                "62673379e0b5be2a"
+            ]
+        ]
+    },
+    {
+        "id": "0605d518ed49b98c",
+        "type": "switch",
+        "z": "316743418d7f988e",
+        "name": "jsonata flowContext",
+        "property": "payload.reset",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "$flowContext(\"reset\") + 1",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 2270,
+        "y": 780,
+        "wires": [
+            [
+                "94f21e1c53041682"
+            ]
+        ]
+    },
+    {
+        "id": "94f21e1c53041682",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "flow.remain",
+        "rules": [
+            {
+                "t": "set",
+                "p": "remain",
+                "pt": "flow",
+                "to": "$floor(payload.kyori*1000)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "remain",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2490,
+        "y": 780,
+        "wires": [
+            [
+                "5036f60b26d6d4a7"
+            ]
+        ]
+    },
+    {
+        "id": "5036f60b26d6d4a7",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "GPS逆算距離",
+        "func": "genku=flow.get(\"genku\");\nku=global.get(\"ku\");\nremain=msg.payload;\nmsg.payload={\n    oddr:ku[genku]-remain,\n    remain:remain,\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nku=Array()",
+        "finalize": "",
+        "libs": [],
+        "x": 2700,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "efecf03e993fcf84",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "dis=0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.dis",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1590,
+        "y": 480,
+        "wires": [
+            [
+                "0777d25868fd6caa"
+            ]
+        ]
+    },
+    {
+        "id": "cfecbd22c13b1a14",
+        "type": "ui_text_input",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "リセット半径",
+        "tooltip": "リセットポイント半径",
+        "group": "2f9052c0d4bbebd1",
+        "order": 7,
+        "width": 2,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": "0",
+        "topic": "topic",
+        "sendOnBlur": true,
+        "topicType": "msg",
+        "x": 340,
+        "y": 1460,
+        "wires": [
+            [
+                "98f97a9979a4aa9c"
+            ]
+        ]
+    },
+    {
+        "id": "98f97a9979a4aa9c",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "radius",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "46ff5c31ee73a702",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "15",
+        "payloadType": "num",
+        "x": 150,
+        "y": 1460,
+        "wires": [
+            [
+                "cfecbd22c13b1a14"
+            ]
+        ]
+    },
+    {
+        "id": "4875af9575161720",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "zenku&誤差付加",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.zenku",
+                "pt": "msg",
+                "to": "zenku",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.acc",
+                "pt": "msg",
+                "to": "acc3",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2280,
+        "y": 400,
+        "wires": [
+            [
+                "2e33218b7ccef7de",
+                "c3610909b7170fa2"
+            ]
+        ]
+    },
+    {
+        "id": "5fdfdfb26278e90b",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "payload→dis",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.dis",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1450,
+        "y": 300,
+        "wires": [
+            [
+                "0777d25868fd6caa",
+                "de4f5a51b124c7ca"
+            ]
+        ]
+    },
+    {
+        "id": "6aad3643bcbce8ad",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "初期化",
+        "func": "flow.set(\"odd\",0);\n//flow.set(\"odds\",0);\nmsg.payload={\n    dis:0.00,\n    kmh:0,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1430,
+        "y": 360,
+        "wires": [
+            [
+                "0777d25868fd6caa"
+            ]
+        ]
+    },
+    {
+        "id": "f2c8cc03c63a3efd",
+        "type": "worldmap-tracks",
+        "z": "316743418d7f988e",
+        "name": "tracks4",
+        "depth": "20",
+        "layer": "single",
+        "smooth": false,
+        "x": 920,
+        "y": 340,
+        "wires": [
+            [
+                "1c2e0227c446014b",
+                "05d271ceb280edbc"
+            ]
+        ]
+    },
+    {
+        "id": "ed4f508619660919",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "bcbb62418f71ac59",
+        "type": "subflow:79519d85.08b504",
+        "z": "316743418d7f988e",
+        "name": "",
+        "env": [],
+        "x": 890,
+        "y": 420,
+        "wires": [
+            [
+                "0777d25868fd6caa",
+                "ed4f508619660919",
+                "f2c8cc03c63a3efd"
+            ]
+        ]
+    },
+    {
+        "id": "d4f3d0dcba0b47c2",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "global.resetセット",
+        "rules": [
+            {
+                "t": "set",
+                "p": "time",
+                "pt": "msg",
+                "to": "payload.time",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reset",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1910,
+        "y": 600,
+        "wires": [
+            [
+                "1ad9a6b65caa6ca9"
+            ]
+        ]
+    },
+    {
+        "id": "1c2e0227c446014b",
+        "type": "link out",
+        "z": "316743418d7f988e",
+        "name": "tracks4",
+        "links": [],
+        "x": 1035,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "6d517fe58cc71caa",
+        "type": "template",
+        "z": "316743418d7f988e",
+        "name": "グローバル距離",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m \n</b></font>",
+        "output": "str",
+        "x": 2280,
+        "y": 160,
+        "wires": [
+            [
+                "9c9a87f42f2435ac"
+            ]
+        ]
+    },
+    {
+        "id": "426de02950a9d371",
+        "type": "template",
+        "z": "316743418d7f988e",
+        "name": "コントロール距離",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　{{payload.name}}距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
+        "output": "str",
+        "x": 2290,
+        "y": 200,
+        "wires": [
+            [
+                "200b91a58d38a35d"
+            ]
+        ]
+    },
+    {
+        "id": "200b91a58d38a35d",
+        "type": "ui_template",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "name": "4移動距離情報",
+        "order": 4,
+        "width": 7,
+        "height": 2,
+        "format": "<font size=\"3\"><div ng-bind-html=\"msg.payload\"></div></font>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2500,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c9a87f42f2435ac",
+        "type": "ui_template",
+        "z": "316743418d7f988e",
+        "group": "4707e75.554a618",
+        "name": "3移動距離情報",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"></div></font>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 2500,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "815226827ebfc2ed",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "GETシリアルデータ",
+        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2580,
+        "y": 620,
+        "wires": [
+            [
+                "cd099fa35e0b50a6"
+            ]
+        ]
+    },
+    {
+        "id": "cd099fa35e0b50a6",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "シリアル作成",
+        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
+        "finalize": "",
+        "x": 2800,
+        "y": 620,
+        "wires": [
+            [
+                "bcd0fdc6e63bda2d"
+            ]
+        ]
+    },
+    {
+        "id": "77db84e33b373537",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 330,
+        "y": 840,
+        "wires": [
+            [
+                "3434f6a3d0819c45"
+            ]
+        ]
+    },
+    {
+        "id": "4fbb58b69c7589b4",
+        "type": "mqtt out",
+        "z": "316743418d7f988e",
+        "name": "",
+        "topic": "owntracks/nodered/aquos/cmd",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 930,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "bb2b31dfc9d51374",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "owntracksコマンド作成",
+        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        moveModeLocatorInterval:1,\n        locatorPriority:3, \n        ignoreInaccurateLocations:40,\n        extendedData:false,\n        pubRetain:false,\n        pubQos :0,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1640,
+        "wires": [
+            [
+                "e3cae92acc36d987"
+            ]
+        ]
+    },
+    {
+        "id": "472b90e1bcacfde8",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1640,
+        "wires": [
+            [
+                "bb2b31dfc9d51374"
+            ]
+        ]
+    },
+    {
+        "id": "e3cae92acc36d987",
+        "type": "json",
+        "z": "316743418d7f988e",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 670,
+        "y": 1600,
+        "wires": [
+            [
+                "4fbb58b69c7589b4",
+                "999bcc43766f4852"
+            ]
+        ]
+    },
+    {
+        "id": "1f94cb6a8ed4f3ea",
+        "type": "ui_dropdown",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "locatorPriority",
+        "tooltip": "",
+        "place": "BALANCED",
+        "group": "2f9052c0d4bbebd1",
+        "order": 16,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "LOW POWER",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "BALANCED",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "HIGH POWER",
+                "value": 3,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 160,
+        "y": 1580,
+        "wires": [
+            [
+                "4e098814d9b53c76"
+            ]
+        ]
+    },
+    {
+        "id": "4e098814d9b53c76",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "owntracksコマンド作成",
+        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        locatorPriority:msg.payload, \n        //ignoreInaccurateLocations:40,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1580,
+        "wires": [
+            [
+                "e3cae92acc36d987"
+            ]
+        ]
+    },
+    {
+        "id": "7338f2147f13f5fd",
+        "type": "ui_numeric",
+        "z": "316743418d7f988e",
+        "name": "",
+        "label": "accurate",
+        "tooltip": "",
+        "group": "2f9052c0d4bbebd1",
+        "order": 15,
+        "width": 3,
+        "height": 1,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "step": "10",
+        "className": "",
+        "x": 140,
+        "y": 1520,
+        "wires": [
+            [
+                "fcf71dd0e309bf2b"
+            ]
+        ]
+    },
+    {
+        "id": "fcf71dd0e309bf2b",
+        "type": "function",
+        "z": "316743418d7f988e",
+        "name": "owntracksコマンド作成",
+        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        //locatorPriority:msg.payload, \n        ignoreInaccurateLocations:msg.payload,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1520,
+        "wires": [
+            [
+                "e3cae92acc36d987"
+            ]
+        ]
+    },
+    {
+        "id": "999bcc43766f4852",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "41f839b6648b8999",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "秒速→時速",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.kmh",
+                "pt": "msg",
+                "to": "$round((payload.speed*3.6*10)/10)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 480,
+        "wires": [
+            [
+                "debc6878e2158c1f"
+            ]
+        ]
+    },
+    {
+        "id": "debc6878e2158c1f",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "1855f430b395d17e",
+        "type": "ui_text",
+        "z": "316743418d7f988e",
+        "group": "2f9052c0d4bbebd1",
+        "order": 19,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "４GPS誤差",
+        "format": "{{msg.payload.acc}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "3245ed1bd57f5cae",
+        "type": "inject",
+        "z": "316743418d7f988e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.reset",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "p": "payload.meter",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 990,
+        "y": 660,
+        "wires": [
+            [
+                "2c38b33f12b2e9b4"
+            ]
+        ]
+    },
+    {
+        "id": "05d271ceb280edbc",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tracks3",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "de4f5a51b124c7ca",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1710,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "872808b3a86e06d7",
+        "type": "switch",
+        "z": "316743418d7f988e",
+        "name": "next限定",
+        "property": "next",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1720,
+        "y": 560,
+        "wires": [
+            [
+                "98431b7e123c36b7"
+            ],
+            [
+                "d4f3d0dcba0b47c2"
+            ]
+        ]
+    },
+    {
+        "id": "ca20839d1e86bf67",
+        "type": "subflow:b2e52e9a.27b3a",
+        "z": "316743418d7f988e",
+        "name": "",
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "2cfb2891125aca97"
+            ],
+            [
+                "b1f9132b17ec00de"
+            ],
+            [
+                "e278a0455cf75fb4"
+            ]
+        ]
+    },
+    {
+        "id": "3eb0bd2ed1e5dc1e",
+        "type": "link out",
+        "z": "316743418d7f988e",
+        "name": "odd4",
+        "links": [
+            "ec2f5623.35b288"
+        ],
+        "x": 2235,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "c2e1930f6b7ae4da",
+        "type": "mqtt in",
+        "z": "316743418d7f988e",
+        "name": "",
+        "topic": "trip4/pause",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "4646bf9b.55c01",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 120,
+        "y": 1080,
+        "wires": [
+            [
+                "f963669cdc80c921"
+            ]
+        ]
+    },
+    {
+        "id": "cc5f6052c9f337fa",
+        "type": "trigger",
+        "z": "316743418d7f988e",
+        "name": "",
+        "op1": "true",
+        "op2": "",
+        "op1type": "bool",
+        "op2type": "nul",
+        "duration": "1",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 470,
+        "y": 1060,
+        "wires": [
+            [
+                "3434f6a3d0819c45"
+            ]
+        ]
+    },
+    {
+        "id": "f963669cdc80c921",
+        "type": "switch",
+        "z": "316743418d7f988e",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 260,
+        "y": 1080,
+        "wires": [
+            [
+                "cc5f6052c9f337fa"
+            ],
+            [
+                "d65bbf54e01e1838"
+            ]
+        ]
+    },
+    {
+        "id": "d65bbf54e01e1838",
+        "type": "trigger",
+        "z": "316743418d7f988e",
+        "name": "",
+        "op1": "false",
+        "op2": "",
+        "op1type": "bool",
+        "op2type": "nul",
+        "duration": "1",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 470,
+        "y": 1100,
+        "wires": [
+            [
+                "3434f6a3d0819c45"
+            ]
+        ]
+    },
+    {
+        "id": "bcd0fdc6e63bda2d",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3020,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c4a604f8e0aaa5f9",
+        "type": "debug",
+        "z": "316743418d7f988e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2240,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c3610909b7170fa2",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "m→km",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.odd",
+                "pt": "msg",
+                "to": "($floor(payload.odd*10))/10000",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.kukyori",
+                "pt": "msg",
+                "to": "($floor(payload.kukyori))/1000",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2480,
+        "y": 400,
+        "wires": [
+            [
+                "de9599d6faba285c"
+            ]
+        ]
+    },
+    {
+        "id": "2cfb2891125aca97",
+        "type": "change",
+        "z": "316743418d7f988e",
+        "name": "gps誤差グローバル化",
+        "rules": [
+            {
+                "t": "set",
+                "p": "acc3",
+                "pt": "global",
+                "to": "payload.acc",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 160,
+        "wires": [
+            [
+                "1855f430b395d17e"
+            ]
+        ]
+    },
+    {
+        "id": "b1f9132b17ec00de",
+        "type": "moment",
+        "z": "316743418d7f988e",
+        "name": "",
+        "topic": "",
+        "input": "payload.time",
+        "inputType": "msg",
+        "inTz": "Asia/Tokyo",
+        "adjAmount": "9",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "date",
+        "locale": "ja-JP",
+        "output": "payload.time",
+        "outputType": "msg",
+        "outTz": "Asia/Tokyo",
+        "x": 580,
+        "y": 220,
+        "wires": [
+            [
+                "2b78dd9f6e48edd7"
+            ]
+        ]
+    },
+    {
+        "id": "cccd0f6a6f23b330",
+        "type": "mqtt in",
+        "z": "316743418d7f988e",
+        "name": "",
+        "topic": "owntracks/nodered/sense3",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "50c6b968735ea611",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "ff0c7df542d82a53"
             ]
         ]
     },
@@ -12928,6 +15542,55 @@
         "statusType": "auto",
         "x": 770,
         "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3b8625c1b24ee656",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1e3d5094e29d140a",
+        "type": "debug",
+        "z": "9d68a1c7.f4976",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d91447a9c0670db9",
+        "type": "ui_text",
+        "z": "9d68a1c7.f4976",
+        "group": "2f9052c0d4bbebd1",
+        "order": 14,
+        "width": 7,
+        "height": 1,
+        "name": "",
+        "label": "サーバー時間",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 740,
+        "y": 1020,
         "wires": []
     },
     {
@@ -15082,2714 +17745,6 @@
             [],
             []
         ]
-    },
-    {
-        "id": "316743418d7f988e",
-        "type": "tab",
-        "label": "4移動",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "2f9052c0d4bbebd1",
-        "type": "ui_group",
-        "name": "スマートフォン２",
-        "tab": "43f4f39.b4faf8c",
-        "order": 4,
-        "disp": true,
-        "width": 7,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "de2a428cd68565e5",
-        "type": "ui_spacer",
-        "z": "9d68a1c7.f4976",
-        "name": "spacer",
-        "group": "b90ab216.c29668",
-        "order": 7,
-        "width": 3,
-        "height": 1
-    },
-    {
-        "id": "bb383c2d5fc066b5",
-        "type": "ui_spacer",
-        "z": "9d68a1c7.f4976",
-        "name": "spacer",
-        "group": "a3a1b34f.acf18",
-        "order": 7,
-        "width": 3,
-        "height": 1
-    },
-    {
-        "id": "3b8625c1b24ee656",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 160,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "1e3d5094e29d140a",
-        "type": "debug",
-        "z": "9d68a1c7.f4976",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 340,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "c110b7356f46c151",
-        "type": "mqtt in",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "topic": "owntracks/nodered/sense3",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 170,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "481b0004da12741d",
-        "type": "mqtt in",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "owntracks/nodered/aquos",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 130,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "db0e896a7fce723e",
-        "type": "template",
-        "z": "316743418d7f988e",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "時速 : {{payload.kmh}} km",
-        "output": "str",
-        "x": 2260,
-        "y": 260,
-        "wires": [
-            [
-                "dbf8c391265bc92c"
-            ]
-        ]
-    },
-    {
-        "id": "dbf8c391265bc92c",
-        "type": "ui_template",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "name": "Speed",
-        "order": 6,
-        "width": 3,
-        "height": 1,
-        "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"> </div></font> ",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 2410,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a4a1f2e4520cf16c",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "新距離積算",
-        "func": "coe=flow.get(\"coe\");\nkukyori=flow.get(\"kukyori\");\ngenku=flow.get(\"genku\");\ni=flow.get(\"reset\");\ndate = new Date();\ntotal=global.get(\"total\");\n\nflow.set(\"oddb\",flow.get(\"odd\")*coe);\nflow.set(\"odd\",flow.get(\"odd\")+msg.payload.dis);\n\n//flow.set(\"odds\",flow.get(\"odd\"));\n//kukyori=global.get(\"ku\");\n\nodd=(Math.floor(flow.get(\"odd\")*100)) / 100;\noddc=(Math.floor(flow.get(\"odd\")*flow.get(\"coe\")*100))/100;\n\nmsg.payload={\n    genku:genku,\n    zenku:global.get(\"zenku\"),\n    odd:odd,\n    kukyori:kukyori,\n    kmh:msg.payload.kmh,\n    reset:i,\n    coe:coe,\n    oddt:Math.floor(total[i]+odd),\n    remain:flow.get(\"remain\"),\n    date:Date.now(date),\n    time:msg.payload.time,\n    oddc:oddc,\n    oddtc:Math.floor(total[i]+oddc),\n    name:msg.payload.name,\n}\n    \n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nflow.set(\"odd\",0);\nflow.set(\"coe\",1);\nflow.set(\"reset\",0);\nflow.set(\"genku\",0);\nflow.set(\"kukyori\",0);\n//kukyori=global.get(\"ku\");",
-        "finalize": "",
-        "libs": [],
-        "x": 2010,
-        "y": 420,
-        "wires": [
-            [
-                "ac7bf8ca23f81cf4",
-                "bfbf9a481c2ebec1",
-                "b33bb4d99e9d48a2",
-                "1965099f64caf71c",
-                "4875af9575161720",
-                "db0e896a7fce723e",
-                "426de02950a9d371",
-                "6d517fe58cc71caa",
-                "872808b3a86e06d7",
-                "3eb0bd2ed1e5dc1e"
-            ]
-        ]
-    },
-    {
-        "id": "370d0df0332e6ece",
-        "type": "ui_button",
-        "z": "316743418d7f988e",
-        "name": "",
-        "group": "2f9052c0d4bbebd1",
-        "order": 2,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "リセット",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "0",
-        "payloadType": "num",
-        "topic": "",
-        "topicType": "str",
-        "x": 1160,
-        "y": 600,
-        "wires": [
-            [
-                "726137586d812f21"
-            ]
-        ]
-    },
-    {
-        "id": "3f4199c8da3104e1",
-        "type": "mqtt in",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "trip4/zero",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 1220,
-        "y": 360,
-        "wires": [
-            [
-                "6aad3643bcbce8ad"
-            ]
-        ]
-    },
-    {
-        "id": "0ab801ca259faf75",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "true/false",
-        "func": "//context.flow.move = !context.flow.move;\n//msg.payload = context.flow.move;\n\npause=flow.get(\"pause\");\npause=!pause;\n//flow.set(\"move\",move);\nmsg.payload=pause;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\n//context.flow.move==true;\n//flow.set(\"pause\",false);",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 920,
-        "wires": [
-            [
-                "3434f6a3d0819c45"
-            ]
-        ]
-    },
-    {
-        "id": "d5132f5a8707d24e",
-        "type": "switch",
-        "z": "316743418d7f988e",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 790,
-        "y": 920,
-        "wires": [
-            [
-                "e12b9292b0aaa1a6"
-            ],
-            [
-                "f9f2b1549c803204"
-            ]
-        ]
-    },
-    {
-        "id": "42896e2dcb639c85",
-        "type": "ui_button",
-        "z": "316743418d7f988e",
-        "name": "PAUSE",
-        "group": "2f9052c0d4bbebd1",
-        "order": 1,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "{{msg.topic}}",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": " {{msg.background}}",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "topicType": "str",
-        "x": 136.1180419921875,
-        "y": 919.1111450195312,
-        "wires": [
-            [
-                "0ab801ca259faf75"
-            ]
-        ]
-    },
-    {
-        "id": "3434f6a3d0819c45",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "pause",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 540,
-        "y": 920,
-        "wires": [
-            [
-                "d5132f5a8707d24e"
-            ]
-        ]
-    },
-    {
-        "id": "e12b9292b0aaa1a6",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "background",
-                "pt": "msg",
-                "to": "red",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "計測中",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1000,
-        "y": 860,
-        "wires": [
-            [
-                "42896e2dcb639c85"
-            ]
-        ]
-    },
-    {
-        "id": "f9f2b1549c803204",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "background",
-                "pt": "msg",
-                "to": "blue",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "PAUSE",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1000,
-        "y": 980,
-        "wires": [
-            [
-                "42896e2dcb639c85"
-            ]
-        ]
-    },
-    {
-        "id": "f93404ecdf7f8b40",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "limit",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 550,
-        "y": 1260,
-        "wires": [
-            [
-                "d71b6e5f7cc56484"
-            ]
-        ]
-    },
-    {
-        "id": "7be240a8bc05731c",
-        "type": "ui_slider",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "最低速度",
-        "tooltip": "",
-        "group": "2f9052c0d4bbebd1",
-        "order": 10,
-        "width": 5,
-        "height": 1,
-        "passthru": true,
-        "outs": "all",
-        "topic": "",
-        "topicType": "str",
-        "min": 0,
-        "max": "5",
-        "step": "0.2",
-        "className": "",
-        "x": 340,
-        "y": 1320,
-        "wires": [
-            [
-                "3aaee91bd8f45b18"
-            ]
-        ]
-    },
-    {
-        "id": "54f0c0991357d982",
-        "type": "ui_text",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "order": 9,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "",
-        "format": "{{msg.payload}}ｋｍ",
-        "layout": "row-spread",
-        "className": "",
-        "x": 750,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "41f3f3458ccfc2a2",
-        "type": "ui_slider",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "速度制限",
-        "tooltip": "",
-        "group": "2f9052c0d4bbebd1",
-        "order": 12,
-        "width": 5,
-        "height": 1,
-        "passthru": true,
-        "outs": "all",
-        "topic": "",
-        "topicType": "str",
-        "min": "30",
-        "max": "120",
-        "step": "10",
-        "className": "",
-        "x": 340,
-        "y": 1260,
-        "wires": [
-            [
-                "f93404ecdf7f8b40"
-            ]
-        ]
-    },
-    {
-        "id": "d71b6e5f7cc56484",
-        "type": "ui_text",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "order": 11,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "",
-        "format": "{{msg.payload}}ｋｍ",
-        "layout": "row-spread",
-        "className": "",
-        "x": 750,
-        "y": 1260,
-        "wires": []
-    },
-    {
-        "id": "3aaee91bd8f45b18",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "min",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 550,
-        "y": 1320,
-        "wires": [
-            [
-                "54f0c0991357d982"
-            ]
-        ]
-    },
-    {
-        "id": "7dd0dade6700f64e",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "global3移動",
-        "rules": [
-            {
-                "t": "set",
-                "p": "lat3",
-                "pt": "global",
-                "to": "payload.lat",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "lon3",
-                "pt": "global",
-                "to": "payload.lon",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "name3",
-                "pt": "global",
-                "to": "payload.name",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "bearing3",
-                "pt": "global",
-                "to": "payload.bearing",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "iconColor3",
-                "pt": "global",
-                "to": "payload.iconColor",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.color",
-                "pt": "msg",
-                "to": "color3",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 690,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ac7bf8ca23f81cf4",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "global.dis",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd3",
-                "pt": "global",
-                "to": "payload.dis",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2240,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "16f249aa79efd636",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "60",
-        "payloadType": "num",
-        "x": 150,
-        "y": 1260,
-        "wires": [
-            [
-                "41f3f3458ccfc2a2"
-            ]
-        ]
-    },
-    {
-        "id": "89fd736ae7ae7409",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "2",
-        "payloadType": "num",
-        "x": 150,
-        "y": 1320,
-        "wires": [
-            [
-                "7be240a8bc05731c"
-            ]
-        ]
-    },
-    {
-        "id": "f298152a3f9cc748",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 450,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "9ec8a79c156bf902",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "flow.imu",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload",
-                "pt": "msg",
-                "to": "imu",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 520,
-        "y": 1400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2d6e870ab5db2142",
-        "type": "ui_switch",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "IMU",
-        "tooltip": "",
-        "group": "2f9052c0d4bbebd1",
-        "order": 8,
-        "width": 2,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "",
-        "topicType": "str",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": true,
-        "className": "",
-        "x": 350,
-        "y": 1400,
-        "wires": [
-            [
-                "9ec8a79c156bf902"
-            ]
-        ]
-    },
-    {
-        "id": "175b972ba5541aad",
-        "type": "catch",
-        "z": "316743418d7f988e",
-        "name": "",
-        "scope": null,
-        "uncaught": false,
-        "x": 220,
-        "y": 740,
-        "wires": [
-            [
-                "f298152a3f9cc748"
-            ]
-        ]
-    },
-    {
-        "id": "4cfbdbab84f4e8ba",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 150,
-        "y": 1400,
-        "wires": [
-            [
-                "2d6e870ab5db2142"
-            ]
-        ]
-    },
-    {
-        "id": "f52f2ddcc0c08d5d",
-        "type": "ui_text_input",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "4距離補正",
-        "tooltip": "",
-        "group": "2f9052c0d4bbebd1",
-        "order": 3,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "mode": "number",
-        "delay": "0",
-        "topic": "payload",
-        "sendOnBlur": true,
-        "topicType": "msg",
-        "x": 1230,
-        "y": 300,
-        "wires": [
-            [
-                "5fdfdfb26278e90b"
-            ]
-        ]
-    },
-    {
-        "id": "c2560290ba89982f",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "isNaN",
-        "func": "if (isNaN(msg.payload)) {\n    msg.payload=0;\n  }\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 350,
-        "y": 1200,
-        "wires": [
-            [
-                "e37c62dbcc749266"
-            ]
-        ]
-    },
-    {
-        "id": "c74a69a00743bcf9",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "odd3",
-        "payloadType": "global",
-        "x": 170,
-        "y": 1200,
-        "wires": [
-            [
-                "c2560290ba89982f"
-            ]
-        ]
-    },
-    {
-        "id": "e37c62dbcc749266",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 550,
-        "y": 1200,
-        "wires": [
-            [
-                "73dc62f8f9daa44e"
-            ]
-        ]
-    },
-    {
-        "id": "73dc62f8f9daa44e",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 1200,
-        "wires": []
-    },
-    {
-        "id": "4c0e0651f2475a91",
-        "type": "delay",
-        "z": "316743418d7f988e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "3000",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2380,
-        "y": 620,
-        "wires": [
-            [
-                "815226827ebfc2ed"
-            ]
-        ]
-    },
-    {
-        "id": "0777d25868fd6caa",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "ディレイ付加",
-        "rules": [
-            {
-                "t": "set",
-                "p": "delay",
-                "pt": "msg",
-                "to": "delay",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1720,
-        "y": 420,
-        "wires": [
-            [
-                "a4a1f2e4520cf16c"
-            ]
-        ]
-    },
-    {
-        "id": "e067f50f113771a7",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "手動リセット",
-        "func": "i=msg.payload.reset;\nx=global.get(\"reset\");\n//flow.set(\"odd\",0);\n\nmsg.payload={\n    meter:msg.payload.meter,\n    name:\"手動リセット\",\n    reset:i,\n    kukyori:x[i].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i].number,\n    dirdir:0,\n    kyori:0,\n\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1400,
-        "y": 660,
-        "wires": [
-            [
-                "62673379e0b5be2a",
-                "efecf03e993fcf84"
-            ]
-        ]
-    },
-    {
-        "id": "2c38b33f12b2e9b4",
-        "type": "ui_form",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "走距離修正",
-        "group": "2f9052c0d4bbebd1",
-        "order": 17,
-        "width": 4,
-        "height": 6,
-        "options": [
-            {
-                "label": "リセットポイント",
-                "value": "reset",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "距離",
-                "value": "meter",
-                "type": "number",
-                "required": true,
-                "rows": null
-            }
-        ],
-        "formValue": {
-            "reset": "",
-            "meter": ""
-        },
-        "payload": "",
-        "submit": "submit",
-        "cancel": "cancel",
-        "topic": "",
-        "topicType": "str",
-        "splitLayout": false,
-        "className": "",
-        "x": 1170,
-        "y": 660,
-        "wires": [
-            [
-                "e067f50f113771a7"
-            ]
-        ]
-    },
-    {
-        "id": "48aafbda365e2f57",
-        "type": "mqtt out",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "trip4/odd",
-        "qos": "0",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "4646bf9b.55c01",
-        "x": 2820,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "de9599d6faba285c",
-        "type": "json",
-        "z": "316743418d7f988e",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 2650,
-        "y": 400,
-        "wires": [
-            [
-                "48aafbda365e2f57"
-            ]
-        ]
-    },
-    {
-        "id": "2b78dd9f6e48edd7",
-        "type": "ui_text",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "order": 13,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "GPS発行時間",
-        "format": "{{msg.payload.time}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 800,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "e278a0455cf75fb4",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "スマホ2",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.name",
-                "pt": "msg",
-                "to": "スマホ2",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload.icon",
-                "pt": "msg",
-                "to": "arrow",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload.iconColor",
-                "pt": "msg",
-                "to": "orange",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "payload.color",
-                "pt": "msg",
-                "to": "orange",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "r4",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 520,
-        "y": 420,
-        "wires": [
-            [
-                "8ef5e315c4cb3c02",
-                "7dd0dade6700f64e",
-                "41f839b6648b8999",
-                "bcbb62418f71ac59"
-            ]
-        ]
-    },
-    {
-        "id": "81f2cf4a508f863b",
-        "type": "ui_template",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "name": "誤差",
-        "order": 18,
-        "width": 3,
-        "height": 6,
-        "format": "<div ng-bind-html=\"msg.payload\"></div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 2230,
-        "y": 920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "726137586d812f21",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "NEXTリセット",
-        "func": "x=global.get(\"reset\");\ni=flow.get(\"reset\");\n\nmsg.payload={\n    meter:x[i+1].meter,\n    name:\"手動　\"+x[i+1].name,\n    reset:i+1,\n    kukyori:x[i+1].kukyori,\n    zenku:global.get(\"zenku\"),\n    kmh:0,\n    number:x[i+1].number,\n    kyori:0,\n    dirdir:0,\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1400,
-        "y": 600,
-        "wires": [
-            [
-                "62673379e0b5be2a",
-                "efecf03e993fcf84"
-            ]
-        ]
-    },
-    {
-        "id": "ff0c7df542d82a53",
-        "type": "msg-size",
-        "z": "316743418d7f988e",
-        "name": "",
-        "frequency": "sec",
-        "interval": 1,
-        "statusContent": "tot",
-        "estimation": false,
-        "ignore": false,
-        "pauseAtStartup": false,
-        "humanReadableStatus": true,
-        "topicDependent": false,
-        "x": 100,
-        "y": 200,
-        "wires": [
-            [],
-            [
-                "ca20839d1e86bf67"
-            ]
-        ]
-    },
-    {
-        "id": "1ad9a6b65caa6ca9",
-        "type": "split",
-        "z": "316743418d7f988e",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 1850,
-        "y": 740,
-        "wires": [
-            [
-                "edab98b79bf0eac3"
-            ]
-        ]
-    },
-    {
-        "id": "edab98b79bf0eac3",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "g.lat3→latx",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.latx",
-                "pt": "msg",
-                "to": "lat3",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.lony",
-                "pt": "msg",
-                "to": "lon3",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.bearing",
-                "pt": "msg",
-                "to": "bearing3",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2010,
-        "y": 740,
-        "wires": [
-            [
-                "1e68111ef12d784d",
-                "c4a604f8e0aaa5f9"
-            ]
-        ]
-    },
-    {
-        "id": "9b043c6bc9495d53",
-        "type": "file",
-        "z": "316743418d7f988e",
-        "name": "",
-        "filename": "/home/pi/samba/public/log3.csv",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 2470,
-        "y": 840,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d26fa3e4d10a7f5f",
-        "type": "csv",
-        "z": "316743418d7f988e",
-        "name": "",
-        "sep": ",",
-        "hdrin": "",
-        "hdrout": "none",
-        "multi": "one",
-        "ret": "\\n",
-        "temp": "",
-        "skip": "0",
-        "strings": true,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 2230,
-        "y": 840,
-        "wires": [
-            [
-                "9b043c6bc9495d53"
-            ]
-        ]
-    },
-    {
-        "id": "1965099f64caf71c",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "odd3t",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd3t",
-                "pt": "global",
-                "to": "payload.oddt",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2250,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2e33218b7ccef7de",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2510,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "bfbf9a481c2ebec1",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2280,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "98431b7e123c36b7",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "resetエリア限定",
-        "func": "reset=global.get(\"reset\");\npoint=msg.payload.reset;\nif(point >= global.get(\"reset_q\")){\n    point=0;\n}\nif(point+2 < global.get(\"reset_q\")){\n    msg.payload=[reset[point+1],reset[point+2]];\n}\nelse{\n    msg.payload=[reset[point+1]]; \n}\n//msg.payload=reset[genku][genku+1];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1920,
-        "y": 540,
-        "wires": [
-            [
-                "1ad9a6b65caa6ca9"
-            ]
-        ]
-    },
-    {
-        "id": "b33bb4d99e9d48a2",
-        "type": "switch",
-        "z": "316743418d7f988e",
-        "name": "",
-        "property": "car",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 2220,
-        "y": 620,
-        "wires": [
-            [
-                "4c0e0651f2475a91"
-            ]
-        ]
-    },
-    {
-        "id": "8ef5e315c4cb3c02",
-        "type": "link out",
-        "z": "316743418d7f988e",
-        "name": "4移動",
-        "links": [
-            "bc3fc049.2e3b9",
-            "dfa3b187.7efc"
-        ],
-        "x": 715,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "62673379e0b5be2a",
-        "type": "subflow:7e6f2d4d.3bcd74",
-        "z": "316743418d7f988e",
-        "name": "",
-        "env": [],
-        "x": 1860,
-        "y": 880,
-        "wires": [
-            [
-                "d26fa3e4d10a7f5f"
-            ],
-            [
-                "37c5757680feed6b"
-            ],
-            [
-                "81f2cf4a508f863b"
-            ],
-            [
-                "77075441900d5e0c"
-            ]
-        ]
-    },
-    {
-        "id": "77075441900d5e0c",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2250,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "37c5757680feed6b",
-        "type": "ui_template",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "name": "リセット情報",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "format": "<font size=\"4\"><div ng-bind-html=\"msg.payload\"></div></font>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 2260,
-        "y": 880,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1e68111ef12d784d",
-        "type": "subflow:361ce87e.80f648",
-        "z": "316743418d7f988e",
-        "name": "",
-        "x": 1900,
-        "y": 800,
-        "wires": [
-            [
-                "0605d518ed49b98c"
-            ],
-            [
-                "62673379e0b5be2a"
-            ]
-        ]
-    },
-    {
-        "id": "0605d518ed49b98c",
-        "type": "switch",
-        "z": "316743418d7f988e",
-        "name": "jsonata flowContext",
-        "property": "payload.reset",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "$flowContext(\"reset\") + 1",
-                "vt": "jsonata"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 2270,
-        "y": 780,
-        "wires": [
-            [
-                "94f21e1c53041682"
-            ]
-        ]
-    },
-    {
-        "id": "94f21e1c53041682",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "flow.remain",
-        "rules": [
-            {
-                "t": "set",
-                "p": "remain",
-                "pt": "flow",
-                "to": "$floor(payload.kyori*1000)",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "remain",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2490,
-        "y": 780,
-        "wires": [
-            [
-                "5036f60b26d6d4a7"
-            ]
-        ]
-    },
-    {
-        "id": "5036f60b26d6d4a7",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "GPS逆算距離",
-        "func": "genku=flow.get(\"genku\");\nku=global.get(\"ku\");\nremain=msg.payload;\nmsg.payload={\n    oddr:ku[genku]-remain,\n    remain:remain,\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nku=Array()",
-        "finalize": "",
-        "libs": [],
-        "x": 2700,
-        "y": 780,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "efecf03e993fcf84",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "dis=0",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.dis",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1590,
-        "y": 480,
-        "wires": [
-            [
-                "0777d25868fd6caa"
-            ]
-        ]
-    },
-    {
-        "id": "cfecbd22c13b1a14",
-        "type": "ui_text_input",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "リセット半径",
-        "tooltip": "リセットポイント半径",
-        "group": "2f9052c0d4bbebd1",
-        "order": 7,
-        "width": 2,
-        "height": 1,
-        "passthru": true,
-        "mode": "number",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "topicType": "msg",
-        "x": 340,
-        "y": 1460,
-        "wires": [
-            [
-                "98f97a9979a4aa9c"
-            ]
-        ]
-    },
-    {
-        "id": "98f97a9979a4aa9c",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "radius",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 600,
-        "y": 1460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "46ff5c31ee73a702",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "15",
-        "payloadType": "num",
-        "x": 150,
-        "y": 1460,
-        "wires": [
-            [
-                "cfecbd22c13b1a14"
-            ]
-        ]
-    },
-    {
-        "id": "4875af9575161720",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "zenku&誤差付加",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.zenku",
-                "pt": "msg",
-                "to": "zenku",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.acc",
-                "pt": "msg",
-                "to": "acc3",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2280,
-        "y": 400,
-        "wires": [
-            [
-                "2e33218b7ccef7de",
-                "c3610909b7170fa2"
-            ]
-        ]
-    },
-    {
-        "id": "5fdfdfb26278e90b",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "payload→dis",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.dis",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.kmh",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1450,
-        "y": 300,
-        "wires": [
-            [
-                "0777d25868fd6caa",
-                "de4f5a51b124c7ca"
-            ]
-        ]
-    },
-    {
-        "id": "6aad3643bcbce8ad",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "初期化",
-        "func": "flow.set(\"odd\",0);\n//flow.set(\"odds\",0);\nmsg.payload={\n    dis:0.00,\n    kmh:0,\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1430,
-        "y": 360,
-        "wires": [
-            [
-                "0777d25868fd6caa"
-            ]
-        ]
-    },
-    {
-        "id": "f2c8cc03c63a3efd",
-        "type": "worldmap-tracks",
-        "z": "316743418d7f988e",
-        "name": "tracks4",
-        "depth": "20",
-        "layer": "single",
-        "smooth": false,
-        "x": 920,
-        "y": 340,
-        "wires": [
-            [
-                "1c2e0227c446014b",
-                "05d271ceb280edbc"
-            ]
-        ]
-    },
-    {
-        "id": "ed4f508619660919",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "bcbb62418f71ac59",
-        "type": "subflow:79519d85.08b504",
-        "z": "316743418d7f988e",
-        "name": "",
-        "env": [],
-        "x": 890,
-        "y": 420,
-        "wires": [
-            [
-                "0777d25868fd6caa",
-                "ed4f508619660919",
-                "f2c8cc03c63a3efd"
-            ]
-        ]
-    },
-    {
-        "id": "d4f3d0dcba0b47c2",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "global.resetセット",
-        "rules": [
-            {
-                "t": "set",
-                "p": "time",
-                "pt": "msg",
-                "to": "payload.time",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "reset",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1910,
-        "y": 600,
-        "wires": [
-            [
-                "1ad9a6b65caa6ca9"
-            ]
-        ]
-    },
-    {
-        "id": "1c2e0227c446014b",
-        "type": "link out",
-        "z": "316743418d7f988e",
-        "name": "tracks4",
-        "links": [],
-        "x": 1035,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "6d517fe58cc71caa",
-        "type": "template",
-        "z": "316743418d7f988e",
-        "name": "グローバル距離",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m \n</b></font>",
-        "output": "str",
-        "x": 2280,
-        "y": 160,
-        "wires": [
-            [
-                "9c9a87f42f2435ac"
-            ]
-        ]
-    },
-    {
-        "id": "426de02950a9d371",
-        "type": "template",
-        "z": "316743418d7f988e",
-        "name": "コントロール距離",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<font size=\"4\">{{payload.genku}}/{{payload.zenku}}区　{{payload.name}}距離:{{payload.odd}}m/{{payload.kukyori}}m </font>\n<br><b>総距離　{{payload.oddt}}ｍ　距離係数：{{payload.coe}}",
-        "output": "str",
-        "x": 2290,
-        "y": 200,
-        "wires": [
-            [
-                "200b91a58d38a35d"
-            ]
-        ]
-    },
-    {
-        "id": "200b91a58d38a35d",
-        "type": "ui_template",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "name": "4移動距離情報",
-        "order": 4,
-        "width": 7,
-        "height": 2,
-        "format": "<font size=\"3\"><div ng-bind-html=\"msg.payload\"></div></font>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 2500,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9c9a87f42f2435ac",
-        "type": "ui_template",
-        "z": "316743418d7f988e",
-        "group": "4707e75.554a618",
-        "name": "3移動距離情報",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "format": "<font size=\"5\"><div ng-bind-html=\"msg.payload\"></div></font>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 2500,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "815226827ebfc2ed",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "GETシリアルデータ",
-        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2580,
-        "y": 620,
-        "wires": [
-            [
-                "cd099fa35e0b50a6"
-            ]
-        ]
-    },
-    {
-        "id": "cd099fa35e0b50a6",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "シリアル作成",
-        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
-        "finalize": "",
-        "x": 2800,
-        "y": 620,
-        "wires": [
-            [
-                "bcd0fdc6e63bda2d"
-            ]
-        ]
-    },
-    {
-        "id": "77db84e33b373537",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 330,
-        "y": 840,
-        "wires": [
-            [
-                "3434f6a3d0819c45"
-            ]
-        ]
-    },
-    {
-        "id": "4fbb58b69c7589b4",
-        "type": "mqtt out",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "owntracks/nodered/aquos/cmd",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "4646bf9b.55c01",
-        "x": 930,
-        "y": 1480,
-        "wires": []
-    },
-    {
-        "id": "bb2b31dfc9d51374",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "owntracksコマンド作成",
-        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        moveModeLocatorInterval:1,\n        locatorPriority:3, \n        ignoreInaccurateLocations:40,\n        extendedData:false,\n        pubRetain:false,\n        pubQos :0,\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 1640,
-        "wires": [
-            [
-                "e3cae92acc36d987"
-            ]
-        ]
-    },
-    {
-        "id": "472b90e1bcacfde8",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 1640,
-        "wires": [
-            [
-                "bb2b31dfc9d51374"
-            ]
-        ]
-    },
-    {
-        "id": "e3cae92acc36d987",
-        "type": "json",
-        "z": "316743418d7f988e",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 670,
-        "y": 1600,
-        "wires": [
-            [
-                "4fbb58b69c7589b4",
-                "999bcc43766f4852"
-            ]
-        ]
-    },
-    {
-        "id": "1f94cb6a8ed4f3ea",
-        "type": "ui_dropdown",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "locatorPriority",
-        "tooltip": "",
-        "place": "BALANCED",
-        "group": "2f9052c0d4bbebd1",
-        "order": 16,
-        "width": 4,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "LOW POWER",
-                "value": 1,
-                "type": "num"
-            },
-            {
-                "label": "BALANCED",
-                "value": 2,
-                "type": "num"
-            },
-            {
-                "label": "HIGH POWER",
-                "value": 3,
-                "type": "num"
-            }
-        ],
-        "payload": "",
-        "topic": "",
-        "topicType": "str",
-        "className": "",
-        "x": 160,
-        "y": 1580,
-        "wires": [
-            [
-                "4e098814d9b53c76"
-            ]
-        ]
-    },
-    {
-        "id": "4e098814d9b53c76",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "owntracksコマンド作成",
-        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        locatorPriority:msg.payload, \n        //ignoreInaccurateLocations:40,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 1580,
-        "wires": [
-            [
-                "e3cae92acc36d987"
-            ]
-        ]
-    },
-    {
-        "id": "7338f2147f13f5fd",
-        "type": "ui_numeric",
-        "z": "316743418d7f988e",
-        "name": "",
-        "label": "accurate",
-        "tooltip": "",
-        "group": "2f9052c0d4bbebd1",
-        "order": 15,
-        "width": 3,
-        "height": 1,
-        "wrap": false,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "step": "10",
-        "className": "",
-        "x": 140,
-        "y": 1520,
-        "wires": [
-            [
-                "fcf71dd0e309bf2b"
-            ]
-        ]
-    },
-    {
-        "id": "fcf71dd0e309bf2b",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "owntracksコマンド作成",
-        "func": "msg.payload={\n    _type:\"cmd\",\n    action: \"setConfiguration\",\n    configuration:{\n        _type: \"configuration\",\n        //moveModeLocatorInterval:1,\n        //locatorPriority:msg.payload, \n        ignoreInaccurateLocations:msg.payload,\n        //extendedData:false,\n        //pubRetain:true,\n        //pubQos :0,\n    }\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 1520,
-        "wires": [
-            [
-                "e3cae92acc36d987"
-            ]
-        ]
-    },
-    {
-        "id": "999bcc43766f4852",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 820,
-        "y": 1560,
-        "wires": []
-    },
-    {
-        "id": "41f839b6648b8999",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "秒速→時速",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.kmh",
-                "pt": "msg",
-                "to": "$round((payload.speed*3.6*10)/10)",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 480,
-        "wires": [
-            [
-                "debc6878e2158c1f"
-            ]
-        ]
-    },
-    {
-        "id": "debc6878e2158c1f",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "1855f430b395d17e",
-        "type": "ui_text",
-        "z": "316743418d7f988e",
-        "group": "2f9052c0d4bbebd1",
-        "order": 19,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "４GPS誤差",
-        "format": "{{msg.payload.acc}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 790,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "3245ed1bd57f5cae",
-        "type": "inject",
-        "z": "316743418d7f988e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload.reset",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "p": "payload.meter",
-                "v": "0",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "str",
-        "x": 990,
-        "y": 660,
-        "wires": [
-            [
-                "2c38b33f12b2e9b4"
-            ]
-        ]
-    },
-    {
-        "id": "05d271ceb280edbc",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "tracks3",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1050,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6e1f90c546a1f675",
-        "type": "mqtt in",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "owntracks/nodered/iphone",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 410,
-        "y": 60,
-        "wires": [
-            [
-                "833f2544803772a6"
-            ]
-        ]
-    },
-    {
-        "id": "833f2544803772a6",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "de4f5a51b124c7ca",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1710,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "872808b3a86e06d7",
-        "type": "switch",
-        "z": "316743418d7f988e",
-        "name": "next限定",
-        "property": "next",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "true"
-            },
-            {
-                "t": "false"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1720,
-        "y": 560,
-        "wires": [
-            [
-                "98431b7e123c36b7"
-            ],
-            [
-                "d4f3d0dcba0b47c2"
-            ]
-        ]
-    },
-    {
-        "id": "ca20839d1e86bf67",
-        "type": "subflow:b2e52e9a.27b3a",
-        "z": "316743418d7f988e",
-        "name": "",
-        "x": 360,
-        "y": 220,
-        "wires": [
-            [
-                "2cfb2891125aca97"
-            ],
-            [
-                "b1f9132b17ec00de"
-            ],
-            [
-                "e278a0455cf75fb4"
-            ]
-        ]
-    },
-    {
-        "id": "3eb0bd2ed1e5dc1e",
-        "type": "link out",
-        "z": "316743418d7f988e",
-        "name": "odd4",
-        "links": [
-            "ec2f5623.35b288"
-        ],
-        "x": 2235,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "c2e1930f6b7ae4da",
-        "type": "mqtt in",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "trip4/pause",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 120,
-        "y": 1080,
-        "wires": [
-            [
-                "f963669cdc80c921"
-            ]
-        ]
-    },
-    {
-        "id": "cc5f6052c9f337fa",
-        "type": "trigger",
-        "z": "316743418d7f988e",
-        "name": "",
-        "op1": "true",
-        "op2": "",
-        "op1type": "bool",
-        "op2type": "nul",
-        "duration": "1",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 470,
-        "y": 1060,
-        "wires": [
-            [
-                "3434f6a3d0819c45"
-            ]
-        ]
-    },
-    {
-        "id": "f963669cdc80c921",
-        "type": "switch",
-        "z": "316743418d7f988e",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 260,
-        "y": 1080,
-        "wires": [
-            [
-                "cc5f6052c9f337fa"
-            ],
-            [
-                "d65bbf54e01e1838"
-            ]
-        ]
-    },
-    {
-        "id": "d65bbf54e01e1838",
-        "type": "trigger",
-        "z": "316743418d7f988e",
-        "name": "",
-        "op1": "false",
-        "op2": "",
-        "op1type": "bool",
-        "op2type": "nul",
-        "duration": "1",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 470,
-        "y": 1100,
-        "wires": [
-            [
-                "3434f6a3d0819c45"
-            ]
-        ]
-    },
-    {
-        "id": "c37bc7cff64f055e",
-        "type": "mqtt in",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "owntracks/nodered/03",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 140,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bcd0fdc6e63bda2d",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3020,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "c4a604f8e0aaa5f9",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2240,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "c3610909b7170fa2",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "m→km",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.odd",
-                "pt": "msg",
-                "to": "($floor(payload.odd*10))/10000",
-                "tot": "jsonata"
-            },
-            {
-                "t": "set",
-                "p": "payload.kukyori",
-                "pt": "msg",
-                "to": "($floor(payload.kukyori))/1000",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2480,
-        "y": 400,
-        "wires": [
-            [
-                "de9599d6faba285c"
-            ]
-        ]
-    },
-    {
-        "id": "2cfb2891125aca97",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "gps誤差グローバル化",
-        "rules": [
-            {
-                "t": "set",
-                "p": "acc3",
-                "pt": "global",
-                "to": "payload.acc",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 580,
-        "y": 160,
-        "wires": [
-            [
-                "1855f430b395d17e"
-            ]
-        ]
-    },
-    {
-        "id": "b1f9132b17ec00de",
-        "type": "moment",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "",
-        "input": "payload.time",
-        "inputType": "msg",
-        "inTz": "Asia/Tokyo",
-        "adjAmount": "9",
-        "adjType": "hours",
-        "adjDir": "add",
-        "format": "date",
-        "locale": "ja-JP",
-        "output": "payload.time",
-        "outputType": "msg",
-        "outTz": "Asia/Tokyo",
-        "x": 580,
-        "y": 220,
-        "wires": [
-            [
-                "2b78dd9f6e48edd7"
-            ]
-        ]
-    },
-    {
-        "id": "cccd0f6a6f23b330",
-        "type": "mqtt in",
-        "z": "316743418d7f988e",
-        "name": "",
-        "topic": "owntracks/nodered/sense3",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "4646bf9b.55c01",
-        "nl": false,
-        "rap": false,
-        "x": 170,
-        "y": 360,
-        "wires": [
-            [
-                "ff0c7df542d82a53"
-            ]
-        ]
-    },
-    {
-        "id": "d91447a9c0670db9",
-        "type": "ui_text",
-        "z": "9d68a1c7.f4976",
-        "group": "2f9052c0d4bbebd1",
-        "order": 14,
-        "width": 7,
-        "height": 1,
-        "name": "",
-        "label": "サーバー時間",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 740,
-        "y": 1020,
-        "wires": []
     },
     {
         "id": "5dbc33b3b1dec0d5",
