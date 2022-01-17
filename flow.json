@@ -274,11 +274,11 @@
                 ]
             },
             {
-                "x": 520,
+                "x": 800,
                 "y": 320,
                 "wires": [
                     {
-                        "id": "f1999762.63c718",
+                        "id": "6f14b952076a6135",
                         "port": 0
                     }
                 ]
@@ -1689,7 +1689,7 @@
         "y": 280,
         "wires": [
             [
-                "591413626c87e431"
+                "e61de3f2.2fd438"
             ],
             [
                 "c31d0199.ec87c"
@@ -2093,7 +2093,9 @@
         "x": 400,
         "y": 320,
         "wires": [
-            []
+            [
+                "6f14b952076a6135"
+            ]
         ]
     },
     {
@@ -2151,6 +2153,27 @@
             [
                 "f1999762.63c718"
             ],
+            []
+        ]
+    },
+    {
+        "id": "6f14b952076a6135",
+        "type": "switch",
+        "z": "b2e52e9a.27b3a",
+        "name": "",
+        "property": "payload.speed",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 320,
+        "wires": [
             []
         ]
     },
@@ -4061,7 +4084,8 @@
                 "10913bfb.8f3b4c",
                 "f1bda9f1.4faa58",
                 "2ffc6df6.37b092",
-                "4002acad.fc2d34"
+                "4002acad.fc2d34",
+                "4b8c318cc193393f"
             ]
         ]
     },
@@ -5171,6 +5195,64 @@
         "y": 500,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "2dfbdd16d9319abe",
+        "type": "mqtt out",
+        "z": "f20b3fe7.75306",
+        "name": "",
+        "topic": "m5/odd1",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4646bf9b.55c01",
+        "x": 2060,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "4b8c318cc193393f",
+        "type": "change",
+        "z": "f20b3fe7.75306",
+        "name": "m5",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload.date",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.time",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.prns",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.oddtc",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1850,
+        "y": 520,
+        "wires": [
+            [
+                "2dfbdd16d9319abe"
+            ]
         ]
     },
     {
@@ -6572,7 +6654,8 @@
                 "5bbaf733.8566d8",
                 "1fec0af3.e53725",
                 "2232d8c6.92d848",
-                "a3355c73.de1e8"
+                "a3355c73.de1e8",
+                "c73546726641030f"
             ]
         ]
     },
@@ -7721,6 +7804,22 @@
         ]
     },
     {
+        "id": "c73546726641030f",
+        "type": "debug",
+        "z": "dc1c6fdb.d2e7",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1830,
+        "y": 320,
+        "wires": []
+    },
+    {
         "id": "07e6ae108eacec5c",
         "type": "ui_text",
         "z": "a74bd00bd0957478",
@@ -7747,7 +7846,8 @@
         "y": 127,
         "wires": [
             [
-                "ffc2ac27542af41f"
+                "ffc2ac27542af41f",
+                "1e26242bc35ee9c6"
             ]
         ]
     },
