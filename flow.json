@@ -322,6 +322,39 @@
         "color": "#DDAA99"
     },
     {
+        "id": "0ba9378fa208ded6",
+        "type": "subflow",
+        "name": "シリアル作成",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ad03a42.31b8e58"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 920,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "3a54ed1ee0ef8107",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "cd49fe9a.d0506",
         "type": "ui_base",
         "theme": {
@@ -2204,6 +2237,90 @@
             [
                 "6c4ba7eb.f8c328"
             ]
+        ]
+    },
+    {
+        "id": "b8a1f3e0.53ee4",
+        "type": "delay",
+        "z": "0ba9378fa208ded6",
+        "name": "",
+        "pauseType": "delayv",
+        "timeout": "3000",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "e4bc941e73d5b742"
+            ]
+        ]
+    },
+    {
+        "id": "ad03a42.31b8e58",
+        "type": "switch",
+        "z": "0ba9378fa208ded6",
+        "name": "",
+        "property": "car",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "b8a1f3e0.53ee4"
+            ]
+        ]
+    },
+    {
+        "id": "e4bc941e73d5b742",
+        "type": "function",
+        "z": "0ba9378fa208ded6",
+        "name": "GETシリアルデータ",
+        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 80,
+        "wires": [
+            [
+                "3a54ed1ee0ef8107"
+            ]
+        ]
+    },
+    {
+        "id": "3a54ed1ee0ef8107",
+        "type": "function",
+        "z": "0ba9378fa208ded6",
+        "name": "シリアル作成",
+        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
+        "finalize": "",
+        "x": 780,
+        "y": 80,
+        "wires": [
+            []
         ]
     },
     {
@@ -8615,10 +8732,7 @@
         "y": 420,
         "wires": [
             [
-                "4af1162e.d67838",
                 "c8121a60.15c898",
-                "ad03a42.31b8e58",
-                "b3ffa02a.fd77a",
                 "d5389993.d31f38",
                 "8705f39c.f2825",
                 "ff435400.9f3cc",
@@ -9047,31 +9161,6 @@
         ]
     },
     {
-        "id": "4af1162e.d67838",
-        "type": "change",
-        "z": "8caaa155.e5486",
-        "name": "global.dis",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd3",
-                "pt": "global",
-                "to": "payload.dis",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2240,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "89d7a63a.067e58",
         "type": "inject",
         "z": "8caaa155.e5486",
@@ -9362,30 +9451,6 @@
         "wires": []
     },
     {
-        "id": "b8a1f3e0.53ee4",
-        "type": "delay",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "3000",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "outputs": 1,
-        "x": 2380,
-        "y": 620,
-        "wires": [
-            [
-                "e4bc941e73d5b742"
-            ]
-        ]
-    },
-    {
         "id": "4a91634.3fc279c",
         "type": "change",
         "z": "8caaa155.e5486",
@@ -9523,9 +9588,7 @@
         "x": 2650,
         "y": 400,
         "wires": [
-            [
-                "a1354360.58e1d"
-            ]
+            []
         ]
     },
     {
@@ -9598,8 +9661,8 @@
             [
                 "2abf06e4.628d2a",
                 "ed7da24b.b18b8",
-                "ba9c4bfb.712168",
-                "9030b05b.05224"
+                "9030b05b.05224",
+                "6837f265.76de4c"
             ]
         ]
     },
@@ -9943,31 +10006,6 @@
         "wires": []
     },
     {
-        "id": "b3ffa02a.fd77a",
-        "type": "change",
-        "z": "8caaa155.e5486",
-        "name": "odd3t",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd3t",
-                "pt": "global",
-                "to": "payload.oddt",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2250,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "5e3caa41.2acf84",
         "type": "debug",
         "z": "8caaa155.e5486",
@@ -9988,7 +10026,7 @@
         "type": "debug",
         "z": "8caaa155.e5486",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -10015,31 +10053,6 @@
         "wires": [
             [
                 "7b66ebab.dd0db4"
-            ]
-        ]
-    },
-    {
-        "id": "ad03a42.31b8e58",
-        "type": "switch",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "property": "car",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 2220,
-        "y": 620,
-        "wires": [
-            [
-                "b8a1f3e0.53ee4"
             ]
         ]
     },
@@ -10916,43 +10929,6 @@
         ]
     },
     {
-        "id": "e4bc941e73d5b742",
-        "type": "function",
-        "z": "8caaa155.e5486",
-        "name": "GETシリアルデータ",
-        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2580,
-        "y": 620,
-        "wires": [
-            [
-                "3a54ed1ee0ef8107"
-            ]
-        ]
-    },
-    {
-        "id": "3a54ed1ee0ef8107",
-        "type": "function",
-        "z": "8caaa155.e5486",
-        "name": "シリアル作成",
-        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
-        "finalize": "",
-        "x": 2800,
-        "y": 620,
-        "wires": [
-            [
-                "7d27578767899bae"
-            ]
-        ]
-    },
-    {
         "id": "a47c0748735fc712",
         "type": "inject",
         "z": "8caaa155.e5486",
@@ -11217,33 +11193,6 @@
         "wires": []
     },
     {
-        "id": "ba9c4bfb.712168",
-        "type": "change",
-        "z": "8caaa155.e5486",
-        "name": "秒速→時速",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.kmh",
-                "pt": "msg",
-                "to": "$round((payload.speed*3.6*10)/10)",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 480,
-        "wires": [
-            [
-                "6837f265.76de4c"
-            ]
-        ]
-    },
-    {
         "id": "6837f265.76de4c",
         "type": "debug",
         "z": "8caaa155.e5486",
@@ -11256,7 +11205,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 480,
+        "y": 460,
         "wires": []
     },
     {
@@ -11366,6 +11315,7 @@
         "type": "subflow:b2e52e9a.27b3a",
         "z": "8caaa155.e5486",
         "name": "",
+        "env": [],
         "x": 360,
         "y": 220,
         "wires": [
@@ -11376,7 +11326,7 @@
                 "9d2854247b6ce657"
             ],
             [
-                "ad3c93f9.7e7bd"
+                "cbe87e10757951b3"
             ]
         ]
     },
@@ -11494,22 +11444,6 @@
                 "a791c927.1fa628"
             ]
         ]
-    },
-    {
-        "id": "7d27578767899bae",
-        "type": "debug",
-        "z": "8caaa155.e5486",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3020,
-        "y": 700,
-        "wires": []
     },
     {
         "id": "c4d7554d04abc4a3",
@@ -11710,6 +11644,110 @@
         ]
     },
     {
+        "id": "458ef9162df0a1e0",
+        "type": "change",
+        "z": "8caaa155.e5486",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "odd1",
+                "pt": "global",
+                "to": "payload.odd",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "genku1",
+                "pt": "global",
+                "to": "payload.genku",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "oddc3",
+                "pt": "global",
+                "to": "payload.oddc",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2408,
+        "y": 521,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cbe87e10757951b3",
+        "type": "change",
+        "z": "8caaa155.e5486",
+        "name": "削除",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload._type",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.BSSID",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.batt",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.bs",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.SSID",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.conn",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.latx",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.lony",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.tstd",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "ad3c93f9.7e7bd"
+            ]
+        ]
+    },
+    {
         "id": "db0e896a7fce723e",
         "type": "template",
         "z": "316743418d7f988e",
@@ -11764,10 +11802,7 @@
         "y": 420,
         "wires": [
             [
-                "ac7bf8ca23f81cf4",
                 "bfbf9a481c2ebec1",
-                "b33bb4d99e9d48a2",
-                "1965099f64caf71c",
                 "4875af9575161720",
                 "db0e896a7fce723e",
                 "426de02950a9d371",
@@ -12203,31 +12238,6 @@
         ]
     },
     {
-        "id": "ac7bf8ca23f81cf4",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "global.dis",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd3",
-                "pt": "global",
-                "to": "payload.dis",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2240,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "16f249aa79efd636",
         "type": "inject",
         "z": "316743418d7f988e",
@@ -12521,30 +12531,6 @@
         "wires": []
     },
     {
-        "id": "4c0e0651f2475a91",
-        "type": "delay",
-        "z": "316743418d7f988e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "3000",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "outputs": 1,
-        "x": 2380,
-        "y": 620,
-        "wires": [
-            [
-                "815226827ebfc2ed"
-            ]
-        ]
-    },
-    {
         "id": "0777d25868fd6caa",
         "type": "change",
         "z": "316743418d7f988e",
@@ -12665,9 +12651,7 @@
         "x": 2650,
         "y": 400,
         "wires": [
-            [
-                "48aafbda365e2f57"
-            ]
+            []
         ]
     },
     {
@@ -12740,8 +12724,8 @@
             [
                 "8ef5e315c4cb3c02",
                 "7dd0dade6700f64e",
-                "41f839b6648b8999",
-                "bcbb62418f71ac59"
+                "bcbb62418f71ac59",
+                "debc6878e2158c1f"
             ]
         ]
     },
@@ -12874,7 +12858,7 @@
         "type": "file",
         "z": "316743418d7f988e",
         "name": "",
-        "filename": "/home/pi/samba/public/log3.csv",
+        "filename": "/home/pi/samba/public/log4.csv",
         "appendNewline": false,
         "createDir": true,
         "overwriteFile": "false",
@@ -12906,31 +12890,6 @@
             [
                 "9b043c6bc9495d53"
             ]
-        ]
-    },
-    {
-        "id": "1965099f64caf71c",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "odd3t",
-        "rules": [
-            {
-                "t": "set",
-                "p": "odd3t",
-                "pt": "global",
-                "to": "payload.oddt",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2250,
-        "y": 440,
-        "wires": [
-            []
         ]
     },
     {
@@ -12981,31 +12940,6 @@
         "wires": [
             [
                 "1ad9a6b65caa6ca9"
-            ]
-        ]
-    },
-    {
-        "id": "b33bb4d99e9d48a2",
-        "type": "switch",
-        "z": "316743418d7f988e",
-        "name": "",
-        "property": "car",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 2220,
-        "y": 620,
-        "wires": [
-            [
-                "4c0e0651f2475a91"
             ]
         ]
     },
@@ -13417,7 +13351,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　3移動距離:{{payload.odd}}m/{{payload.kukyori}}m \n</b></font>",
+        "template": "<font size=\"4\"><b>{{payload.genku}}/{{payload.zenku}}区　4移動距離:{{payload.odd}}m/{{payload.kukyori}}m \n</b></font>",
         "output": "str",
         "x": 2280,
         "y": 160,
@@ -13472,7 +13406,7 @@
         "type": "ui_template",
         "z": "316743418d7f988e",
         "group": "4707e75.554a618",
-        "name": "3移動距離情報",
+        "name": "4移動距離情報",
         "order": 8,
         "width": 0,
         "height": 0,
@@ -13481,47 +13415,11 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
+        "className": "",
         "x": 2500,
         "y": 160,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "815226827ebfc2ed",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "GETシリアルデータ",
-        "func": "msg.payload={\n    car:global.get(\"car\"),\n    em:global.get(\"em\"),\n    zenku:msg.payload.zenku,\n    genku:msg.payload.genku,\n    kukyori:msg.payload.kukyori,\n    kyori:msg.payload.odd,\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2580,
-        "y": 620,
-        "wires": [
-            [
-                "cd099fa35e0b50a6"
-            ]
-        ]
-    },
-    {
-        "id": "cd099fa35e0b50a6",
-        "type": "function",
-        "z": "316743418d7f988e",
-        "name": "シリアル作成",
-        "func": "\n    \n    hexi[1]=msg.payload.em;\n    hexi[0]=msg.payload.car;\nHEX[1]=(hexi[0]<<4) +hexi[1];    \n    \n    value=msg.payload.zenku;\n    hexi[3]= (value % 10); value /= 10;\n    hexi[2]= (value % 10); value /= 10;\nHEX[2]=(hexi[2]<<4)+hexi[3];      \n    \n    value=msg.payload.genku;\n    hexi[5]= (value % 10); value /= 10;\n    hexi[4]= (value % 10); value /= 10;\nHEX[3]=(hexi[4]<<4)+hexi[5];      \n      \n    value=msg.payload.kukyori;\n    hexi[11]= (value % 10); value /= 10;\n    hexi[10]= (value % 10); value /= 10;\n    hexi[9]= (value % 10); value /= 10;\n    hexi[8]= (value % 10); value /= 10;\n    hexi[7]= (value % 10); value /= 10;\n    hexi[6]= (value % 10); value /= 10;\nHEX[4]=(hexi[6]<<4) +hexi[7];\nHEX[5]=(hexi[8]<<4) +hexi[9];\nHEX[6]=(hexi[10]<<4) +hexi[11];\n\n    value=msg.payload.kyori;\n    hexi[17]= (value % 10); value /= 10;\n    hexi[16]= (value % 10); value /= 10;\n    hexi[15]= (value % 10); value /= 10;\n    hexi[14]= (value % 10); value /= 10;\n    hexi[13]= (value % 10); value /= 10;\n    hexi[12]= (value % 10); value /= 10;\nHEX[7]=(hexi[12]<<4) +hexi[13];\nHEX[8]=(hexi[14]<<4) +hexi[15];\nHEX[9]=(hexi[16]<<4) +hexi[17];\n    chk=0;\n    for(k=1; k<=9;k++){\n        chk=chk+HEX[k];\n    }   \n    chk=chk&255;\n    ck1=chk>>4;\n    ck2=chk&15;\nHEX[10]=ck1;\nHEX[11]=ck2;         \n      \nmsg.payload=HEX;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "// ここに記述したコードは、ノードをデプロイした時に\n// 一度だけ実行されます。\nHEX =new Buffer(13);\nhexi =new Buffer(18);\nHEX[0]=0xaa;\nHEX[12]=0xbb;\n",
-        "finalize": "",
-        "x": 2800,
-        "y": 620,
-        "wires": [
-            [
-                "bcd0fdc6e63bda2d"
-            ]
         ]
     },
     {
@@ -13762,33 +13660,6 @@
         "wires": []
     },
     {
-        "id": "41f839b6648b8999",
-        "type": "change",
-        "z": "316743418d7f988e",
-        "name": "秒速→時速",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.kmh",
-                "pt": "msg",
-                "to": "$round((payload.speed*3.6*10)/10)",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 480,
-        "wires": [
-            [
-                "debc6878e2158c1f"
-            ]
-        ]
-    },
-    {
         "id": "debc6878e2158c1f",
         "type": "debug",
         "z": "316743418d7f988e",
@@ -13801,7 +13672,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 480,
+        "y": 460,
         "wires": []
     },
     {
@@ -14039,22 +13910,6 @@
                 "3434f6a3d0819c45"
             ]
         ]
-    },
-    {
-        "id": "bcd0fdc6e63bda2d",
-        "type": "debug",
-        "z": "316743418d7f988e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3020,
-        "y": 700,
-        "wires": []
     },
     {
         "id": "c4a604f8e0aaa5f9",
