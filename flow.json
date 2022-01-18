@@ -1022,7 +1022,6 @@
         "broker": "210.203.214.250",
         "port": "1883",
         "clientid": "",
-        "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -1093,7 +1092,6 @@
         "port": "8883",
         "tls": "5a0a782e010ecd4e",
         "clientid": "",
-        "autoConnect": true,
         "usetls": true,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -2197,7 +2195,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 190,
         "y": 80,
         "wires": [
@@ -2350,7 +2347,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 960,
         "y": 560,
         "wires": [
@@ -2389,7 +2385,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 180,
         "y": 1360,
         "wires": [
@@ -2816,10 +2811,9 @@
         "topic": "owntracks/GPS/pi",
         "qos": "0",
         "datatype": "json",
-        "broker": "50c6b968735ea611",
+        "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 130,
         "y": 340,
         "wires": [
@@ -4781,7 +4775,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "outputs": 1,
         "x": 2080,
         "y": 400,
         "wires": [
@@ -4833,7 +4826,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 2890,
         "y": 640,
         "wires": [
@@ -5173,7 +5165,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 100,
         "y": 1040,
         "wires": [
@@ -5882,7 +5873,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 940,
         "y": 380,
         "wires": [
@@ -6968,10 +6958,9 @@
         "topic": "owntracks/GPS/p0",
         "qos": "0",
         "datatype": "json",
-        "broker": "50c6b968735ea611",
+        "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 430,
         "y": 40,
         "wires": [
@@ -7037,7 +7026,6 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
-        "outputs": 1,
         "x": 2040,
         "y": 200,
         "wires": [
@@ -7224,7 +7212,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 2790,
         "y": 400,
         "wires": [
@@ -8280,7 +8267,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 570,
         "y": 480,
         "wires": [
@@ -8307,7 +8293,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 1090,
         "y": 100,
         "wires": [
@@ -8332,7 +8317,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 1050,
         "y": 300,
         "wires": [
@@ -8549,10 +8533,9 @@
         "topic": "owntracks/nodered/aquos",
         "qos": "0",
         "datatype": "auto",
-        "broker": "50c6b968735ea611",
+        "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 150,
         "y": 80,
         "wires": [
@@ -8665,7 +8648,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 1220,
         "y": 360,
         "wires": [
@@ -9376,7 +9358,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "outputs": 1,
         "x": 2380,
         "y": 620,
         "wires": [
@@ -11403,7 +11384,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 120,
         "y": 1080,
         "wires": [
@@ -11624,7 +11604,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 120,
         "y": 340,
         "wires": [
@@ -11642,7 +11621,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 120,
         "y": 380,
         "wires": [
@@ -11816,7 +11794,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 1220,
         "y": 360,
         "wires": [
@@ -12535,7 +12512,6 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "outputs": 1,
         "x": 2380,
         "y": 620,
         "wires": [
@@ -13948,7 +13924,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 120,
         "y": 1080,
         "wires": [
@@ -14166,10 +14141,9 @@
         "topic": "owntracks/nodered/sense3",
         "qos": "0",
         "datatype": "auto",
-        "broker": "50c6b968735ea611",
+        "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 130,
         "y": 300,
         "wires": [
@@ -14354,7 +14328,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 190,
         "y": 1280,
         "wires": [
@@ -14406,7 +14379,6 @@
         "broker": "4646bf9b.55c01",
         "nl": false,
         "rap": false,
-        "inputs": 0,
         "x": 110,
         "y": 1220,
         "wires": [
@@ -16064,7 +16036,6 @@
         "delay": "0",
         "topic": "topic",
         "sendOnBlur": true,
-        "className": "",
         "topicType": "msg",
         "x": 1270,
         "y": 280,
@@ -16672,7 +16643,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 110,
         "y": 280,
         "wires": [
@@ -16827,7 +16797,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 120,
         "y": 480,
         "wires": [
